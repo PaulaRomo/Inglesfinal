@@ -7,6 +7,7 @@ use App\CalificacionAlumno;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Alert;
 
 
 class alumnosController extends Controller
@@ -94,7 +95,7 @@ class alumnosController extends Controller
     {
         $alumno->update($request->all());
         return redirect()->route('alumnos.index', $alumno->id)
-        ->with('info', 'Alumno actualizado');
+        ->with('success', 'Alumno actualizado');
     }
 
     /**
@@ -138,7 +139,7 @@ class alumnosController extends Controller
         $datosAlumno = json_decode(json_encode($datosAlumno));
 
         //dd($datosAlumno);
-        return view ('alumnos.showcalificacion',   compact('datosAlumno'));
+        return view ('alumnos.showcalificacion',   compact('datosAlumno'))->with('success', 'Eliminado correctamente');
 
     }
 

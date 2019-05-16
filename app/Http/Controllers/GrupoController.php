@@ -16,6 +16,7 @@ use Dompdf\Dompdf;
 use Illuminate\Support\Facades\DB;
 use File;
 use Filesystem;
+use Alert;
 
 class GrupoController extends Controller
 {
@@ -27,6 +28,7 @@ class GrupoController extends Controller
     public function index()
     {
         //
+
         $grupos = Grupo::paginate(10);
         return view ('grupos.index', compact('grupos'));
     }
@@ -51,6 +53,8 @@ class GrupoController extends Controller
     {
         //
         //dd($request);
+        // example:
+
         $grupo = Grupo::create([
           'nombre_grupo' => $request['nombre_grupo'],
           'periodo' => $request['periodo'],
@@ -60,7 +64,7 @@ class GrupoController extends Controller
         ]);
 
         return redirect()->route('grupos.index', $grupo->id)
-        ->with('info', 'Grupo guardado');
+        ->with('success', 'Grupo guardado');
     }
 
     /**
@@ -213,7 +217,7 @@ class GrupoController extends Controller
             }
         }
         return redirect()->route('grupos.index', $grupo->id)
-        ->with('info', 'Grupo guardado');
+        ->with('success', 'Grupo guardado');
     }
 
     /* Calificaciones */
@@ -329,11 +333,8 @@ class GrupoController extends Controller
 
     public function pdf(Grupo $grupo)
     {
-          $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
-  
         $today = Carbon::now()->format('d/m/Y');
-        $pdf= \PDF::loadView('grupos.pdf', compact('grupo','today','alumnosxGrupo'));
-        return $pdf->download('ejemplo.pdf');
+        return view('grupos.pdf', compact('grupo','today','grupo'));
     }
     /**
      * Update the specified resource in storage.
@@ -374,7 +375,7 @@ class GrupoController extends Controller
         ->where('user_alum__grups.grup_id','=',$grupo->id)->update([ 'nivelActual' => $nivelactual ]);
         //dd($var->get());
         return redirect()->route('grupos.index', $grupo->id)
-        ->with('info', 'Grupo actualizado');
+        ->with('success', 'Grupo actualizado');
     }
 
     /**
@@ -386,22 +387,19 @@ class GrupoController extends Controller
     public function destroy(Grupo $grupo)
     {
         //
-        $user=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
-        for($i=0;$i<count($user);$i++) {
-            # code...
-            $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
-            $eliG->delete();
-        }
+        //dd($grupo);
+        // example:
+        // example:
+
+        $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
+        dd($eliG);
+        $eliG->delete();
         $eliG=UserDoc_Grup::where('grup_id', '=', $grupo->id)->first();
-        if($eliG!=null){
-            $eliG->delete();
-        }
+        $eliG->delete();
         $eliG=Dia::where('grupos_id', '=', $grupo->id)->first();
-        if($eliG!=null){
-            $eliG->delete();
-        }
+        $eliG->delete();
         $grupo->delete();
 
-        return back()->with('info', 'Eliminado correctamente');
+        return back()->with('success', 'Eliminado correctamente');
     }
 }

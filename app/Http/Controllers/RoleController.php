@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
 use Illuminate\Http\Request;
+use Alert;
 
 class RoleController extends Controller
 {
@@ -49,7 +50,7 @@ class RoleController extends Controller
         //dd($request->get('permissions'));
 
         return redirect()->route('roles.index', $role->id)
-        ->with('info', 'Rol guardado');
+        ->with('success', 'Rol guardado');
     }
 
     /**
@@ -89,7 +90,7 @@ class RoleController extends Controller
         $role->permissions()->sync($request->get('permissions'));
 
         return redirect()->route('roles.index', $role->id)
-        ->with('info', 'Rol actualizado');
+        ->with('success', 'Rol actualizado');
     }
 
     /**
@@ -103,6 +104,6 @@ class RoleController extends Controller
         //
         $role->delete();
 
-        return back()->with('info', 'Eliminado');
+        return back()->with('success', 'Eliminado');
     }
 }
