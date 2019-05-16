@@ -88,6 +88,7 @@
             @yield('content')
         </main>
     </div>
+    @include('sweetalert::alert')
     {!!Html::script('jquery/dist/jquery.min.js')!!}
     {!!Html::script('DataTables/datatables.min.js')!!}
     {!!Html::script('DataTables/FixedHeader-3.1.4/js/fixedHeader.bootstrap4.min.js')!!}

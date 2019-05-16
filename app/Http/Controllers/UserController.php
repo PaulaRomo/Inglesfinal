@@ -11,6 +11,7 @@ use App\CalificacionAlumno;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Alert;
 
 class UserController extends Controller
 {
@@ -25,7 +26,7 @@ class UserController extends Controller
         //
         $busqueda=$request->input('search');
         $users = User::search($busqueda)->paginate(10);
-      
+
     return view ('users.index', compact('users','busqueda'));
         //TODO:
     }
@@ -91,7 +92,7 @@ class UserController extends Controller
         $user = User::paginate(10);
         //dd($user);
         return redirect()->route('users.index', $user)
-        ->with('info', 'Ususrio guardado');
+        ->with('success', 'Usuario guardado');
     }
 
     public function storeD(Request $request)
@@ -113,7 +114,7 @@ class UserController extends Controller
         $user = User::paginate(10);
         //dd($user);
         return redirect()->route('users.index', $user)
-        ->with('info', 'Ususrio guardado');
+        ->with('success', 'Usuario guardado');
     }
 
     /**
@@ -155,7 +156,7 @@ class UserController extends Controller
         $user->roles()->sync($request->get('roles'));
 
         return redirect()->route('users.index', $user->id)
-        ->with('info', 'Usuario actualizado');
+        ->with('success', 'Usuario actualizado');
     }
 
     /**
@@ -192,7 +193,7 @@ class UserController extends Controller
         dd($idUser);
         if(count($idUser)>0){
             $user->delete();
-            return back()->with('info', 'Eliminado correctamente');
+            return back()->with('success', 'Eliminado correctamente');
         }
     }
 }

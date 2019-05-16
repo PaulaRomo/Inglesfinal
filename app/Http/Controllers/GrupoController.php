@@ -16,6 +16,7 @@ use Dompdf\Dompdf;
 use Illuminate\Support\Facades\DB;
 use File;
 use Filesystem;
+use Alert;
 
 class GrupoController extends Controller
 {
@@ -27,6 +28,7 @@ class GrupoController extends Controller
     public function index()
     {
         //
+
         $grupos = Grupo::paginate(10);
         return view ('grupos.index', compact('grupos'));
     }
@@ -51,6 +53,8 @@ class GrupoController extends Controller
     {
         //
         //dd($request);
+        // example:
+
         $grupo = Grupo::create([
           'nombre_grupo' => $request['nombre_grupo'],
           'periodo' => $request['periodo'],
@@ -60,7 +64,7 @@ class GrupoController extends Controller
         ]);
 
         return redirect()->route('grupos.index', $grupo->id)
-        ->with('info', 'Grupo guardado');
+        ->with('success', 'Grupo guardado');
     }
 
     /**
@@ -213,7 +217,7 @@ class GrupoController extends Controller
             }
         }
         return redirect()->route('grupos.index', $grupo->id)
-        ->with('info', 'Grupo guardado');
+        ->with('success', 'Grupo guardado');
     }
 
     /* Calificaciones */
@@ -371,7 +375,7 @@ class GrupoController extends Controller
         ->where('user_alum__grups.grup_id','=',$grupo->id)->update([ 'nivelActual' => $nivelactual ]);
         //dd($var->get());
         return redirect()->route('grupos.index', $grupo->id)
-        ->with('info', 'Grupo actualizado');
+        ->with('success', 'Grupo actualizado');
     }
 
     /**
@@ -384,6 +388,9 @@ class GrupoController extends Controller
     {
         //
         //dd($grupo);
+        // example:
+        // example:
+
         $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
         dd($eliG);
         $eliG->delete();
@@ -393,6 +400,6 @@ class GrupoController extends Controller
         $eliG->delete();
         $grupo->delete();
 
-        return back()->with('info', 'Eliminado correctamente');
+        return back()->with('success', 'Eliminado correctamente');
     }
 }
