@@ -59,7 +59,7 @@
 
 
                         <div class="form-group row">
-                            <label for="capacidad" class="col-md-4 col-form-label text-md-right">{{ __('Capacidad: ') }}</label>
+                            <label for="capacidad" class="col-md-4 col-form-label text-md-right">{{ __('Capacidad máxima: ') }}</label>
 
                             <div class="col-md-2">
                                 <input id="capacidad" type="number" class="form-control{{ $errors->has('capacidad') ? ' is-invalid' : '' }}" name="capacidad" value="{{ $grupo->capacidad ?? old('capacidad') }}" required autofocus>

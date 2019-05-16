@@ -35,7 +35,6 @@
                           <td>{{ $grupo->nombre_grupo }}</td>
                           <td>{{ $grupo->periodo }}</td>
                           <td>{{ $grupo->nivel }}</td>
-
                           <td>
                             <?php
                               $idUs=DB::table('user_doc__grups')->where('grup_id',$grupo->id)->pluck('user_id');
@@ -51,6 +50,7 @@
                           </td>
                           <td>
                             <?php
+                              $hay=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
                               $dias=DB::table('dias')->where('grupos_id',$grupo->id)->get();
                               $horario='';
                               $di='';
@@ -86,7 +86,7 @@
                             ?>
                           </td>
                           <td>{{ $horario }}</td>
-                          <td>{{ $grupo->capacidad }}</td>
+                          <td>{{ $grupo->capacidad-count($hay)}}</td>
                           <td width="10px">
                             @can ('grupos.edit')
                               <a style="background-color:#185FC2; border:#185FC2;" href="{{ route('grupos.documento', $grupo->id ) }}"
@@ -203,7 +203,7 @@
                           </div>
 
                           <div class="form-group row">
-                              <label for="capacidad" class="col-md-4 col-form-label text-md-right">{{ __('Capacidad del Grupo: ') }}</label>
+                              <label for="capacidad" class="col-md-4 col-form-label text-md-right">{{ __('Capacidad máxima: ') }}</label>
 
                               <div class="col-md-2">
                                   <input id="capacidad" type="number" class="form-control{{ $errors->has('capacidad') ? ' is-invalid' : '' }}" name="capacidad" value="{{ old('capacidad') }}" required autofocus>

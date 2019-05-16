@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\DatosAlumno;
 use App\DatosDocente;
+use App\UserAlum_Grup;
+use App\UserDoc_Grup;
 use App\CalificacionAlumno;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
@@ -166,20 +168,28 @@ class UserController extends Controller
     {
         //eliminar un alumno
         $idUser=DB::table('Datos_Alumnos')->where('user_id',$user->id)->pluck('id');
+        //dd($idUser);
         if(count($idUser)>0){
-            $eliA=DatosAlumno::where('user_id', '=', $user->id)->first();
+            $eliA=UserAlum_Grup::where('user_id', '=', $user->id)->first();
             $eliA->delete();
+            $eliA2=CalificacionAlumno::where('calificaciones_id', '=', $user->id)->first();
+            $eliA2->delete();
+            $eliA3=DatosAlumno::where('user_id', '=', $user->id)->first();
+            $eliA3->delete();
             $user->delete();
             return back()->with('info', 'Eliminado correctamente');
         }
         $idUser=DB::table('Datos_Docentes')->where('user_id',$user->id)->pluck('id');
         if(count($idUser)>0){
+            $eliD=UserDoc_Grup::where('user_id', '=', $user->id)->first();
+            $eliD->delete();
             $eliD=Datosdocente::where('user_id', '=', $user->id)->first();
             $eliD->delete();
             $user->delete();
             return back()->with('info', 'Eliminado correctamente');
         }
-        $idUser=DB::table('user')->where('user_id',$user->id)->pluck('id');
+        $idUser=DB::table('users')->where('id',$user->id)->pluck('id');
+        dd($idUser);
         if(count($idUser)>0){
             $user->delete();
             return back()->with('info', 'Eliminado correctamente');

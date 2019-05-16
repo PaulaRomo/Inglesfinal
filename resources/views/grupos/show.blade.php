@@ -26,9 +26,57 @@
                       <tr>
                         <td>{{ $grupo->id }}</td>
                         <td>{{ $grupo->nombre_grupo }}</td>
-                        <td>{{ $grupo->docente }}</td>
-                        <td>{{ $grupo->dias}}</td>
-                        <td>{{ $grupo->horario }}</td>
+                        <td>
+                          <?php
+                            $idUs=DB::table('user_doc__grups')->where('grup_id',$grupo->id)->pluck('user_id');
+                            if(count($idUs)>0){
+                              $idUser=DB::table('users')->where('id',$idUs[0])->pluck('name');
+                              if(count($idUser)>0){
+                          ?>
+                                {{ $idUser[0]}}
+                          <?php
+                              }
+                            }
+                          ?>
+                        </td>
+                        <td>
+                          <?php
+                            $hay=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
+                            $dias=DB::table('dias')->where('grupos_id',$grupo->id)->get();
+                            $horario='';
+                            $di='';
+                            if(count($dias)>0){
+                              if($dias[0]->lunes){
+                                $horario=$dias[0]->lunes;
+                                $di=$di.' '.'Lunes';
+                              }
+                              if($dias[0]->martes){
+                                $horario=$dias[0]->martes;
+                                $di=$di.' '.'Martes';
+                              }
+                              if($dias[0]->miercoles){
+                                $horario=$dias[0]->miercoles;
+                                $di=$di.' '.'Miercoles';
+                              }
+                              if($dias[0]->jueves){
+                                $horario=$dias[0]->jueves;
+                                $di=$di.' '.'Jueves';
+                              }
+                              if($dias[0]->viernes){
+                                $horario=$dias[0]->viernes;
+                                $di=$di.' '.'Viernes';
+                              }
+                              if($dias[0]->sabado){
+                                $horario=$dias[0]->sabado;
+                                $di=$di.' '.'Sabado';
+                              }
+                          ?>
+                              {{$di}}
+                          <?php
+                            }
+                          ?>
+                        </td>
+                        <td>{{ $horario }}</td>
                        {{--  <td>
 
                             <a href="{{ route('grupos.agregarCalificaciones', $grupo->id ) }}"

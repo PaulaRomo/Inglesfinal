@@ -71,7 +71,7 @@
     <div class="row justify-content-center">
       <div class="col-md-10">
         <div class="card">
-          <div class="card-header">{{ __('Register') }}<a style="background:transparent; color: black; position: absolute; right:25px;" href="{{ route('users.index',$users) }}">X</a></div>                <div class="card-body">
+          <div class="card-header">{{ __('Registrar') }}<a style="background:transparent; color: black; position: absolute; right:25px;" href="{{ route('users.index',$users) }}">X</a></div>                <div class="card-body">
             <script language="JavaScript">
                 function habilita(){
                     $(".randol").removeAttr("disabled")

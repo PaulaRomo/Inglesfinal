@@ -269,15 +269,15 @@ class GrupoController extends Controller
     {
         $idUser=DB::table('datos_alumnos')->where('numcontrol',$request['numcontrol'])->pluck('user_id');
         $hay=DB::table('user_alum__grups')->where('user_id',$idUser[0])->pluck('user_id');
+        $enGrup=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
         $capaciadGrup=DB::table('grupos')->where('id',$grupo->id)->pluck('capacidad');
-        if($capaciadGrup[0]>0){
+        if($capaciadGrup[0]>count($enGrup)){
             if(count($idUser)>0){
                 UserAlum_Grup::create([
                     'user_id' => $idUser[0],
                     'grup_id' => $grupo->id,
                 ]);
                 $apro = UpdateGrupos::find($grupo->id);
-                $apro->capacidad = (int)$capaciadGrup[0]-1;
                 $apro->save();
 
                 /* TODO: agregar nivel actual a tabla calificacionesalumno */
@@ -384,6 +384,13 @@ class GrupoController extends Controller
     {
         //
         //dd($grupo);
+        $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
+        dd($eliG);
+        $eliG->delete();
+        $eliG=UserDoc_Grup::where('grup_id', '=', $grupo->id)->first();
+        $eliG->delete();
+        $eliG=Dia::where('grupos_id', '=', $grupo->id)->first();
+        $eliG->delete();
         $grupo->delete();
 
         return back()->with('info', 'Eliminado correctamente');
