@@ -168,4 +168,7 @@ Route::middleware(['auth'])->group(function(){
   Route::get('alumnos/{user}/calificacion', 'alumnosController@showcalificacion')->name('alumnos.showcalificacion')
   ->middleware('permission:alumnos.show');
 
+  Route::get('profile', 'ProfileController@profile')
+  ->middleware('permission:alumno.profile');;
+
 });
