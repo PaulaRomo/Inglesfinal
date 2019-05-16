@@ -391,13 +391,24 @@ class GrupoController extends Controller
         // example:
         // example:
 
+        $user=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
+        for($i=0;$i<count($user);$i++) {
+            # code...
+            $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
+            $eliG->delete();
+        }
         $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
-        dd($eliG);
-        $eliG->delete();
+        if($eliG!=null){
+            $eliG->delete();
+        }
         $eliG=UserDoc_Grup::where('grup_id', '=', $grupo->id)->first();
-        $eliG->delete();
+        if($eliG!=null){
+            $eliG->delete();
+        }
         $eliG=Dia::where('grupos_id', '=', $grupo->id)->first();
-        $eliG->delete();
+        if($eliG!=null){
+            $eliG->delete();
+        }
         $grupo->delete();
 
         return back()->with('success', 'Eliminado correctamente');
