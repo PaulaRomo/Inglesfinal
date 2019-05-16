@@ -154,6 +154,11 @@
                                           Ratings
                                         </a>
                                     </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="dropdown-item" href="{{ url('profile') }}">
+                                            {{ __('Profile') }}
+                                        </a>
+                                    </li>
                               @endif
                             @endauth
                         </ul>

@@ -60,6 +60,11 @@
                             <a style="color:white;"  class="nav-link" href="{{ route('roles.index') }}">Roles</a>
                           </li>
                           @endcan
+                          @can ('alumno.profile')
+                            <li class="nav-item">
+                              <a style="color:white;"  class="nav-link" href="{{ url('profile') }}">Perfil</a>
+                            </li>
+                          @endcan
                             <li class="nav-item dropdown">
                                 <a style="color:white;"  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

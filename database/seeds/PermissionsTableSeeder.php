@@ -132,6 +132,16 @@ class PermissionsTableSeeder extends Seeder
         'slug' => 'calificaciones.destroy',
         'description' => 'Eliminar cualquier calificacion del alumno (Administrador,Docente)',
     ]);
-
+    //calificacinoes
+        Permission::create([
+        'name' => 'Vista de calificaciones por alumno',
+        'slug' => 'alumnos.show',
+        'description' => 'Mostrar calificaciones por alumno (Alumno)',
+    ]);
+        Permission::create([
+        'name' => 'Perfil del alumno',
+        'slug' => 'alumno.profile',
+        'description' => 'Mostrar perfil del alumno (Alumno)',
+    ]);
   }
 }
