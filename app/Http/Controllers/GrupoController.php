@@ -329,8 +329,11 @@ class GrupoController extends Controller
 
     public function pdf(Grupo $grupo)
     {
+          $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
+  
         $today = Carbon::now()->format('d/m/Y');
-        return view('grupos.pdf', compact('grupo','today','grupo'));
+        $pdf= \PDF::loadView('grupos.pdf', compact('grupo','today','alumnosxGrupo'));
+        return $pdf->download('ejemplo.pdf');
     }
     /**
      * Update the specified resource in storage.
@@ -383,14 +386,20 @@ class GrupoController extends Controller
     public function destroy(Grupo $grupo)
     {
         //
-        //dd($grupo);
-        $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
-        dd($eliG);
-        $eliG->delete();
+        $user=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
+        for($i=0;$i<count($user);$i++) {
+            # code...
+            $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
+            $eliG->delete();
+        }
         $eliG=UserDoc_Grup::where('grup_id', '=', $grupo->id)->first();
-        $eliG->delete();
+        if($eliG!=null){
+            $eliG->delete();
+        }
         $eliG=Dia::where('grupos_id', '=', $grupo->id)->first();
-        $eliG->delete();
+        if($eliG!=null){
+            $eliG->delete();
+        }
         $grupo->delete();
 
         return back()->with('info', 'Eliminado correctamente');

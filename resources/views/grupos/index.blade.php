@@ -99,7 +99,7 @@
                             @can ('grupos.edit')
                               <a style="background-color:orange; border:orange;" href="{{ route('grupos.dias', $grupo->id ) }}"
                               class="btn btn-sm btn-primary">
-                                Día/Horario/Docente
+                                Horario/Docente/Alumno
                               </a>
                             @endcan
                           </td>

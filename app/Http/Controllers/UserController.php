@@ -171,25 +171,34 @@ class UserController extends Controller
         //dd($idUser);
         if(count($idUser)>0){
             $eliA=UserAlum_Grup::where('user_id', '=', $user->id)->first();
-            $eliA->delete();
-            $eliA2=CalificacionAlumno::where('calificaciones_id', '=', $user->id)->first();
-            $eliA2->delete();
-            $eliA3=DatosAlumno::where('user_id', '=', $user->id)->first();
-            $eliA3->delete();
+            if($eliA!=null){
+                $eliA->delete();
+            }
+            $eliA=CalificacionAlumno::where('calificaciones_id', '=', $user->id)->first();
+            if($eliA!=null){
+                $eliA->delete();
+            }
+            $eliA=DatosAlumno::where('user_id', '=', $user->id)->first();
+            if($eliA!=null){
+                $eliA->delete();
+            }
             $user->delete();
             return back()->with('info', 'Eliminado correctamente');
         }
         $idUser=DB::table('Datos_Docentes')->where('user_id',$user->id)->pluck('id');
         if(count($idUser)>0){
             $eliD=UserDoc_Grup::where('user_id', '=', $user->id)->first();
-            $eliD->delete();
+            if($eliD!=null){
+                $eliD->delete();
+            }
             $eliD=Datosdocente::where('user_id', '=', $user->id)->first();
-            $eliD->delete();
+            if($eliD!=null){
+                $eliD->delete();
+            }
             $user->delete();
             return back()->with('info', 'Eliminado correctamente');
         }
         $idUser=DB::table('users')->where('id',$user->id)->pluck('id');
-        dd($idUser);
         if(count($idUser)>0){
             $user->delete();
             return back()->with('info', 'Eliminado correctamente');

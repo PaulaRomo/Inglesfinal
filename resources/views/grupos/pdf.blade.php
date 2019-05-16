@@ -38,7 +38,7 @@
     </style>
     </head>
     <body>
-      <h1 style="font-size:40px; margin-top: 20px;" ><img style="height:70px; width:70px; margin-top: 30px;" src={{ asset ('img/logo.png') }} alt="">Control de Inglés</h1>
+      <h1 style="font-size:40px; margin-top: 20px;" ><img style="height:70px; width:70px; margin-top: 30px;" src={{ public_path ('img/logo.png') }} alt="">Control de Inglés</h1>
       <hr>
       <br>
       <div class="datagrid">
@@ -58,7 +58,19 @@
           		<td><p>{{$grupo['nombre_grupo']}}</p></td>
           		<td><p>{{$grupo['periodo']}}</p></td>
           		<td><p>{{$grupo['nivel']}}</p></td>
-          		<td><p>{{$grupo['docente']}}</p></td>
+          		<td>
+                <?php
+                  $idUs=DB::table('user_doc__grups')->where('grup_id',$grupo->id)->pluck('user_id');
+                  if(count($idUs)>0){
+                    $idUser=DB::table('users')->where('id',$idUs[0])->pluck('name');
+                    if(count($idUser)>0){
+                ?>
+                      {{ $idUser[0]}}
+                <?php
+                    }
+                  }
+                ?>
+              </td>
           	</tr>
           </tbody>
         </table>
@@ -71,24 +83,44 @@
         <table>
           <thead>
           	<tr>
-              <th>ID</th>
-          		<th>No. Control</th>
+              <th>No. Control</th>
           		<th>Nombre Completo</th>
-              <th>Interno/Externo</th>
-          		<th>Sexo</th>
-          		<th>Carrera</th>
+              <th>Unidad 1</th>
+              <th>Unidad 2</th>
+              <th>Unidad 3</th>
+              <th>Unidad 4</th>
+              <th>Promedio</th>
+
           	</tr>
           </thead>
+          @foreach ($alumnosxGrupo as $alumno)
+          <thead>
+            <tr>
+              <td><p>{{$alumno->id}}</p></td>
+              <td><p>{{$alumno->name}}</p></td>
+          		<td><p>{{$alumno->unidad1}}</p></td>
+          		<td><p>{{$alumno->unidad2}}</p></td>
+          		<td><p>{{$alumno->unidad3}}</p></td>
+              <td><p>{{$alumno->unidad4}}</p></td>
+              @php
+                  $nivelac='nivel'.$alumno->nivelActual;
+              @endphp
+            <td><p>{{$alumno->$nivelac}}</p></td>
+          	</tr>
+          </thead>
+
           <tbody>
-          	<tr>
-              <td><p>{{$today}}</p></td>
-          		<td><p>{{$grupo['nombre_grupo']}}</p></td>
-          		<td><p>{{$grupo['periodo']}}</p></td>
-          		<td><p>{{$grupo['nivel']}}</p></td>
-              <td><p>{{$grupo['nivel']}}</p></td>
-          		<td><p>{{$grupo['docente']}}</p></td>
+            <tr>
+              <th style="background:#E6E6E6 "></th>
+              <th style="background:#E6E6E6"></th>
+              <th style="background:#E6E6E6"></th>
+              <th style="background:#E6E6E6"></th>
+              <th style="background:#E6E6E6"></th>
+              <th style="background:#E6E6E6"></th>
+              <th style="background:#E6E6E6"></th>
           	</tr>
           </tbody>
+            @endforeach
         </table>
       </div>
     </body>
