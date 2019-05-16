@@ -29,115 +29,242 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($grupos as $grupo)
-                        <tr>
-                          <td>{{ $grupo->id }}</td>
-                          <td>{{ $grupo->nombre_grupo }}</td>
-                          <td>{{ $grupo->periodo }}</td>
-                          <td>{{ $grupo->nivel }}</td>
-                          <td>
-                            <?php
-                              $idUs=DB::table('user_doc__grups')->where('grup_id',$grupo->id)->pluck('user_id');
-                              if(count($idUs)>0){
-                                $idUser=DB::table('users')->where('id',$idUs[0])->pluck('name');
-                                if(count($idUser)>0){
-                            ?>
-                                  {{ $idUser[0]}}
-                            <?php
+                      @can ('grupos.create')
+                        @foreach ($grupos as $grupo)
+                          <tr>
+                            <td>{{ $grupo->id }}</td>
+                            <td>{{ $grupo->nombre_grupo }}</td>
+                            <td>{{ $grupo->periodo }}</td>
+                            <td>{{ $grupo->nivel }}</td>
+                            <td>
+                              <?php
+                                $idUs=DB::table('user_doc__grups')->where('grup_id',$grupo->id)->pluck('user_id');
+                                if(count($idUs)>0){
+                                  $idUser=DB::table('users')->where('id',$idUs[0])->pluck('name');
+                                  if(count($idUser)>0){
+                              ?>
+                                    {{ $idUser[0]}}
+                              <?php
+                                  }
                                 }
-                              }
-                            ?>
-                          </td>
-                          <td>
-                            <?php
-                              $hay=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
-                              $dias=DB::table('dias')->where('grupos_id',$grupo->id)->get();
-                              $horario='';
-                              $di='';
-                              if(count($dias)>0){
-                                if($dias[0]->lunes){
-                                  $horario=$dias[0]->lunes;
-                                  $di=$di.' '.'Lunes';
+                              ?>
+                            </td>
+                            <td>
+                              <?php
+                                $hay=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
+                                $dias=DB::table('dias')->where('grupos_id',$grupo->id)->get();
+                                $horario='';
+                                $di='';
+                                if(count($dias)>0){
+                                  if($dias[0]->lunes){
+                                    $horario=$dias[0]->lunes;
+                                    $di=$di.' '.'Lunes';
+                                  }
+                                  if($dias[0]->martes){
+                                    $horario=$dias[0]->martes;
+                                    $di=$di.' '.'Martes';
+                                  }
+                                  if($dias[0]->miercoles){
+                                    $horario=$dias[0]->miercoles;
+                                    $di=$di.' '.'Miercoles';
+                                  }
+                                  if($dias[0]->jueves){
+                                    $horario=$dias[0]->jueves;
+                                    $di=$di.' '.'Jueves';
+                                  }
+                                  if($dias[0]->viernes){
+                                    $horario=$dias[0]->viernes;
+                                    $di=$di.' '.'Viernes';
+                                  }
+                                  if($dias[0]->sabado){
+                                    $horario=$dias[0]->sabado;
+                                    $di=$di.' '.'Sabado';
+                                  }
+                              ?>
+                                  {{$di}}
+                              <?php
                                 }
-                                if($dias[0]->martes){
-                                  $horario=$dias[0]->martes;
-                                  $di=$di.' '.'Martes';
-                                }
-                                if($dias[0]->miercoles){
-                                  $horario=$dias[0]->miercoles;
-                                  $di=$di.' '.'Miercoles';
-                                }
-                                if($dias[0]->jueves){
-                                  $horario=$dias[0]->jueves;
-                                  $di=$di.' '.'Jueves';
-                                }
-                                if($dias[0]->viernes){
-                                  $horario=$dias[0]->viernes;
-                                  $di=$di.' '.'Viernes';
-                                }
-                                if($dias[0]->sabado){
-                                  $horario=$dias[0]->sabado;
-                                  $di=$di.' '.'Sabado';
-                                }
-                            ?>
-                                {{$di}}
-                            <?php
-                              }
-                            ?>
-                          </td>
-                          <td>{{ $horario }}</td>
-                          <td>{{ $grupo->capacidad-count($hay)}}</td>
-                          <td width="10px">
-                            @can ('grupos.edit')
-                              <a style="background-color:#185FC2; border:#185FC2;" href="{{ route('grupos.documento', $grupo->id ) }}"
-                              class="btn btn-sm btn-primary">
-                                Instrumentación
-                              </a>
-                            @endcan
-                          </td>
-                          <td width="10px">
-                            @can ('grupos.edit')
-                              <a style="background-color:orange; border:orange;" href="{{ route('grupos.dias', $grupo->id ) }}"
-                              class="btn btn-sm btn-primary">
-                                Horario/Docente/Alumno
-                              </a>
-                            @endcan
-                          </td>
-                          <td width="10px">
-                            @can ('grupos.show')
-                              <a href="{{ route('grupos.show', $grupo->id ) }}"
-                              class="btn btn-sm btn-success">
-                                Ver
-                              </a>
-                            @endcan
-                          </td>
-                          <td width="10px">
-                            @can ('grupos.edit')
-                              <a style="background-color:purple; border:purple;" href="{{ route('grupos.edit', $grupo->id ) }}"
-                              class="btn btn-sm btn-primary">
-                                Editar
-                              </a>
-                            @endcan
-                          </td>
+                              ?>
+                            </td>
+                            <td>{{ $horario }}</td>
+                            <td>{{ $grupo->capacidad-count($hay)}}</td>
+                            <td width="10px">
+                              @can ('grupos.edit')
+                                <a style="background-color:#185FC2; border:#185FC2;" href="{{ route('grupos.documento', $grupo->id ) }}"
+                                class="btn btn-sm btn-primary">
+                                  Instrumentación
+                                </a>
+                              @endcan
+                            </td>
+                            <td width="10px">
+                              @can ('grupos.edit')
+                                <a style="background-color:orange; border:orange;" href="{{ route('grupos.dias', $grupo->id ) }}"
+                                class="btn btn-sm btn-primary">
+                                  Horario/Docente/Alumno
+                                </a>
+                              @endcan
+                            </td>
+                            <td width="10px">
+                              @can ('grupos.show')
+                                <a href="{{ route('grupos.show', $grupo->id ) }}"
+                                class="btn btn-sm btn-success">
+                                  Ver
+                                </a>
+                              @endcan
+                            </td>
+                            <td width="10px">
+                              @can ('grupos.edit')
+                                <a style="background-color:purple; border:purple;" href="{{ route('grupos.edit', $grupo->id ) }}"
+                                class="btn btn-sm btn-primary">
+                                  Editar
+                                </a>
+                              @endcan
+                            </td>
 
-                          <td width="10px">
-                            @can ('grupos.show')
-                              <a href="{{ route('grupos.pdf', $grupo->id ) }}"
-                              class="btn btn-sm btn-primary">
-                                PDF
-                              </a>
-                            @endcan
-                          </td>
-                          <td width="10px">
-                            @can ('grupos.destroy')
-                              {!! Form::open(['route' => ['grupos.destroy', $grupo->id],
-                                'method'=>'DELETE']) !!}
-                                {!! Form::submit('Eliminar',['class'=>'btn btn-sm btn-danger']) !!}
-                              {!! Form::close() !!}
-                            @endcan
-                          </td>
-                        </tr>
-                      @endforeach
+                            <td width="10px">
+                              @can ('grupos.show')
+                                <a href="{{ route('grupos.pdf', $grupo->id) }}"
+                                class="btn btn-sm btn-primary">
+                                  PDF
+                                </a>
+                              @endcan
+                            </td>
+                            <td width="10px">
+                              @can ('grupos.destroy')
+                                {!! Form::open(['route' => ['grupos.destroy', $grupo->id],
+                                  'method'=>'DELETE']) !!}
+                                  {!! Form::submit('Eliminar',['class'=>'btn btn-sm btn-danger']) !!}
+                                {!! Form::close() !!}
+                              @endcan
+                            </td>
+                          </tr>
+                        @endforeach
+                      @endcan
+                      @can('grupos.index')
+                            <?php
+                              $idUser=Auth::User()->id;
+                              $idGrup=DB::table('user_doc__grups')->where('user_id',$idUser)->pluck('grup_id');
+                              $i=0;
+                            ?>                       
+                            @if(count($idGrup)>0)
+                              @foreach ($grupos as $grupo)
+                                @if($grupo->id==$idGrup[$i])
+                                  <?php
+                                    if(count($idGrup)-1>$i){
+                                      $i++; 
+                                    } 
+                                  ?>
+                                  <tr>
+                                    <td>{{ $grupo->id }}</td>
+                                    <td>{{ $grupo->nombre_grupo }}</td>
+                                    <td>{{ $grupo->periodo }}</td>
+                                    <td>{{ $grupo->nivel }}</td>
+                                    <td>
+                                      <?php
+                                        $idUs=DB::table('user_doc__grups')->where('grup_id',$grupo->id)->pluck('user_id');
+                                        if(count($idUs)>0){
+                                          $idUser=DB::table('users')->where('id',$idUs[0])->pluck('name');
+                                          if(count($idUser)>0){
+                                      ?>
+                                            {{ $idUser[0]}}
+                                      <?php
+                                          }
+                                        }
+                                      ?>
+                                    </td>
+                                    <td>
+                                      <?php
+                                        $hay=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
+                                        $dias=DB::table('dias')->where('grupos_id',$grupo->id)->get();
+                                        $horario='';
+                                        $di='';
+                                        if(count($dias)>0){
+                                          if($dias[0]->lunes){
+                                            $horario=$dias[0]->lunes;
+                                            $di=$di.' '.'Lunes';
+                                          }
+                                          if($dias[0]->martes){
+                                            $horario=$dias[0]->martes;
+                                            $di=$di.' '.'Martes';
+                                          }
+                                          if($dias[0]->miercoles){
+                                            $horario=$dias[0]->miercoles;
+                                            $di=$di.' '.'Miercoles';
+                                          }
+                                          if($dias[0]->jueves){
+                                            $horario=$dias[0]->jueves;
+                                            $di=$di.' '.'Jueves';
+                                          }
+                                          if($dias[0]->viernes){
+                                            $horario=$dias[0]->viernes;
+                                            $di=$di.' '.'Viernes';
+                                          }
+                                          if($dias[0]->sabado){
+                                            $horario=$dias[0]->sabado;
+                                            $di=$di.' '.'Sabado';
+                                          }
+                                      ?>
+                                          {{$di}}
+                                      <?php
+                                        }
+                                      ?>
+                                    </td>
+                                    <td>{{ $horario }}</td>
+                                    <td>{{ $grupo->capacidad-count($hay)}}</td>
+                                    <td width="10px">
+                                      @can ('grupos.index')
+                                        <a style="background-color:#185FC2; border:#185FC2;" href="{{ route('grupos.documento', $grupo->id ) }}"
+                                        class="btn btn-sm btn-primary">
+                                          Instrumentación
+                                        </a>
+                                      @endcan
+                                    </td>
+                                    <td width="10px">
+                                      @can ('grupos.edit')
+                                        <a style="background-color:orange; border:orange;" href="{{ route('grupos.dias', $grupo->id ) }}"
+                                        class="btn btn-sm btn-primary">
+                                          Horario/Docente/Alumno
+                                        </a>
+                                      @endcan
+                                    </td>
+                                    <td width="10px">
+                                      @can ('grupos.show')
+                                        <a href="{{ route('grupos.show', $grupo->id ) }}"
+                                        class="btn btn-sm btn-success">
+                                          Ver
+                                        </a>
+                                      @endcan
+                                    </td>
+                                    <td width="10px">
+                                      @can ('grupos.edit')
+                                        <a style="background-color:purple; border:purple;" href="{{ route('grupos.edit', $grupo->id ) }}"
+                                        class="btn btn-sm btn-primary">
+                                          Editar
+                                        </a>
+                                      @endcan
+                                    </td>
+
+                                    <td width="10px">
+                                      @can ('grupos.show')
+                                        <a href="{{ route('grupos.pdf', $grupo->id) }}"
+                                        class="btn btn-sm btn-primary">
+                                          PDF
+                                        </a>
+                                      @endcan
+                                    </td>
+                                    <td width="10px">
+                                      @can ('grupos.destroy')
+                                        {!! Form::open(['route' => ['grupos.destroy', $grupo->id],
+                                          'method'=>'DELETE']) !!}
+                                          {!! Form::submit('Eliminar',['class'=>'btn btn-sm btn-danger']) !!}
+                                        {!! Form::close() !!}
+                                      @endcan
+                                    </td>
+                                  </tr>
+                                @endif
+                              @endforeach
+                            @endif
+                      @endcan
                     </tbody>
                   </table>
                   {{ $grupos->render() }}

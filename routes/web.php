@@ -97,6 +97,9 @@ Route::middleware(['auth'])->group(function(){
   Route::put('grupos/{grupo}/agregar/alum', 'GrupoController@agreAlum')->name('grupos.agreAlum')
   ->middleware('permission:grupos.agreAlum');
 
+  Route::get('grupos/{grupo}/agregar/alum/b', 'GrupoController@balum')->name('grupos.balum')
+  ->middleware('permission:grupos.agreAlum');
+
   Route::put('grupos/{grupo}/agregar/doc', 'GrupoController@agreDoc')->name('grupos.agreDoc')
   ->middleware('permission:grupos.agreDoc');
 

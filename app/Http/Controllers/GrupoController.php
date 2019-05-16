@@ -42,6 +42,14 @@ class GrupoController extends Controller
     {
         //
     }
+    /* TODO: NACHO{ */
+        public function balum( $numcontrol  )
+        {
+            $idUser=DB::table('datos_alumnos')->where('numcontrol',$numcontrol)->join('users','users.id','=','datos_alumnos.user_id') ->get();
+            
+            return json_encode($idUser);
+        }
+    /* TODO: }NACHO */
 
     /**
      * Store a newly created resource in storage.
@@ -217,7 +225,7 @@ class GrupoController extends Controller
             }
         }
         return redirect()->route('grupos.index', $grupo->id)
-        ->with('success', 'Grupo guardado');
+        ->with('success', 'Horario agregado al grupo');
     }
 
     /* Calificaciones */
@@ -276,7 +284,7 @@ class GrupoController extends Controller
         $enGrup=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
         $capaciadGrup=DB::table('grupos')->where('id',$grupo->id)->pluck('capacidad');
         if($capaciadGrup[0]>count($enGrup)){
-            if(count($idUser)>0){
+            if(count($hay)==0){
                 UserAlum_Grup::create([
                     'user_id' => $idUser[0],
                     'grup_id' => $grupo->id,
@@ -296,16 +304,16 @@ class GrupoController extends Controller
                 'unidad2'=>null,
                 'unidad3'=>null,
                 'unidad4'=>null,
-                ]
-                );
+                ]);
+                return redirect()->route('grupos.index', $grupo->id)
+                ->with('info', 'Alumno agregado al grupo');
             }else{
-                return('el alumno no existe');
+                Alert::error('Error', 'Alumno ya registrado a un grupo');
             }
         }else{
-            return('grupo lleno');
+            Alert::info('Imposible inscribirse', 'Grupo lleno');
         }
-        return redirect()->route('grupos.index', $grupo->id)
-        ->with('info', 'Grupo guardado');
+        return redirect()->route('grupos.index', $grupo->id);
     }
 
     public function agreDoc(Request $request,Grupo $grupo)
@@ -328,13 +336,15 @@ class GrupoController extends Controller
             'grup_id' => $grupo->id,
         ]);
         return redirect()->route('grupos.index', $grupo->id)
-        ->with('info', 'Grupo guardado');
+        ->with('info', 'Docente agregado al grupo');
     }
 
     public function pdf(Grupo $grupo)
     {
+        $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
         $today = Carbon::now()->format('d/m/Y');
-        return view('grupos.pdf', compact('grupo','today','grupo'));
+        $pdf = \PDF::loadView('grupos.pdf',  compact('grupo','today','alumnosxGrupo'));
+        return $pdf->download('ejemplo.pdf');
     }
     /**
      * Update the specified resource in storage.

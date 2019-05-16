@@ -140,7 +140,7 @@
                             {!!Form::close()!!}
                         </div>
                         <div id='alum' hide>
-                            {!! Form::model($grupo,['route'=>['grupos.agreAlum', $grupo->id], 'method'=>'PUT']) !!}
+                            {!! Form::model($grupo,['route'=>['grupos.agreAlum', $grupo->id], 'method'=>'PUT','id'=>'formalumno']) !!}
                                 <div class="form-group row">
                                     <label for="numcontrol" class="col-md-4 col-form-label text-md-right">{{ __('Numero de Control:') }}</label>
         
@@ -156,12 +156,16 @@
                                 </div>
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Agregar') }}
+                                        <button id="buscaralumno" type="submit" class="btn btn-primary">
+                                            {{ __('Buscar') }}
                                         </button>
                                     </div>
                                 </div>
                             {!!Form::close()!!}
+
+
+                            <div id='infoalumno'>
+                            </div>
                         </div>
                         <div id='docent' hide>
                             {!! Form::model($grupo,['route'=>['grupos.agreDoc', $grupo->id], 'method'=>'PUT']) !!}
@@ -182,4 +186,42 @@
         </div>
     </div>
 </div>
+
+<script>
+
+
+$(document).ready(function(){
+
+    $("#buscaralumno").click(function(event){
+
+        console.log("hola");
+        form = document.getElementById("formalumno")
+        var midata = new FormData(form);
+        var ajax = new XMLHttpRequest();
+        var numcontrol=$("#numcontrol").val();
+        if( numcontrol==''){
+            return 0;
+        }
+        var ruta='{{ route("grupos.balum",":id" ) }}'
+        ruta = ruta.replace(':id', numcontrol);
+        ajax.open('get', ruta, false /*  async false */ );
+        ajax.send(midata);
+        datosusuario=JSON.parse(ajax.response);
+        console.log('-----------');
+
+        if(confirm('Nombre del ususario:'+datosusuario[0]['name']+'\n     desea continuar?' )){
+
+        }else{
+            event.preventDefault();    
+        }
+
+        $("#infoalumno").html(datosusuario);
+        console.log('-----------');
+
+
+    });
+});
+</script>
+
+
 @endsection
