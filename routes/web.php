@@ -80,14 +80,12 @@ Route::middleware(['auth'])->group(function(){
   Route::get('grupos/{grupo}/edit', 'GrupoController@edit')->name('grupos.edit')
   ->middleware('permission:grupos.edith');
 
-  Route::put('grupos/{grupo}/documento/intru', 'GrupoController@documentacion')->name('grupos.intrumentacion')
-  ->middleware('permission:grupos.edith');
+  Route::put('grupos/{grupo}/documento/intru', 'GrupoController@documentacion')->name('grupos.intrumentacion');
 
-  Route::get('grupos/{grupo}/documento', 'GrupoController@docu')->name('grupos.documento')
-  ->middleware('permission:grupos.edith');
+  Route::get('grupos/{grupo}/documento', 'GrupoController@docu')->name('grupos.documento');
 
-  Route::get('grupos/{grupo}/pdf', 'GrupoController@pdf')->name('grupos.pdf')
-  ->middleware('permission:grupos.pdf');
+  Route::get('grupos/{grupo}/pdf', 'GrupoController@pdf')->name('grupos.pdf');
+
   Route::get('grupos/{grupo}/agregar', 'GrupoController@dias')->name('grupos.dias')
   ->middleware('permission:grupos.dias');
 
