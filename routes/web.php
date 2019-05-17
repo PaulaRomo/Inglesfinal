@@ -18,7 +18,8 @@ Route::get('/', function () {
 Route::resource('/dias', 'DiasController');
 
 Auth::routes();
-Route::name('print')->get('/imprimir', 'GeneradorController@imprimir');
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -85,6 +86,12 @@ Route::middleware(['auth'])->group(function(){
   Route::get('grupos/{grupo}/documento', 'GrupoController@docu')->name('grupos.documento');
 
   Route::get('grupos/{grupo}/pdf', 'GrupoController@pdf')->name('grupos.pdf');
+
+  Route::get('grupos/{grupo}/pdf', 'GrupoController@pdf')->name('grupos.pdf')
+  ->middleware('permission:grupos.pdf');
+
+  Route::name('print')->get('/imprimir', 'GeneradorController@imprimir');
+
 
   Route::get('grupos/{grupo}/agregar', 'GrupoController@dias')->name('grupos.dias')
   ->middleware('permission:grupos.dias');
@@ -153,6 +160,11 @@ Route::middleware(['auth'])->group(function(){
 
   //Route::get('grupos/create', 'GrupoController@create')->name('grupos.create')
   //->middleware('permission:grupos.create');
+
+  //Route::get('alumnos/{semestre}/{carrera}', 'alumnosController@pdfCarrera')->name('alumnos.pdfCarrera')
+  //->middleware('permission:alumnos.pdfCarrera');
+
+  Route::POST('alumnos/pdfCarrera', 'alumnosController@pdfCarrera')->name('alumnos.pdf');
 
   Route::put('alumnos/{alumnos}', 'alumnosController@update')->name('alumnos.update')
   ->middleware('permission:alumnos.edit');

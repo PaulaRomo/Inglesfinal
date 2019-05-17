@@ -6,12 +6,14 @@
               <div class="card">
                   <div class="card-header">
                   <h4>Grupos</h4>
+
                   @can ('grupos.create')
                     <a href="#popup"
                     class="bth btn-sm btn-primary pull-right">
                       Crear
                     </a>
                   @endcan
+
                 </div>
                 <div class="panel-body">
                   <table class="table table-striped table-hover">

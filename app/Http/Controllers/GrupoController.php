@@ -46,7 +46,7 @@ class GrupoController extends Controller
         public function balum( $numcontrol  )
         {
             $idUser=DB::table('datos_alumnos')->where('numcontrol',$numcontrol)->join('users','users.id','=','datos_alumnos.user_id') ->get();
-            
+
             return json_encode($idUser);
         }
     /* TODO: }NACHO */
@@ -346,6 +346,7 @@ class GrupoController extends Controller
         $pdf = \PDF::loadView('grupos.pdf',  compact('grupo','today','alumnosxGrupo'));
         return $pdf->download('ejemplo.pdf');
     }
+
     /**
      * Update the specified resource in storage.
      *

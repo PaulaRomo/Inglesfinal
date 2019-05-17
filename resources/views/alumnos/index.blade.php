@@ -2,13 +2,55 @@
 @section('content')
   <div class="container">
       <div class="row">
+
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header">
-                  <h4 style="position:absolute; top:15px;" >Alumnos</h4>
+
+                    <div class="">
+                      <h4 style="position:absolute; top:15px;" >Alumnos</h4>
+                      <br>  <br>
+                        <div class="col-md-3">
+
+                          {!! Form::open(['route' => 'alumnos.pdf', 'method' => 'POST']) !!}
+                            <select style="position:absolute; top:0px; left:100px;" id="carrera" name="carrera" class="randol form-control">
+                            <option value="null">---Carrera---</option>
+                            <option value="ISC">Ingeniería en Sistemas Computacionales</option>
+                            <option value="IE">Ingeniería en Electromecánica</option>
+                            <option value="IGE">Ingeniería en Gestión Empresarial</option>
+                            <option value="IA">Ingeniería en Administración</option>
+                            <option value="II">Ingeniería Industrial</option>
+                            <option value="CP">Contador Público</option>
+                            </select>
+
+                            <select style="position:absolute; top:0px; left:400px;"  id="semestre" name="semestre" class="randol form-control">
+                                    <option value="null">---Semestre---</option>
+                                    <option value="I">I</option>
+                                    <option value="II`">II</option>
+                                    <option value="III">III</option>
+                                    <option value="IV">IV</option>
+                                    <option value="V">V</option>
+                                    <option value="VI">VI</option>
+                                    <option value="VII">VII</option>
+                                    <option value="VIII">VIII</option>
+                                    <option value="IX">IX</option>
+                                    <option value="X">X</option>
+                                    <option value="XI">XI</option>
+                                    <option value="XII">XII</option>
+                                    <option value="XIII">XIII</option>
+                                    <option value="XIV">XIV</option>
+                                    <option value="XV">XV</option>
+                            </select>
+                            <button style="position:absolute; top:0px; left:680px;"  type="submit" class="btn btn-primary">
+                                {{ __('PDF') }}
+                            </button>
+                            </form>
+                        </div>
+                    </div>
+
                   <nav class="navbar navbar-light bg-light float-right">
                  <form class="form-inline" action="{{ route('alumnos.index')}}" method='get'>
-                  
+
                  <input value="{{isset($busqueda)?$busqueda:'' }}" name="search" class="form-control mr-sm-2" type="search" placeholder="Nombre" aria-label="Search">
                            <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
 

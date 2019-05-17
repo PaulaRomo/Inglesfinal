@@ -41,43 +41,7 @@
       <h1 style="font-size:40px; margin-top: 20px;" ><img style="height:70px; width:70px; margin-top: 30px;" src={{ public_path ('img/logo.png') }} alt="">Control de Inglés</h1>
       <hr>
       <br>
-      <div class="datagrid">
-        <table>
-          <thead>
-          	<tr>
-              <th>Fecha</th>
-          		<th>Nombre del Grupo</th>
-          		<th>Periódo</th>
-          		<th>Nivel</th>
-          		<th>Docente</th>
-          	</tr>
-          </thead>
-          <tbody>
-          	<tr>
-              <td><p>{{$today}}</p></td>
-          		<td><p>{{$grupo['nombre_grupo']}}</p></td>
-          		<td><p>{{$grupo['periodo']}}</p></td>
-          		<td><p>{{$grupo['nivel']}}</p></td>
-          		<td>
-                <?php
-                  $idUs=DB::table('user_doc__grups')->where('grup_id',$grupo->id)->pluck('user_id');
-                  if(count($idUs)>0){
-                    $idUser=DB::table('users')->where('id',$idUs[0])->pluck('name');
-                    if(count($idUser)>0){
-                ?>
-                      {{ $idUser[0]}}
-                <?php
-                    }
-                  }
-                ?>
-              </td>
-          	</tr>
-          </tbody>
-        </table>
-      </div>
-      <br>
-      <br>
-      <center><h3>Alumnos</h3></center>
+      <center><h3>{{ $gru }}</h3></center>
 
       <div class="datagrid">
         <table>
@@ -90,15 +54,13 @@
               <th>Unidad 3</th>
               <th>Unidad 4</th>
               <th>Promedio</th>
-
-<<<<<<< Updated upstream
           	</tr>
           </thead>
-          @foreach ($alumnosxGrupo as $alumno)
+          @foreach ($finalcali as $num =>$alumno)
           <thead>
             <tr>
-              <td><p>{{$alumno->id}}</p></td>
-              <td><p>{{$alumno->name}}</p></td>
+              <td><p>{{$final[$num]->numcontrol}}</p></td>
+              <td><p>{{$al[$num]->name}}</p></td>
           		<td><p>{{$alumno->unidad1}}</p></td>
           		<td><p>{{$alumno->unidad2}}</p></td>
           		<td><p>{{$alumno->unidad3}}</p></td>
@@ -109,25 +71,6 @@
             <td><p>{{$alumno->$nivelac}}</p></td>
           	</tr>
           </thead>
-=======
-          	</tr>
-          </thead>
-          @foreach ($alumnosxGrupo as $alumno)
-          <thead>
-            <tr>
-              <td><p>{{$alumno->id}}</p></td>
-              <td><p>{{$alumno->name}}</p></td>
-          		<td><p>{{$alumno->unidad1}}</p></td>
-          		<td><p>{{$alumno->unidad2}}</p></td>
-          		<td><p>{{$alumno->unidad3}}</p></td>
-              <td><p>{{$alumno->unidad4}}</p></td>
-              @php
-                  $nivelac='nivel'.$alumno->nivelActual;
-              @endphp
-            <td><p>{{$alumno->$nivelac}}</p></td>
-          	</tr>
-          </thead>
->>>>>>> Stashed changes
 
           <tbody>
             <tr>

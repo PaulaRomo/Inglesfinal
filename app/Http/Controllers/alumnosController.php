@@ -6,6 +6,8 @@ use App\User;
 use App\CalificacionAlumno;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
+use Dompdf\Dompdf;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Alert;
 
@@ -43,6 +45,37 @@ class alumnosController extends Controller
     public function create()
     {
         //
+    }
+
+    public function pdfCarrera(Request $request)
+    {
+      $carre=$request['carrera'];
+      $seme=$request['semestre'];
+      $gru=$request['carrera']." ".$request['semestre'];
+      $datos=DatosAlumno::all();
+      $final=[];
+      $cali=CalificacionAlumno::all();
+      $user=User::all();
+      $finalcali=[];
+      $al=[];
+      foreach ($datos as $key => $value) {
+        if ($value['carrera']==$carre && $value['semestre']==$seme) {
+          foreach ($cali as $ke => $va) {
+            if ($va['calificaciones_id']==$value['user_id']) {
+              foreach ($user as $k => $v) {
+                if ($value['user_id']==$v['id']) {
+                  $al[]=$v;
+                }
+              }
+              $finalcali[]=$va;
+            }
+          }
+          $final[]=$value;
+        }
+      }
+      $today = Carbon::now()->format('d/m/Y');
+      $pdf = \PDF::loadView('alumnos.pdfCarrera',  compact('today','final','gru','finalcali','al'));
+      return $pdf->download('ejemplo.pdf');
     }
 
     /**
