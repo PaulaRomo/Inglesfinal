@@ -10,6 +10,7 @@ use App\UpdateGrupos;
 use App\UserAlum_Grup;
 use App\UserDoc_Grup;
 use App\DatosDocente;
+use App\DatosAlumno;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
@@ -342,8 +343,18 @@ class GrupoController extends Controller
     public function pdf(Grupo $grupo)
     {
         $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
+        $datos=DatosAlumno::all();
+        $final=[];
+        foreach ($alumnosxGrupo as $key => $fila) {
+          foreach ($datos as $k => $value) {
+            if ($value['id']==$fila['id']) {
+              $final[]=$value;
+            }
+          }
+        }
         $today = Carbon::now()->format('d/m/Y');
-        $pdf = \PDF::loadView('grupos.pdf',  compact('grupo','today','alumnosxGrupo'));
+        $pdf = \PDF::loadView('grupos.pdf',  compact('grupo','today','alumnosxGrupo','final'));
+
         return $pdf->download('ejemplo.pdf');
     }
 
