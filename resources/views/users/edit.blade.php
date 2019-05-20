@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+  @include('alertas.alerta')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -37,7 +38,7 @@
                                 @endif
                             </div>
                         </div>
-                        
+
                         <br>
                         <h3>Lista de roles</h3>
                         <div class="form-group">

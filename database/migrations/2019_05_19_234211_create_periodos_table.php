@@ -18,8 +18,6 @@ class CreatePeriodosTable extends Migration
             $table->string('periodo');
             $table->date('inicio');
             $table->date('fin');
-            $table->foreign('grup_id')->references('id')->on('grupos');
-
             $table->timestamps();
         });
     }

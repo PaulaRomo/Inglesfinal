@@ -23,7 +23,7 @@ return [
     'between' => [
         'numeric' => ':attribute tiene que estar entre :min - :max.',
         'file' => ':attribute debe pesar entre :min - :max kilobytes.',
-        'string' => ':attribute tiene que tener entre :min - :max caracteres.',
+        'string' => ':attribute tiene que tener entre :min - :max carácteres.',
         'array' => ':attribute tiene que tener entre :min - :max ítems.',
     ],
     'boolean' => 'El campo :attribute debe tener un valor verdadero o falso.',
@@ -50,7 +50,7 @@ return [
     'max' => [
         'numeric' => ':attribute no debe ser mayor a :max.',
         'file' => ':attribute no debe ser mayor que :max kilobytes.',
-        'string' => ':attribute no debe ser mayor que :max caracteres.',
+        'string' => ':attribute no debe ser mayor que :max carácteres.',
         'array' => ':attribute no debe tener más de :max elementos.',
     ],
     'mimes' => ':attribute debe ser un archivo con formato: :values.',
@@ -58,7 +58,7 @@ return [
     'min' => [
         'numeric' => 'El tamaño de :attribute debe ser de al menos :min.',
         'file' => 'El tamaño de :attribute debe ser de al menos :min kilobytes.',
-        'string' => ':attribute debe contener al menos :min caracteres.',
+        'string' => ':attribute debe contener al menos :min carácteres.',
         'array' => ':attribute debe tener al menos :min elementos.',
     ],
     'not_in' => ':attribute es inválido.',
@@ -76,10 +76,10 @@ return [
     'size' => [
         'numeric' => 'El tamaño de :attribute debe ser :size.',
         'file' => 'El tamaño de :attribute debe ser :size kilobytes.',
-        'string' => ':attribute debe contener :size caracteres.',
+        'string' => ':attribute debe contener :size carácteres.',
         'array' => ':attribute debe contener :size elementos.',
     ],
-    'string' => 'El campo :attribute debe ser una cadena de caracteres.',
+    'string' => 'El campo :attribute debe ser una cadena de carácteres.',
     'timezone' => 'El :attribute debe ser una zona válida.',
     'unique' => ':attribute ya ha sido registrado.',
     'uploaded' => 'Subir :attribute ha fallado.',
@@ -96,7 +96,7 @@ return [
     */
     'custom' => [
         'password' => [
-            'min' => 'La :attribute debe contener más de :min caracteres',
+            'min' => 'La :attribute debe contener más de :min carácteres',
         ],
         'email' => [
             'unique' => 'El :attribute ya ha sido registrado.',
