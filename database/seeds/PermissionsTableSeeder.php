@@ -101,6 +101,27 @@ class PermissionsTableSeeder extends Seeder
         'slug' => 'grupos.destroy',
         'description' => 'Eliminar cualquier grupo del sistema (Administrador)',
     ]);
+        Permission::create([
+        'name' => 'Agregar calificaciones al alumno',
+        'slug' => 'grupos.agregarCalificaciones',
+        'description' => 'Permite agregar calificaciones a un alumno (Administrador, Docente)',
+    ]);
+        Permission::create([
+        'name' => 'Guadar las calificaiones del alumno',
+        'slug' => 'grupos.guardarCalificaciones',
+        'description' => 'Permite guardar calificaciones a un alumno (Administrador, Docente)',
+    ]);
+        Permission::create([
+        'name' => 'Mostrar vista para la carga de la instrumentacion del docente',
+        'slug' => 'grupos.documento',
+        'description' => 'Muestra una vista para la carga de la instrumentacion  del docente (Administrador, Docente)',
+    ]);
+        Permission::create([
+        'name' => 'Guarda la instrumentacion del docente',
+        'slug' => 'grupos.instrumentacion',
+        'description' => 'Guarda la instrumentacion del docente (Administrador, Docente)',
+    ]);
+
 
     //calificaciones
         Permission::create([
@@ -142,6 +163,17 @@ class PermissionsTableSeeder extends Seeder
         'name' => 'Perfil del alumno',
         'slug' => 'alumno.profile',
         'description' => 'Mostrar perfil del alumno (Alumno)',
+    ]);
+    //pdfs
+        Permission::create([
+        'name' => 'PDF por grupos',
+        'slug' => 'alumnos.pdf',
+        'description' => 'Generar un pdf por carrera (Administrador, Docente)',
+    ]);
+        Permission::create([
+        'name' => 'PDF por alumno',
+        'slug' => 'grupos.pdf',
+        'description' => 'Generar un pdf por grupo de ingles (Administrador, Docente)',
     ]);
   }
 }

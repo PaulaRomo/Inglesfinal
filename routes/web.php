@@ -67,10 +67,10 @@ Route::middleware(['auth'])->group(function(){
 /* agregar calificacion */
 
   Route::get('grupos/{grupo}/calificaciones/', 'GrupoController@agregarCalificaciones')->name('grupos.agregarCalificaciones')
-  ->middleware('permission:grupos.show');
+  ->middleware('permission:grupos.agregarCalificaciones');
 
   Route::put('grupos/{grupo}/calificaciones/guardar', 'GrupoController@guardarCalificaciones')->name('grupos.guardarCalificaciones')
-  ->middleware('permission:grupos.edit');
+  ->middleware('permission:grupos.guardarCalificaciones');
 
 
 
@@ -87,10 +87,6 @@ Route::middleware(['auth'])->group(function(){
 
   Route::get('grupos/{grupo}/pdf', 'GrupoController@pdf')->name('grupos.pdf');
 
-  Route::get('grupos/{grupo}/pdf', 'GrupoController@pdf')->name('grupos.pdf')
-  ->middleware('permission:grupos.pdf');
-
-  Route::name('print')->get('/imprimir', 'GeneradorController@imprimir');
 
 
   Route::get('grupos/{grupo}/agregar', 'GrupoController@dias')->name('grupos.dias')

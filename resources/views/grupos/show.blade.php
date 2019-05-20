@@ -6,7 +6,12 @@
           <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                <h4>Grupo</h4>
+                <h4>Grupo
+                    <a target="_blank" href="{{asset($grupo->instrumentacion)}} " style="position:absolute; right:40px;"
+                    class="btn btn-sm btn-primary">
+                      Ver instrumentacion
+                    </a>
+                </h4>
               </div>
               <div class="panel-body">
                 <table class="table table-striped table-hover">

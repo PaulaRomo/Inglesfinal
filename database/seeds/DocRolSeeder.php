@@ -29,10 +29,6 @@ class DocRolSeeder extends Seeder
             'role_id'=>2,
         ]);
         DB::table('permission_role')->insert([
-            'permission_id'=>17,
-            'role_id'=>2,
-        ]);
-        DB::table('permission_role')->insert([
             'permission_id'=>18,
             'role_id'=>2,
         ]);
@@ -46,6 +42,30 @@ class DocRolSeeder extends Seeder
         ]);
         DB::table('permission_role')->insert([
             'permission_id'=>21,
+            'role_id'=>2,
+        ]);
+        DB::table('permission_role')->insert([
+            'permission_id'=>22,
+            'role_id'=>2,
+        ]);
+        DB::table('permission_role')->insert([
+            'permission_id'=>23,
+            'role_id'=>2,
+        ]);
+        DB::table('permission_role')->insert([
+            'permission_id'=>24,
+            'role_id'=>2,
+        ]);
+        DB::table('permission_role')->insert([
+            'permission_id'=>26,
+            'role_id'=>2,
+        ]);
+        DB::table('permission_role')->insert([
+            'permission_id'=>27,
+            'role_id'=>2,
+        ]);
+        DB::table('permission_role')->insert([
+            'permission_id'=>25,
             'role_id'=>3,
         ]);
     }

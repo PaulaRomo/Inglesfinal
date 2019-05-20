@@ -147,14 +147,14 @@
                               $idUser=Auth::User()->id;
                               $idGrup=DB::table('user_doc__grups')->where('user_id',$idUser)->pluck('grup_id');
                               $i=0;
-                            ?>                       
+                            ?>
                             @if(count($idGrup)>0)
                               @foreach ($grupos as $grupo)
                                 @if($grupo->id==$idGrup[$i])
                                   <?php
                                     if(count($idGrup)-1>$i){
-                                      $i++; 
-                                    } 
+                                      $i++;
+                                    }
                                   ?>
                                   <tr>
                                     <td>{{ $grupo->id }}</td>
