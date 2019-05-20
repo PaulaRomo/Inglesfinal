@@ -147,14 +147,14 @@
                               $idUser=Auth::User()->id;
                               $idGrup=DB::table('user_doc__grups')->where('user_id',$idUser)->pluck('grup_id');
                               $i=0;
-                            ?>                       
+                            ?>
                             @if(count($idGrup)>0)
                               @foreach ($grupos as $grupo)
                                 @if($grupo->id==$idGrup[$i])
                                   <?php
                                     if(count($idGrup)-1>$i){
-                                      $i++; 
-                                    } 
+                                      $i++;
+                                    }
                                   ?>
                                   <tr>
                                     <td>{{ $grupo->id }}</td>
@@ -304,8 +304,8 @@
                               <label for="periodo" class="col-md-4 col-form-label text-md-right">{{ __('Período: ') }}</label>
 
                               <div class="col-md-3">
-                                  <select id="periodo" name="periodo" class="form-control">
-                                    <option value="null">---Seleccionar---</option>
+                                  <select id="periodo" name="periodo" class="form-control" required autofocus>
+                                    <option value="">---Seleccionar---</option>
                                     <option value="Febrero - Julio">Febrero-Julio</option>
                                     <option value="verano">Verano</option>
                                     <option value="Agosto - Diciembre">Agosto-Diciembre</option>
@@ -317,8 +317,8 @@
                               <label for="nivel" class="col-md-4 col-form-label text-md-right">{{ __('Nivel: ') }}</label>
 
                               <div class="col-md-3">
-                                  <select id="nivel" name="nivel" class="form-control">
-                                    <option value="null">---Seleccionar---</option>
+                                  <select id="nivel" name="nivel" class="form-control" required autofocus>
+                                    <option value="">---Seleccionar---</option>
                                     <option value="I">I</option>
                                     <option value="II">II</option>
                                     <option value="III">III</option>
@@ -335,7 +335,7 @@
                               <label for="capacidad" class="col-md-4 col-form-label text-md-right">{{ __('Capacidad máxima: ') }}</label>
 
                               <div class="col-md-2">
-                                  <input id="capacidad" type="number" class="form-control{{ $errors->has('capacidad') ? ' is-invalid' : '' }}" name="capacidad" value="{{ old('capacidad') }}" required autofocus>
+                                  <input min="1" max="50"  id="capacidad" type="number" class="form-control{{ $errors->has('capacidad') ? ' is-invalid' : '' }}" name="capacidad" value="{{ old('capacidad') }}" required autofocus>
 
                                   @if ($errors->has('capacidad'))
                                       <span class="invalid-feedback" role="alert">

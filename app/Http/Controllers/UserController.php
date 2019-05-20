@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Roles;
 use App\DatosAlumno;
 use App\DatosDocente;
 use App\UserAlum_Grup;
@@ -63,14 +64,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //dd($request);
-        \App\User::create([
-            'name'=>$request['name'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password'])
-        ]);
-       //$user = User::create($request->all());
+        $user = User::create($request->all());
         $us=DB::table('users')->where('name',$request['name'])->pluck('id');
         \App\DatosAlumno::create([
             'IntExt'=>$request['IntExt'],
@@ -81,9 +75,12 @@ class UserController extends Controller
             'semestre'=>$request['semestre'],
             'user_id'=>$us[0]
         ]);
+        \App\Roles::create([
+            'role_id'=>3,
+            'user_id'=>$us[0]
+        ]);
         /* TODO: crear calificaciones de alumno */
         CalificacionAlumno::create([
-
             'calificaciones_id'=>$us[0]
         ]);
 
@@ -97,22 +94,26 @@ class UserController extends Controller
 
     public function storeD(Request $request)
     {
-        //
-        //dd($request);
-        \App\User::create([
-            'name'=>$request['name'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password'])
-        ]);
-       //$user = User::create($request->all());
+        $user = User::create($request->all());
         $us=DB::table('users')->where('name',$request['name'])->pluck('id');
         \App\DatosDocente::create([
             'numcontrol' => $request['numcontrol'],
             'user_id'=>$us[0]
         ]);
-        //$user=DB::table('users');
+        \App\Roles::create([
+            'role_id'=>2,
+            'user_id'=>$us[0]
+        ]);
         $user = User::paginate(10);
         //dd($user);
+        return redirect()->route('users.index', $user)
+        ->with('success', 'Usuario guardado');
+    }
+    public function storeU(Request $request)
+    {
+        //dd($request);
+        $user = User::create($request->all());
+        $user = User::paginate(10);
         return redirect()->route('users.index', $user)
         ->with('success', 'Usuario guardado');
     }

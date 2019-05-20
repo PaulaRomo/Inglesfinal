@@ -12,17 +12,8 @@
                           @csrf
 
                           
-                <input type="hidden" name="user_id" value="{{$alumno->user_id}}" >
-
-                        
-                          <div class="form-group row">
-                              <label for="IntExt" class="col-md-4 col-form-label text-md-right">{{ __('Tipo de Alumno: ') }}</label>
-                              <div class="col-md-6">
-                                <label >{{ Form::radio('IntExt', 'Interno') }} Interno</label>
-                                  <br>
-                                <label >{{ Form::radio('IntExt', 'Externo') }} Externo</label>
-                              </div>
-                          </div>
+                          <input type="hidden" name="user_id" value="{{$alumno->user_id}}" >
+                          <input type="hidden" name="idU" value="{{$alumno->id}}" >
 
                           <div class="form-group row">
                               <label for="numcontrol" class="col-md-4 col-form-label text-md-right">{{ __('Numero de Control: ') }}</label>

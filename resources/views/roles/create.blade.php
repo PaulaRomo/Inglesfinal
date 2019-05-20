@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="slug" class="col-md-4 col-form-label text-md-right">{{ __('URL Amigable: ') }}</label>
+                            <label for="slug" class="col-md-4 col-form-label text-md-right">{{ __('Identificador: ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="slug" type="text" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}" name="slug" value="{{ $permission->slug ?? old('slug') }}" required autofocus>

@@ -21,9 +21,11 @@
                                         var capa=document.getElementById("eli");
                                         capa.style.display="";
                                             $("#Ro").hide();
+                                            $("#Nac").hide();
                                             $("#Pau").show();
                                         } else {
                                             $("#Ro").hide();
+                                            $("#Nac").hide();
                                             $("#Pau").hide();
                                         }
                                 })
@@ -32,10 +34,25 @@
                                     capa.style.display="";
                                     if (this.checked) {
                                             $("#Pau").hide();
+                                            $("#Nac").hide();
                                             $("#Ro").show();
                                         } else {
                                             $("#Pau").hide();
                                             $("#Ro").hide();
+                                            $("#Nac").hide();
+                                        }
+                                })
+                                $('#TUu').on('change',function(){
+                                    var capa=document.getElementById("eli");
+                                    capa.style.display="";
+                                    if (this.checked) {
+                                            $("#Pau").hide();
+                                            $("#Nac").show();
+                                            $("#Ro").hide();
+                                        } else {
+                                            $("#Pau").hide();
+                                            $("#Ro").hide();
+                                            $("#Nac").hide();
                                         }
                                 })
                             });
@@ -46,6 +63,8 @@
                                 <input type="radio" id="TU" name="tu"> Alumno
                                 <br>
                                 <input type="radio" id="TUd" name="tu"> Docente
+                                <br>
+                                <input type="radio" id="TUu" name="tu"> General
                             </div>
                         </div>
                         <div id='eli' style="display:none;">
@@ -259,6 +278,9 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                            <div id='Nac' hide>
+                                hola
                             </div>
                         </div>
                     </div>

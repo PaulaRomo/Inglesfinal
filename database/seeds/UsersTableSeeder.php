@@ -21,5 +21,15 @@ class UsersTableSeeder extends Seeder
           'description' => 'Acceso a todos los permisos.',
           'special' => 'all-access'
         ]);
+        Role::create([
+          'name' => 'Docente',
+          'slug' => 'docente',
+          'description' => 'Ver grupos y alumnos.'
+        ]);
+        Role::create([
+          'name' => 'Alumno',
+          'slug' => 'alumno',
+          'description' => 'Ver sus datos y calificaciones.'
+        ]);
     }
 }

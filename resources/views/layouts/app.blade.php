@@ -61,9 +61,14 @@
                           </li>
                           @endcan
                           @can ('alumno.profile')
-                            <li class="nav-item">
-                              <a style="color:white;"  class="nav-link" href="{{ url('profile') }}">Perfil</a>
-                            </li>
+                            <?php
+                              $idUser=DB::table('datos_alumnos')->where('user_id',Auth::user()->id)->pluck('id');
+                            ?>
+                            @if(count($idUser)>0)
+                              <li class="nav-item">
+                                <a style="color:white;"  class="nav-link" href="{{ url('profile') }}">Perfil</a>
+                              </li>
+                            @endif
                           @endcan
                             <li class="nav-item dropdown">
                                 <a style="color:white;"  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

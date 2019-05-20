@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\DatosAlumno;
 use App\User;
+use App\UpdateAlum;
 use App\CalificacionAlumno;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
@@ -75,7 +76,7 @@ class alumnosController extends Controller
       }
       $today = Carbon::now()->format('d/m/Y');
       $pdf = \PDF::loadView('alumnos.pdfCarrera',  compact('today','final','gru','finalcali','al'));
-      return $pdf->download('ejemplo.pdf');
+      return $pdf->download('Reporte de ingles de '.$carre.' '.$seme.'.pdf');
     }
 
     /**
@@ -126,7 +127,13 @@ class alumnosController extends Controller
      */
     public function update(Request $request, DatosAlumno $alumno)
     {
-        $alumno->update($request->all());
+        //dd($request['numcontrol']);
+        $apro = UpdateAlum::find($request['idU']);
+        $apro->numcontrol=$request['numcontrol'];
+        $apro->sexo=$request['sexo'];
+        $apro->carrera=$request['carrera'];
+        $apro->semestre=$request['semestre'];
+        $apro->save();
         return redirect()->route('alumnos.index', $alumno->id)
         ->with('success', 'Alumno actualizado');
     }

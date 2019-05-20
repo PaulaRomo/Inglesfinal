@@ -85,9 +85,11 @@
                             var capa=document.getElementById("eli");
                             capa.style.display="";
                                 $("#Ro").hide();
+                                $("#Nac").hide();
                                 $("#Pau").show();
                             } else {
                                 $("#Ro").hide();
+                                $("#Nac").hide();
                                 $("#Pau").hide();
                             }
                     })
@@ -96,10 +98,25 @@
                         capa.style.display="";
                         if (this.checked) {
                                 $("#Pau").hide();
+                                $("#Nac").hide();
                                 $("#Ro").show();
                             } else {
                                 $("#Pau").hide();
                                 $("#Ro").hide();
+                                $("#Nac").hide();
+                            }
+                    })
+                    $('#TUu').on('change',function(){
+                        var capa=document.getElementById("eli");
+                        capa.style.display="";
+                        if (this.checked) {
+                                $("#Pau").hide();
+                                $("#Nac").show();
+                                $("#Ro").hide();
+                            } else {
+                                $("#Pau").hide();
+                                $("#Ro").hide();
+                                $("#Nac").hide();
                             }
                     })
                 });
@@ -109,6 +126,7 @@
                 <div class="col-md-6">
                     <input type="radio" id="TU" name="tu"> Alumno
                     <input type="radio" id="TUd" name="tu"> Docente
+                    <input type="radio" id="TUu" name="tu"> General        
                 </div>
             </div>
             <div id='eli' style="display:none;">
@@ -208,7 +226,6 @@
                                     <option value="IA">Ingeniería en Administración</option>
                                     <option value="II">Ingeniería Industrial</option>
                                     <option value="CP">Contador Público</option>
-
                                     </select>
 
                                     <input type="hidden" name="rol" value="Alumno">
@@ -305,7 +322,6 @@
                                 @endif
                             </div>
                         </div>
-                        <input type="hidden" name="rol" value="Docente">
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Contraseña: ') }}</label>
 
@@ -314,6 +330,67 @@
                             </div>
                         </div>
 
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Registrar') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id='Nac' hide>
+                    <form method="POST" action="{{ route('users.storeU') }}" aria-label="{{ __('General') }}">
+                        @csrf
+                        
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Completo: ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo: ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña: ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Contraseña: ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
