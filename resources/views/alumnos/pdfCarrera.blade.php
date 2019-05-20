@@ -29,6 +29,7 @@
             <TD ALIGN=center ROWSPAN=2 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">NO</TD>
             <TD ALIGN=center ROWSPAN=2 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">CONTROL</TD>
             <TD ALIGN=center ROWSPAN=2 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">NOMBRE DE ALUMNO</TD>
+            <TD ALIGN=center ROWSPAN=2 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">NIVEL</TD>
             <TD ALIGN=center COLSPAN=8 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">CALIFICACIÓN UNIDAD</TD>
           </TR>
           <TR>
@@ -48,6 +49,7 @@
               <td style="border: black .5px solid;">{{$num+1}}</td>
               <td style="border: black .5px solid;">{{$final[$num]->numcontrol}}</td>
               <td style="border: black .5px solid;">{{$al[$num]->name}}</td>
+              <td style="border: black .5px solid;">{{$alumno->nivelActual}}</td>
 
               <td style="border: black .5px solid;">{{$alumno->unidad1}}</td>
               <td style="border: black .5px solid;">{{$alumno->unidad2}}</td>
