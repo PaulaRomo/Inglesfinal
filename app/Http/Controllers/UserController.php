@@ -111,7 +111,7 @@ class UserController extends Controller
     }
     public function storeU(Request $request)
     {
-        dd($request);
+        //dd($request);
         $user = User::create($request->all());
         $user = User::paginate(10);
         return redirect()->route('users.index', $user)

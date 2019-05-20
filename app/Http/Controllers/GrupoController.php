@@ -10,6 +10,7 @@ use App\UpdateGrupos;
 use App\UserAlum_Grup;
 use App\UserDoc_Grup;
 use App\DatosDocente;
+use App\DatosAlumno;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
@@ -241,20 +242,26 @@ class GrupoController extends Controller
         $tamano=count($datosaguardar['calificaciones_id']);
 
     //    /dd($tamano);
-
+        //dd($datosaguardar);
        for ($i=0; $i < $tamano; $i++) {
 
         $datoalumno=[
             'unidad1'=>$datosaguardar['unidad1'][$i],
             'unidad2'=>$datosaguardar['unidad2'][$i],
             'unidad3'=>$datosaguardar['unidad3'][$i],
-            'unidad4'=>$datosaguardar['unidad4'][$i] ] ;
+            'unidad4'=>$datosaguardar['unidad4'][$i],
+            'unidad5'=>$datosaguardar['unidad5'][$i],
+            'unidad6'=>$datosaguardar['unidad6'][$i],
+            'unidad7'=>$datosaguardar['unidad7'][$i],
+            'unidad8'=>$datosaguardar['unidad8'][$i],
+            
+            ] ;
         $calificaciones = DB::table('calificacion_alumnos')->where('calificaciones_id',$datosaguardar['calificaciones_id'][$i]);
 
-        if ($datosaguardar['unidad1'][$i] !=null || $datosaguardar['unidad2'][$i] !=null || $datosaguardar['unidad3'][$i] !=null || $datosaguardar['unidad4'][$i] !=null) {
+        if ($datosaguardar['unidad1'][$i] !=null && $datosaguardar['unidad2'][$i] !=null && $datosaguardar['unidad3'][$i] !=null && $datosaguardar['unidad4'][$i] !=null && $datosaguardar['unidad5'][$i] !=null && $datosaguardar['unidad6'][$i] !=null && $datosaguardar['unidad7'][$i] !=null && $datosaguardar['unidad8'][$i] !=null) {
 
-            $calif=$datosaguardar['unidad1'][$i]+$datosaguardar['unidad2'][$i]+$datosaguardar['unidad3'][$i]+$datosaguardar['unidad4'][$i];
-            $calif=intdiv($calif,4);
+            $calif=$datosaguardar['unidad1'][$i]+$datosaguardar['unidad2'][$i]+$datosaguardar['unidad3'][$i]+$datosaguardar['unidad4'][$i]+$datosaguardar['unidad5'][$i]+$datosaguardar['unidad6'][$i]+$datosaguardar['unidad7'][$i]+$datosaguardar['unidad8'][$i];
+            $calif=intdiv($calif,8);
             $datoalumno[$datosaguardar['nivelActual']]=$calif;
 
         }
@@ -267,6 +274,7 @@ class GrupoController extends Controller
 
 
     }
+
     public function agregarCalificaciones($id){
 
          $users=User::searchalumnoxgrupo($id)->get();
@@ -343,12 +351,22 @@ class GrupoController extends Controller
         ->with('info', 'Docente agregado al grupo');
     }
 
-    public function pdf(Grupo $grupo)
+   public function pdf(Grupo $grupo)
     {
         $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
+        $datos=DatosAlumno::all();
+        $final=[];
+        foreach ($alumnosxGrupo as $key => $fila) {
+          foreach ($datos as $k => $value) {
+            if ($value['id']==$fila['id']) {
+              $final[]=$value;
+            }
+          }
+        }
         $today = Carbon::now()->format('d/m/Y');
-        $pdf = \PDF::loadView('grupos.pdf',  compact('grupo','today','alumnosxGrupo'));
-        return $pdf->download('Reporte del Grupo '.$grupo->nombre_grupo.'.pdf');
+        $pdf = \PDF::loadView('grupos.pdf',  compact('grupo','today','alumnosxGrupo','final'));
+
+        return $pdf->download('ejemplo.pdf');
     }
 
     /**

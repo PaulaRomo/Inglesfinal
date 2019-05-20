@@ -27,6 +27,10 @@ class CreateCalificacionAlumnosTable extends Migration
             $table->integer('unidad2')->nullable();
             $table->integer('unidad3')->nullable();
             $table->integer('unidad4')->nullable();
+            $table->integer('unidad5')->nullable();
+            $table->integer('unidad6')->nullable();
+            $table->integer('unidad7')->nullable();
+            $table->integer('unidad8')->nullable();
             $table->string('path')->nullable();
 
             $table->unsignedInteger('calificaciones_id');
