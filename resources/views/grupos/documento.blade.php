@@ -13,7 +13,7 @@
                         @csrf
 
                          <div class="form-group">
-                             <input type="file" class="form-control" name="file" >
+                             <input type="file" class="form-control" name="file" accept="application/pdf">
                            </div>
                          </div>
 

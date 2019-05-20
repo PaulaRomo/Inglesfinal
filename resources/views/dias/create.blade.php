@@ -99,7 +99,7 @@
                                             if ($('#TUh').is(':checked')) {
                                                 alert("Elija al menos 1 día");
                                             return false;
-   
+
                                             }
                                         }
                                     });
