@@ -13,6 +13,7 @@ use App\UserDoc_Grup;
 use App\DatosDocente;
 use App\DatosAlumno;
 use Illuminate\Http\Request;
+use App\Http\Requests\GruposCreateRequest;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\DB;
@@ -101,7 +102,7 @@ class GrupoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(GruposCreateRequest $request)
     {
         //
     }
@@ -120,11 +121,8 @@ class GrupoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GruposCreateRequest $request)
     {
-        //
-        //dd($request);
-        // example:
 
         $grupo = Grupo::create([
           'nombre_grupo' => $request['nombre_grupo'],
@@ -331,7 +329,7 @@ class GrupoController extends Controller
             'unidad6'=>$datosaguardar['unidad6'][$i],
             'unidad7'=>$datosaguardar['unidad7'][$i],
             'unidad8'=>$datosaguardar['unidad8'][$i],
-            
+
             ] ;
         $calificaciones = DB::table('calificacion_alumnos')->where('calificaciones_id',$datosaguardar['calificaciones_id'][$i]);
 
@@ -443,7 +441,7 @@ class GrupoController extends Controller
         $today = Carbon::now()->format('d/m/Y');
         $pdf = \PDF::loadView('grupos.pdf',  compact('grupo','today','alumnosxGrupo','final'));
 
-        return $pdf->download('ejemplo.pdf');
+        return $pdf->download('Reporte del grupo '.$grupo->nombre_grupo.'.pdf');
     }
 
     /**
@@ -472,7 +470,7 @@ class GrupoController extends Controller
        return view ('grupos.documento', compact('grupo'));
      }
 
-    public function update(Request $request, Grupo $grupo)
+    public function update(GruposCreateRequest $request, Grupo $grupo)
     {
         //dd($grupo);
         $grupo->update($request->all());

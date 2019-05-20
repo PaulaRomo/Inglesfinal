@@ -9,6 +9,8 @@ use App\DatosDocente;
 use App\UserAlum_Grup;
 use App\UserDoc_Grup;
 use App\CalificacionAlumno;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\AlumnosCreateRequest;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -62,7 +64,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AlumnosCreateRequest $request)
     {
         $user = User::create($request->all());
         $us=DB::table('users')->where('name',$request['name'])->pluck('id');
@@ -92,7 +94,7 @@ class UserController extends Controller
         ->with('success', 'Usuario guardado');
     }
 
-    public function storeD(Request $request)
+    public function storeD(AlumnosCreateRequest $request)
     {
         $user = User::create($request->all());
         $us=DB::table('users')->where('name',$request['name'])->pluck('id');
@@ -109,7 +111,7 @@ class UserController extends Controller
         return redirect()->route('users.index', $user)
         ->with('success', 'Usuario guardado');
     }
-    public function storeU(Request $request)
+    public function storeU(UserCreateRequest $request)
     {
         $user = User::create($request->all());
         $user = User::paginate(10);
@@ -148,7 +150,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(AlumnosCreateRequest $request, User $user)
     {
         //
         $user->update($request->all());

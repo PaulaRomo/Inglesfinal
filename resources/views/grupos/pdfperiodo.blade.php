@@ -75,10 +75,10 @@
               <td style="border: black .5px solid;">{{$alumno->unidad2}}</td>
           		<td style="border: black .5px solid;">{{$alumno->unidad3}}</td>
           		<td style="border: black .5px solid;">{{$alumno->unidad4}}</td>
-              <td style="border: black .5px solid;">{{$alumno->unidad5}}</td>
-              <td style="border: black .5px solid;">{{$alumno->unidad6}}</td>
-              <td style="border: black .5px solid;">{{$alumno->unidad7}}</td>
-              <td style="border: black .5px solid;">{{$alumno->unidad8}}</td>
+              <td style="border: black .5px solid;">{{$alumno->unidad1}}</td>
+              <td style="border: black .5px solid;">{{$alumno->unidad2}}</td>
+              <td style="border: black .5px solid;">{{$alumno->unidad3}}</td>
+              <td style="border: black .5px solid;">{{$alumno->unidad4}}</td>
           	</tr>
           </thead>
             @endforeach

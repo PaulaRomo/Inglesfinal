@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
   <div class="container">
       <div class="row justify-content-center">
           <div class="col-md-8">
@@ -11,7 +12,7 @@
                           {!! Form::model($alumno,['route'=>['alumnos.update', $alumno->id], 'method'=>'PUT']) !!}
                           @csrf
 
-                          
+
                           <input type="hidden" name="user_id" value="{{$alumno->user_id}}" >
                           <input type="hidden" name="idU" value="{{$alumno->id}}" >
 

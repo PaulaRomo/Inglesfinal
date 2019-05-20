@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@include('alertas.alerta')
   <div class="container">
       <div class="row">
           <div class="col-md-14">
@@ -14,7 +15,8 @@
                     </a>
                   @endcan
 
-                </div>
+              </div>
+
                 <div class="panel-body">
                   <table class="table table-striped table-hover">
                     <thead>
@@ -291,12 +293,6 @@
 
                               <div class="col-md-3">
                                   <input id="nombre_grupo" type="text" class="form-control{{ $errors->has('nombre_grupo') ? ' is-invalid' : '' }}" name="nombre_grupo" value="{{ old('nombre_grupo') }}" required autofocus>
-
-                                  @if ($errors->has('nombre_grupo'))
-                                      <span class="invalid-feedback" role="alert">
-                                          <strong>{{ $errors->first('nombre_grupo') }}</strong>
-                                      </span>
-                                  @endif
                               </div>
                           </div>
 
