@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class GruposCreateRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            //
+            'nombre_grupo' => 'required|max:10|unique:grupos,nombre_grupo|min:2|Regex:/^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\-! ,\'\"\/@\.:\(\)]+$/'
+
+        ];
+    }
+}

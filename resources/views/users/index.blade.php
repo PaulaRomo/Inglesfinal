@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('alertas.alerta')
   <div class="container">
       <div class="row">
           <div class="col-md-12">
@@ -148,25 +149,12 @@
 
                             <div class="col-md-6">
                                 <input id="numcontrol" type="text" class="form-control{{ $errors->has('numcontrol') ? ' is-invalid' : '' }}" name="numcontrol" value="{{ $alumno->numcontrol ?? old('numcontrol') }}" required autofocus>
-
-                                @if ($errors->has('numcontrol'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('numcontrol') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
                         <div class="form-group2 row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Completo: ') }}</label>
-
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $alumno->name ?? old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -273,12 +261,6 @@
 
                             <div class="col-md-6">
                                 <input id="numcontrol" type="text" class="form-control{{ $errors->has('numcontrol') ? ' is-invalid' : '' }}" name="numcontrol" value="{{ old('numcontrol') }}" required autofocus>
-
-                                @if ($errors->has('numcontrol'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('numcontrol') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
                         <div class="form-group row">
@@ -286,12 +268,6 @@
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -348,12 +324,6 @@
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 

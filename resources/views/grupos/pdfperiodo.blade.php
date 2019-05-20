@@ -40,41 +40,7 @@
               ?></TD>
             </TR>
             <TR>
-              <TD style="font-weight: bold; text-align:center;">HORARIO</TD> <TD style="text-align:center;"><?php
-                $hay=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
-                $dias=DB::table('dias')->where('grupos_id',$grupo->id)->get();
-                $horario='';
-                $di='';
-                if(count($dias)>0){
-                  if($dias[0]->lunes){
-                    $horario=$dias[0]->lunes;
-                    $di=$di.' '.'Lunes';
-                  }
-                  if($dias[0]->martes){
-                    $horario=$dias[0]->martes;
-                    $di=$di.' '.'Martes';
-                  }
-                  if($dias[0]->miercoles){
-                    $horario=$dias[0]->miercoles;
-                    $di=$di.' '.'Miercoles';
-                  }
-                  if($dias[0]->jueves){
-                    $horario=$dias[0]->jueves;
-                    $di=$di.' '.'Jueves';
-                  }
-                  if($dias[0]->viernes){
-                    $horario=$dias[0]->viernes;
-                    $di=$di.' '.'Viernes';
-                  }
-                  if($dias[0]->sabado){
-                    $horario=$dias[0]->sabado;
-                    $di=$di.' '.'Sabado';
-                  }
-              ?>
-                  {{$di}}
-              <?php
-                }
-              ?>{{ $horario }}</TD> <TD style="font-weight: bold; text-align:center;">PERÍODO</TD><TD style="text-align:center;">{{$grupo['periodo']}}</TD>
+              <TD style="font-weight: bold; text-align:center;">HORARIO</TD> <TD style="text-align:center;">{{$grupo['horario']}}</TD> <TD style="font-weight: bold; text-align:center;">PERIODO</TD><TD style="text-align:center;">{{$grupo['periodo']}}</TD>
             </TR></TABLE2></div>
         <div class="datagrid">
           <TABLE WIDTH=100% cellpadding="0" cellspacing="0">
@@ -117,11 +83,6 @@
           </thead>
             @endforeach
           </TABLE>
-          <br>
-          <br>
-          <br>
-          <br>
-          <hr style="width: 200px;"><center>Firma del Profesor<br>{{ $today }}</center>
           </div>
       </body>
 </html>
