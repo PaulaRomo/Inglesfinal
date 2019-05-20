@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Grupo;
 use App\User;
 use App\Dia;
+use App\Unidad_Periodo;
 use App\UpdateDias;
 use App\UpdateGrupos;
 use App\UserAlum_Grup;
 use App\UserDoc_Grup;
 use App\DatosDocente;
+use App\DatosAlumno;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
@@ -33,6 +35,67 @@ class GrupoController extends Controller
         return view ('grupos.index', compact('grupos'));
     }
 
+    public function periodo(Grupo $grupo)
+    {
+        return view ('grupos.periodo', compact('grupo'));
+    }
+
+    public function agregarPeriodo(Request $request,Grupo $grupo){
+        $periodo1=$request['periodo1'];
+        $periodo2=$request['periodo2'];
+        $periodo3=$request['periodo3'];
+        //dd($periodo1,$periodo2,$periodo3);
+        $c1='';
+        $c2='';
+        $c3='';
+        for($i=0;count($periodo1)>$i;$i++){
+            $c1=$c1.$periodo1[$i].',';
+        }
+        for($i=0;count($periodo2)>$i;$i++){
+            $c2=$c2.$periodo2[$i].',';
+        }
+        for($i=0;count($periodo3)>$i;$i++){
+            $c3=$c3.$periodo3[$i].',';
+        }
+        if (count($periodo1)>0) {
+            Unidad_Periodo::create([
+                'grup_id'=>$grupo->id,
+                'Unidades'=>$c1,
+                'perio_id'=>1,
+            ]);
+        }
+        if (count($periodo2)>0) {
+            Unidad_Periodo::create([
+                'grup_id'=>$grupo->id,
+                'Unidades'=>$c2,
+                'perio_id'=>2,
+            ]);
+        }
+        if (count($periodo3)>0) {
+            Unidad_Periodo::create([
+                'grup_id'=>$grupo->id,
+                'Unidades'=>$c3,
+                'perio_id'=>3,
+            ]);
+        }
+        $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
+        $users = User::all();
+
+        $periodoxunidad = Unidad_Periodo::all()->where('grup_id',$grupo->id);
+        $P1='';
+        $P2='';
+        $P3='';
+        if(count($periodoxunidad)>=1){
+            $P1=explode(",", $periodoxunidad[0]->Unidades);
+            $i1=$periodoxunidad[0]->id;
+        }if(count($periodoxunidad)>=2){
+            $P2=explode(",", $periodoxunidad[1]->Unidades);
+        }if(count($periodoxunidad)>=3){
+            $P3=explode(",", $periodoxunidad[2]->Unidades);
+        }
+        return redirect()->route('grupos.show', compact('grupo','users','alumnosxGrupo','P1','P2','P3'))
+        ->with('success', 'Periodo guardado en el grupo');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -91,8 +154,23 @@ class GrupoController extends Controller
 
         $users = User::all();
 
+        $periodoxunidad = Unidad_Periodo::all()->where('grup_id',$grupo->id);
+        
+        //dd($periodoxunidad);
+        $P1='';
+        $P2='';
+        $P3='';
+        if(count($periodoxunidad)>=1){
+            $P1=explode(",", $periodoxunidad[0]->Unidades);
+            $i1=$periodoxunidad[0]->id;
+        }if(count($periodoxunidad)>=2){
+            $P2=explode(",", $periodoxunidad[1]->Unidades);
+        }if(count($periodoxunidad)>=3){
+            $P3=explode(",", $periodoxunidad[2]->Unidades);
+        }
+        //dd($P1,$P2,$P3);
         //dd($alumnosxGrupo);
-        return view('grupos.show', compact('grupo','users','alumnosxGrupo'));
+        return view('grupos.show', compact('grupo','users','alumnosxGrupo','P1','P2','P3'));
     }
 
     /**
@@ -241,20 +319,26 @@ class GrupoController extends Controller
         $tamano=count($datosaguardar['calificaciones_id']);
 
     //    /dd($tamano);
-
+        //dd($datosaguardar);
        for ($i=0; $i < $tamano; $i++) {
 
         $datoalumno=[
             'unidad1'=>$datosaguardar['unidad1'][$i],
             'unidad2'=>$datosaguardar['unidad2'][$i],
             'unidad3'=>$datosaguardar['unidad3'][$i],
-            'unidad4'=>$datosaguardar['unidad4'][$i] ] ;
+            'unidad4'=>$datosaguardar['unidad4'][$i],
+            'unidad5'=>$datosaguardar['unidad5'][$i],
+            'unidad6'=>$datosaguardar['unidad6'][$i],
+            'unidad7'=>$datosaguardar['unidad7'][$i],
+            'unidad8'=>$datosaguardar['unidad8'][$i],
+            
+            ] ;
         $calificaciones = DB::table('calificacion_alumnos')->where('calificaciones_id',$datosaguardar['calificaciones_id'][$i]);
 
-        if ($datosaguardar['unidad1'][$i] !=null || $datosaguardar['unidad2'][$i] !=null || $datosaguardar['unidad3'][$i] !=null || $datosaguardar['unidad4'][$i] !=null) {
+        if ($datosaguardar['unidad1'][$i] !=null && $datosaguardar['unidad2'][$i] !=null && $datosaguardar['unidad3'][$i] !=null && $datosaguardar['unidad4'][$i] !=null && $datosaguardar['unidad5'][$i] !=null && $datosaguardar['unidad6'][$i] !=null && $datosaguardar['unidad7'][$i] !=null && $datosaguardar['unidad8'][$i] !=null) {
 
-            $calif=$datosaguardar['unidad1'][$i]+$datosaguardar['unidad2'][$i]+$datosaguardar['unidad3'][$i]+$datosaguardar['unidad4'][$i];
-            $calif=intdiv($calif,4);
+            $calif=$datosaguardar['unidad1'][$i]+$datosaguardar['unidad2'][$i]+$datosaguardar['unidad3'][$i]+$datosaguardar['unidad4'][$i]+$datosaguardar['unidad5'][$i]+$datosaguardar['unidad6'][$i]+$datosaguardar['unidad7'][$i]+$datosaguardar['unidad8'][$i];
+            $calif=intdiv($calif,8);
             $datoalumno[$datosaguardar['nivelActual']]=$calif;
 
         }
@@ -267,6 +351,7 @@ class GrupoController extends Controller
 
 
     }
+
     public function agregarCalificaciones($id){
 
          $users=User::searchalumnoxgrupo($id)->get();
@@ -343,12 +428,22 @@ class GrupoController extends Controller
         ->with('info', 'Docente agregado al grupo');
     }
 
-    public function pdf(Grupo $grupo)
+   public function pdf(Grupo $grupo)
     {
         $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
+        $datos=DatosAlumno::all();
+        $final=[];
+        foreach ($alumnosxGrupo as $key => $fila) {
+          foreach ($datos as $k => $value) {
+            if ($value['id']==$fila['id']) {
+              $final[]=$value;
+            }
+          }
+        }
         $today = Carbon::now()->format('d/m/Y');
-        $pdf = \PDF::loadView('grupos.pdf',  compact('grupo','today','alumnosxGrupo'));
-        return $pdf->download('Reporte del Grupo '.$grupo->nombre_grupo.'.pdf');
+        $pdf = \PDF::loadView('grupos.pdf',  compact('grupo','today','alumnosxGrupo','final'));
+
+        return $pdf->download('ejemplo.pdf');
     }
 
     /**

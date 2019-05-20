@@ -6,7 +6,16 @@
           <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                <h4>Grupo</h4>
+                <h4>Grupo
+                    <a style="background-color:orange; border:orange; position:absolute; right:170px;" href="{{ route('grupos.periodo', $grupo->id ) }}"
+                        class="btn btn-sm btn-primary">
+                          Agregar Periodo
+                    </a>
+                    <a target="_blank" href="{{asset($grupo->instrumentacion)}} " style="position:absolute; right:40px;"
+                    class="btn btn-sm btn-primary">
+                      Ver instrumentacion
+                    </a>
+                </h4>
               </div>
               <div class="panel-body">
                 <table class="table table-striped table-hover">
@@ -104,6 +113,10 @@
                                   <th scope="col">Unidad 2</th>
                                   <th scope="col">Unidad 3</th>
                                   <th scope="col">Unidad 4</th>
+                                  <th scope="col">Unidad 5</th>
+                                  <th scope="col">Unidad 6</th>
+                                  <th scope="col">Unidad 7</th>
+                                  <th scope="col">Unidad 8</th>
                                   <th scope="col">Promedio</th>
                               </tr>
                           </thead>
@@ -119,36 +132,52 @@
                                   </th>
 
                                   <th>
-                                      <input name='unidad1[]' class='col-xl-5' type="text"
-                                          value="{{$alumno->unidad1}} " tabindex="1">
+                                      <input min="0" max="100" name='unidad1[]' class='form-control form-control-sm' type="number"
+                                          value="{{$alumno->unidad1}}" tabindex="1">
                                   </th>
 
                                   <th scope="row">
-                                      <input name="unidad2[]" class='col-xl-5' type="text"
-                                          value="{{$alumno->unidad2}} " tabindex="2">
+                                      <input min="0" max="100" name="unidad2[]" class='form-control form-control-sm' type="number"
+                                          value="{{$alumno->unidad2}}" tabindex="2">
                                   </th>
 
                                   <th scope="row">
-                                      <input name="unidad3[]" class='col-xl-5' type="text"
-                                          value="{{$alumno->unidad3}} " tabindex="3">
+                                      <input min="0" max="100" name="unidad3[]" class='form-control form-control-sm' type="number"
+                                          value="{{$alumno->unidad3}}" tabindex="3">
                                   </th>
 
                                   <th scope="row">
-                                      <input name="unidad4[]" class='col-xl-5' type="text"
-                                          value="{{$alumno->unidad4}} " tabindex="4">
+                                      <input min="0" max="100" name="unidad4[]" class='form-control form-control-sm' type="number"
+                                          value="{{$alumno->unidad4}}" tabindex="5">
                                   </th>
+
+                                  <th scope="row">
+                                    <input min="0" max="100" name="unidad5[]" class='form-control form-control-sm' type="number"
+                                        value="{{$alumno->unidad5}}" tabindex="5">
+                                </th>
+
+                                <th scope="row">
+                                  <input min="0" max="100" name="unidad6[]" class='form-control form-control-sm' type="number"
+                                      value="{{$alumno->unidad6}}" tabindex="6">
+                              </th>
+
+                              <th scope="row">
+                                <input min="0" max="100" name="unidad7[]" class='form-control form-control-sm' type="number"
+                                    value="{{$alumno->unidad7}}" tabindex="7">
+                            </th>
+
+                            <th scope="row">
+                              <input min="0" max="100" name="unidad8[]" class='form-control form-control-sm' type="number"
+                                  value="{{$alumno->unidad8}}" tabindex="8">
+                          </th>
 
                                 @php
                                     $nivelac='nivel'.$alumno->nivelActual;
                                 @endphp
-                                  <th scope="row">
+                                <th scope="row">
                                   <input type="hidden" name="nivelActual" value="{{$nivelac}}">
-                                    <label for="  ">{{$alumno->$nivelac}}</label>
-
+                                  <label for="  ">{{$alumno->$nivelac}}</label>
                                 </th>
-
-
-
                               </tr>
 
                               @endforeach

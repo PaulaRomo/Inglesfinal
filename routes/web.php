@@ -67,10 +67,10 @@ Route::middleware(['auth'])->group(function(){
 /* agregar calificacion */
 
   Route::get('grupos/{grupo}/calificaciones/', 'GrupoController@agregarCalificaciones')->name('grupos.agregarCalificaciones')
-  ->middleware('permission:grupos.show');
+  ->middleware('permission:grupos.agregarCalificaciones');
 
   Route::put('grupos/{grupo}/calificaciones/guardar', 'GrupoController@guardarCalificaciones')->name('grupos.guardarCalificaciones')
-  ->middleware('permission:grupos.edit');
+  ->middleware('permission:grupos.guardarCalificaciones');
 
 
 
@@ -87,10 +87,6 @@ Route::middleware(['auth'])->group(function(){
 
   Route::get('grupos/{grupo}/pdf', 'GrupoController@pdf')->name('grupos.pdf');
 
-  Route::get('grupos/{grupo}/pdf', 'GrupoController@pdf')->name('grupos.pdf')
-  ->middleware('permission:grupos.pdf');
-
-  Route::name('print')->get('/imprimir', 'GeneradorController@imprimir');
 
 
   Route::get('grupos/{grupo}/agregar', 'GrupoController@dias')->name('grupos.dias')
@@ -108,6 +104,21 @@ Route::middleware(['auth'])->group(function(){
   Route::put('grupos/{grupo}/agregar/doc', 'GrupoController@agreDoc')->name('grupos.agreDoc')
   ->middleware('permission:grupos.agreDoc');
 
+  //acceso a periodo
+  Route::get('grupos/{grupo}/agregarPeriodos', 'GrupoController@periodo')->name('grupos.periodo')
+  ->middleware('permission:users.index');
+
+  Route::put('grupos/{grupo}/agregar/Periodo', 'GrupoController@agregarPeriodo')->name('grupos.guardarPeriodo')
+  ->middleware('permission:grupos.idex');
+
+  Route::get('periodos', 'PeriodoController@index')->name('periodo.index')
+  ->middleware('permission:users.index');
+
+  Route::get('periodos/{periodo}/edit', 'PeriodoController@edit')->name('periodo.edit')
+  ->middleware('permission:users.index');
+
+  Route::put('periodos/{periodo}', 'PeriodoController@update')->name('periodo.update')
+  ->middleware('permission:users.edit');
 
   //acceso a usuarios
 
