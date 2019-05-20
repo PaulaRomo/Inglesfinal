@@ -117,6 +117,9 @@ Route::middleware(['auth'])->group(function(){
   Route::post('users/storeD', 'UserController@storeD')->name('users.storeD')
   ->middleware('permission:users.create');
 
+  Route::post('users/storeU', 'UserController@storeD')->name('users.storeU')
+  ->middleware('permission:users.create');
+
   Route::get('users', 'UserController@index')->name('users.index')
   ->middleware('permission:users.index');
 

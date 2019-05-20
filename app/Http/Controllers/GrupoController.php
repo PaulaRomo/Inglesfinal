@@ -280,38 +280,42 @@ class GrupoController extends Controller
     public function agreAlum(Request $request,Grupo $grupo)
     {
         $idUser=DB::table('datos_alumnos')->where('numcontrol',$request['numcontrol'])->pluck('user_id');
-        $hay=DB::table('user_alum__grups')->where('user_id',$idUser[0])->pluck('user_id');
-        $enGrup=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
-        $capaciadGrup=DB::table('grupos')->where('id',$grupo->id)->pluck('capacidad');
-        if($capaciadGrup[0]>count($enGrup)){
-            if(count($hay)==0){
-                UserAlum_Grup::create([
-                    'user_id' => $idUser[0],
-                    'grup_id' => $grupo->id,
-                ]);
-                $apro = UpdateGrupos::find($grupo->id);
-                $apro->save();
+        if(count($idUser)>0){
+            $hay=DB::table('user_alum__grups')->where('user_id',$idUser[0])->pluck('user_id');
+            $enGrup=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
+            $capaciadGrup=DB::table('grupos')->where('id',$grupo->id)->pluck('capacidad');
+            if($capaciadGrup[0]>count($enGrup)){
+                if(count($hay)==0){
+                    UserAlum_Grup::create([
+                        'user_id' => $idUser[0],
+                        'grup_id' => $grupo->id,
+                    ]);
+                    $apro = UpdateGrupos::find($grupo->id);
+                    $apro->save();
 
-                /* TODO: agregar nivel actual a tabla calificacionesalumno */
-                $nivelactual=array_search($grupo->nivel,['I','II',"III","IV","V","VI"]);
-                $nivelactual+=1;
+                    /* TODO: agregar nivel actual a tabla calificacionesalumno */
+                    $nivelactual=array_search($grupo->nivel,['I','II',"III","IV","V","VI"]);
+                    $nivelactual+=1;
 
 
-                $calificaciones = DB::table('calificacion_alumnos')->where('calificaciones_id',$idUser[0])
-                ->update([
-                'nivelActual'=>$nivelactual,
-                'unidad1'=>null,
-                'unidad2'=>null,
-                'unidad3'=>null,
-                'unidad4'=>null,
-                ]);
-                return redirect()->route('grupos.index', $grupo->id)
-                ->with('info', 'Alumno agregado al grupo');
+                    $calificaciones = DB::table('calificacion_alumnos')->where('calificaciones_id',$idUser[0])
+                    ->update([
+                    'nivelActual'=>$nivelactual,
+                    'unidad1'=>null,
+                    'unidad2'=>null,
+                    'unidad3'=>null,
+                    'unidad4'=>null,
+                    ]);
+                    return redirect()->route('grupos.index', $grupo->id)
+                    ->with('info', 'Alumno agregado al grupo');
+                }else{
+                    Alert::error('Error', 'Alumno ya registrado a un grupo');
+                }
             }else{
-                Alert::error('Error', 'Alumno ya registrado a un grupo');
+                Alert::info('Imposible inscribirse', 'Grupo lleno');
             }
         }else{
-            Alert::info('Imposible inscribirse', 'Grupo lleno');
+            Alert::error('Error', 'Alumno '.$request['numcontrol'].' no esta registrado');
         }
         return redirect()->route('grupos.index', $grupo->id);
     }
@@ -344,7 +348,7 @@ class GrupoController extends Controller
         $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
         $today = Carbon::now()->format('d/m/Y');
         $pdf = \PDF::loadView('grupos.pdf',  compact('grupo','today','alumnosxGrupo'));
-        return $pdf->download('ejemplo.pdf');
+        return $pdf->download('Reporte del Grupo '.$grupo->nombre_grupo.'.pdf');
     }
 
     /**

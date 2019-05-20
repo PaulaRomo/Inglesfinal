@@ -62,11 +62,7 @@ class GeneradorController extends Controller
     }
     public function imprimir(){
         $today = Carbon::now()->format('d/m/Y');
-<<<<<<< Updated upstream
         $pdf = \PDF::loadView('ejemplo', compact('grupo','today','alumnosxGrupo'));
-=======
-        $pdf = \PDF::loadView('ejemplo',  compact('grupo','today','alumnosxGrupo'));
->>>>>>> Stashed changes
         return $pdf->download('ejemplo.pdf');
     }
     /**
