@@ -341,6 +341,7 @@
                 </div>
                 <div id='Nac' hide>
                     <form method="POST" action="{{ route('users.storeU') }}" aria-label="{{ __('General') }}">
+                        @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Completo: ') }}</label>
 
