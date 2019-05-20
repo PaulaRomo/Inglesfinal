@@ -11,7 +11,7 @@
                           {!! Form::model($alumno,['route'=>['alumnos.update', $alumno->id], 'method'=>'PUT']) !!}
                           @csrf
 
-                          
+
                           <input type="hidden" name="user_id" value="{{$alumno->user_id}}" >
                           <input type="hidden" name="idU" value="{{$alumno->id}}" >
 
@@ -45,12 +45,12 @@
                                   <div class="col-md-6">
                                       <select id="carrera" name="carrera" class="randol form-control">
                                       <option value="{{ $alumno->carrera}}">{{ $alumno->carrera}}</option>
-                                      <option value="ISC">Ingeniería en Sistemas Computacionales</option>
-                                      <option value="IE">Ingeniería en Electromecánica</option>
-                                      <option value="IGE">Ingeniería en Gestión Empresarial</option>
-                                      <option value="IA">Ingeniería en Administración</option>
-                                      <option value="II">Ingeniería Industrial</option>
-                                      <option value="CP">Contador Público</option>
+                                      <option value="Ingeniería en Sistemas Computacionales">Ingeniería en Sistemas Computacionales</option>
+                                      <option value="Ingeniería en Electromecánica">Ingeniería en Electromecánica</option>
+                                      <option value="Ingeniería en Gestión Empresarial">Ingeniería en Gestión Empresarial</option>
+                                      <option value="Ingeniería en Administración">Ingeniería en Administración</option>
+                                      <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+                                      <option value="Contador Público">Contador Público</option>
 
                                       </select>
 

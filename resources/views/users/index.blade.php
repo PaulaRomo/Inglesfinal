@@ -126,7 +126,7 @@
                 <div class="col-md-6">
                     <input type="radio" id="TU" name="tu"> Alumno
                     <input type="radio" id="TUd" name="tu"> Docente
-                    <input type="radio" id="TUu" name="tu"> General        
+                    <input type="radio" id="TUu" name="tu"> General
                 </div>
             </div>
             <div id='eli' style="display:none;">
@@ -220,12 +220,12 @@
                                 <div class="col-md-6">
                                     <select id="carrera" name="carrera" class="randol form-control">
                                     <option value="null">---Seleccione---</option>
-                                    <option value="ISC">Ingeniería en Sistemas Computacionales</option>
-                                    <option value="IE">Ingeniería en Electromecánica</option>
-                                    <option value="IGE">Ingeniería en Gestión Empresarial</option>
-                                    <option value="IA">Ingeniería en Administración</option>
-                                    <option value="II">Ingeniería Industrial</option>
-                                    <option value="CP">Contador Público</option>
+                                    <option value="Ingeniería en Sistemas Computacionales">Ingeniería en Sistemas Computacionales</option>
+                                    <option value="Ingeniería en Electromecánica">Ingeniería en Electromecánica</option>
+                                    <option value="Ingeniería en Gestión Empresarial">Ingeniería en Gestión Empresarial</option>
+                                    <option value="Ingeniería en Administración">Ingeniería en Administración</option>
+                                    <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+                                    <option value="Contador Público">Contador Público</option>
                                     </select>
 
                                     <input type="hidden" name="rol" value="Alumno">
@@ -342,7 +342,7 @@
                 <div id='Nac' hide>
                     <form method="POST" action="{{ route('users.storeU') }}" aria-label="{{ __('General') }}">
                         @csrf
-                        
+
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Completo: ') }}</label>
 
