@@ -121,55 +121,367 @@
                               </tr>
                           </thead>
                           <tbody>
-
+                              @php
+                               $fecha=date("Y-m-d");
+                              @endphp
                               @foreach ($alumnosxGrupo as $alumno)
                               <tr>
-
                                   <th scope="row">
                                       {{$alumno->name}}
-
                                       <input type="hidden" name='user_id[]' value="{{$alumno->user_id}}">
                                   </th>
-
-                                  <th>
-                                      <input min="0" max="100" name='unidad1[]' class='form-control form-control-sm' type="number"
+                                  @if(in_array("Unidad1", $P1))
+                                    @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad1[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad1}}" tabindex="1">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad1[]' class='form-control form-control-sm' type="hidden"
+                                              value="{{$alumno->unidad1}}" tabindex="1">
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad1}}" tabindex="1" disabled>
+                                      </th>
+                                    @endif
+                                  @elseif(in_array("Unidad1", $P2))
+                                    @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad1[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad1}}" tabindex="1">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad1[]' class='form-control form-control-sm' type="hidden"
                                           value="{{$alumno->unidad1}}" tabindex="1">
-                                  </th>
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad1}}" tabindex="1" disabled>
+                                      </th>
+                                    @endif
+                                  @elseif(in_array("Unidad1", $P3))
+                                    @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad1[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad1}}" tabindex="1">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad1[]' class='form-control form-control-sm' type="hidden"
+                                          value="{{$alumno->unidad1}}" tabindex="1">
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad1}}" tabindex="1" disabled>
+                                      </th>
+                                    @endif
+                                  @endif
 
-                                  <th scope="row">
-                                      <input min="0" max="100" name="unidad2[]" class='form-control form-control-sm' type="number"
+                                  @if(in_array("Unidad2", $P1))
+                                    @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad2[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad2}}" tabindex="2">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad2[]' class='form-control form-control-sm' type="hidden"
                                           value="{{$alumno->unidad2}}" tabindex="2">
-                                  </th>
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad2}}" tabindex="2" disabled>
+                                      </th>
+                                    @endif
+                                  @elseif(in_array("Unidad2", $P2))
+                                    @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad2[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad2}}" tabindex="2">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad2[]' class='form-control form-control-sm' type="hidden"
+                                          value="{{$alumno->unidad2}}" tabindex="2">
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad2}}" tabindex="2" disabled>
+                                      </th>
+                                    @endif
+                                  @elseif(in_array("Unidad2", $P3))
+                                    @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad2[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad2}}" tabindex="2">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad2[]' class='form-control form-control-sm' type="hidden"
+                                          value="{{$alumno->unidad2}}" tabindex="2">
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad2}}" tabindex="2" disabled>
+                                      </th>
+                                    @endif
+                                  @endif
 
-                                  <th scope="row">
-                                      <input min="0" max="100" name="unidad3[]" class='form-control form-control-sm' type="number"
+                                  @if(in_array("Unidad3", $P1))
+                                    @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad3[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad3}}" tabindex="3">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad3[]' class='form-control form-control-sm' type="hidden"
                                           value="{{$alumno->unidad3}}" tabindex="3">
-                                  </th>
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad3}}" tabindex="3" disabled>
+                                      </th>
+                                    @endif
+                                  @elseif(in_array("Unidad3", $P2))
+                                    @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad3[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad3}}" tabindex="3">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad3[]' class='form-control form-control-sm' type="hidden"
+                                          value="{{$alumno->unidad3}}" tabindex="3">
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad3}}" tabindex="3" disabled>
+                                      </th>
+                                    @endif
+                                  @elseif(in_array("Unidad3", $P3))
+                                    @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad3[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad3}}" tabindex="3">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad3[]' class='form-control form-control-sm' type="hidden"
+                                          value="{{$alumno->unidad3}}" tabindex="3">
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad3}}" tabindex="3" disabled>
+                                      </th>
+                                    @endif
+                                  @endif
 
-                                  <th scope="row">
-                                      <input min="0" max="100" name="unidad4[]" class='form-control form-control-sm' type="number"
-                                          value="{{$alumno->unidad4}}" tabindex="5">
-                                  </th>
+                                  @if(in_array("Unidad4", $P1))
+                                    @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad4[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad4}}" tabindex="4">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad4[]' class='form-control form-control-sm' type="hidden"
+                                          value="{{$alumno->unidad4}}" tabindex="4">
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad4}}" tabindex="4" disabled>
+                                      </th>
+                                    @endif
+                                  @elseif(in_array("Unidad4", $P2))
+                                    @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad4[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad4}}" tabindex="4">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad4[]' class='form-control form-control-sm' type="hidden"
+                                          value="{{$alumno->unidad4}}" tabindex="4">
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad4}}" tabindex="4" disabled>
+                                      </th>
+                                    @endif
+                                  @elseif(in_array("Unidad4", $P3))
+                                    @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad4[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad4}}" tabindex="4">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad4[]' class='form-control form-control-sm' type="hidden"
+                                          value="{{$alumno->unidad4}}" tabindex="4">
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad4}}" tabindex="4" disabled>
+                                      </th>
+                                    @endif
+                                  @endif
 
-                                  <th scope="row">
-                                    <input min="0" max="100" name="unidad5[]" class='form-control form-control-sm' type="number"
-                                        value="{{$alumno->unidad5}}" tabindex="5">
+
+                                  @if(in_array("Unidad5", $P1))
+                                    @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad5[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad5}}" tabindex="5">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad5[]' class='form-control form-control-sm' type="hidden"
+                                          value="{{$alumno->unidad5}}" tabindex="5">
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad5}}" tabindex="5" disabled>
+                                      </th>
+                                    @endif
+                                  @elseif(in_array("Unidad5", $P2))
+                                    @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad5[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad5}}" tabindex="5">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad5[]' class='form-control form-control-sm' type="hidden"
+                                          value="{{$alumno->unidad5}}" tabindex="5">
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad5}}" tabindex="5" disabled>
+                                      </th>
+                                    @endif
+                                  @elseif(in_array("Unidad5", $P3))
+                                    @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      <th>
+                                          <input min="0" max="100" name='unidad5[]' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad5}}" tabindex="5">
+                                      </th>
+                                    @else
+                                      <th>
+                                          <input min="0" max="100" name='unidad5[]' class='form-control form-control-sm' type="hidden"
+                                          value="{{$alumno->unidad5}}" tabindex="5">
+                                          <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                              value="{{$alumno->unidad5}}" tabindex="5" disabled>
+                                      </th>
+                                    @endif
+                                  @endif
+
+                                  @if(in_array("Unidad6", $P1))
+                                  @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                    <th>
+                                        <input min="0" max="100" name='unidad6[]' class='form-control form-control-sm' type="number"
+                                            value="{{$alumno->unidad6}}" tabindex="6">
+                                    </th>
+                                  @else
+                                    <th>
+                                        <input min="0" max="100" name='unidad6[]' class='form-control form-control-sm' type="hidden"
+                                        value="{{$alumno->unidad6}}" tabindex="6">
+                                        <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                            value="{{$alumno->unidad6}}" tabindex="6" disabled>
+                                    </th>
+                                  @endif
+                                @elseif(in_array("Unidad6", $P2))
+                                  @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                    <th>
+                                        <input min="0" max="100" name='unidad6[]' class='form-control form-control-sm' type="number"
+                                            value="{{$alumno->unidad6}}" tabindex="6">
+                                    </th>
+                                  @else
+                                    <th>
+                                        <input min="0" max="100" name='unidad6[]' class='form-control form-control-sm' type="hidden"
+                                        value="{{$alumno->unidad6}}" tabindex="6">
+                                        <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                            value="{{$alumno->unidad6}}" tabindex="6" disabled>
+                                    </th>
+                                  @endif
+                                @elseif(in_array("Unidad6", $P3))
+                                  @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                    <th>
+                                        <input min="0" max="100" name='unidad6[]' class='form-control form-control-sm' type="number"
+                                            value="{{$alumno->unidad6}}" tabindex="6">
+                                    </th>
+                                  @else
+                                    <th>
+                                        <input min="0" max="100" name='unidad6[]' class='form-control form-control-sm' type="hidden"
+                                        value="{{$alumno->unidad6}}" tabindex="6">
+                                        <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                            value="{{$alumno->unidad6}}" tabindex="6" disabled>
+                                    </th>
+                                  @endif
+                                @endif
+
+                                @if(in_array("Unidad7", $P1))
+                                @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                  <th>
+                                      <input min="0" max="100" name='unidad7[]' class='form-control form-control-sm' type="number"
+                                          value="{{$alumno->unidad7}}" tabindex="7">
+                                  </th>
+                                @else
+                                  <th>
+                                      <input min="0" max="100" name='unidad7[]' class='form-control form-control-sm' type="hidden"
+                                      value="{{$alumno->unidad7}}" tabindex="7">
+                                      <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                          value="{{$alumno->unidad7}}" tabindex="7" disabled>
+                                  </th>
+                                @endif
+                              @elseif(in_array("Unidad7", $P2))
+                                @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                  <th>
+                                      <input min="0" max="100" name='unidad7[]' class='form-control form-control-sm' type="number"
+                                          value="{{$alumno->unidad7}}" tabindex="7">
+                                  </th>
+                                @else
+                                  <th>
+                                      <input min="0" max="100" name='unidad7[]' class='form-control form-control-sm' type="hidden"
+                                      value="{{$alumno->unidad7}}" tabindex="7">
+                                      <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                          value="{{$alumno->unidad7}}" tabindex="7" disabled>
+                                  </th>
+                                @endif
+                              @elseif(in_array("Unidad7", $P3))
+                                @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                  <th>
+                                      <input min="0" max="100" name='unidad7[]' class='form-control form-control-sm' type="number"
+                                          value="{{$alumno->unidad7}}" tabindex="7">
+                                  </th>
+                                @else
+                                  <th>
+                                      <input min="0" max="100" name='unidad7[]' class='form-control form-control-sm' type="hidden"
+                                      value="{{$alumno->unidad7}}" tabindex="7">
+                                      <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                          value="{{$alumno->unidad7}}" tabindex="7" disabled>
+                                  </th>
+                                @endif
+                              @endif
+
+                              @if(in_array("Unidad8", $P1))
+                              @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                <th>
+                                    <input min="0" max="100" name='unidad8[]' class='form-control form-control-sm' type="number"
+                                        value="{{$alumno->unidad8}}" tabindex="8">
                                 </th>
-
-                                <th scope="row">
-                                  <input min="0" max="100" name="unidad6[]" class='form-control form-control-sm' type="number"
-                                      value="{{$alumno->unidad6}}" tabindex="6">
-                              </th>
-
-                              <th scope="row">
-                                <input min="0" max="100" name="unidad7[]" class='form-control form-control-sm' type="number"
-                                    value="{{$alumno->unidad7}}" tabindex="7">
-                            </th>
-
-                            <th scope="row">
-                              <input min="0" max="100" name="unidad8[]" class='form-control form-control-sm' type="number"
-                                  value="{{$alumno->unidad8}}" tabindex="8">
-                          </th>
+                              @else
+                                <th>
+                                    <input min="0" max="100" name='unidad8[]' class='form-control form-control-sm' type="hidden"
+                                    value="{{$alumno->unidad8}}" tabindex="8">
+                                    <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                        value="{{$alumno->unidad8}}" tabindex="8" disabled>
+                                </th>
+                              @endif
+                            @elseif(in_array("Unidad8", $P2))
+                              @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                <th>
+                                    <input min="0" max="100" name='unidad8[]' class='form-control form-control-sm' type="number"
+                                        value="{{$alumno->unidad8}}" tabindex="8">
+                                </th>
+                              @else
+                                <th>
+                                    <input min="0" max="100" name='unidad8[]' class='form-control form-control-sm' type="hidden"
+                                    value="{{$alumno->unidad8}}" tabindex="8">
+                                    <input min="0" max="100" name='' class='form-control form-control-sm' type="number"
+                                        value="{{$alumno->unidad8}}" tabindex="8" disabled>
+                                </th>
+                              @endif
+                            @elseif(in_array("Unidad8", $P3))
+                              @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                <th>
+                                    <input min="0" max="100" name='unidad8[]' class='form-control form-control-sm' type="number"
+                                        value="{{$alumno->unidad8}}" tabindex="8">
+                                </th>
+                              @else
+                                <th>
+                                    <input min="0" max="100" name='unidad8[]' class='form-control form-control-sm' type="hidden"
+                                    value="{{$alumno->unidad8}}" tabindex="8">
+                                    <input min="0" max="100"  class='form-control form-control-sm' type="number"
+                                        value="{{$alumno->unidad8}}" tabindex="8" disabled>
+                                </th>
+                              @endif
+                            @endif
 
                                 @php
                                     $nivelac='nivel'.$alumno->nivelActual;

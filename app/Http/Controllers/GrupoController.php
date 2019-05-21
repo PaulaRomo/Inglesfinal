@@ -12,6 +12,7 @@ use App\UserAlum_Grup;
 use App\UserDoc_Grup;
 use App\DatosDocente;
 use App\DatosAlumno;
+use App\Periodo;
 use Illuminate\Http\Request;
 use App\Http\Requests\GruposCreateRequest;
 use Carbon\Carbon;
@@ -94,7 +95,8 @@ class GrupoController extends Controller
         }if(count($periodoxunidad)>=3){
             $P3=explode(",", $periodoxunidad[2]->Unidades);
         }
-        return redirect()->route('grupos.show', compact('grupo','users','alumnosxGrupo','P1','P2','P3'))
+        $FechaPeri = Periodo::all();
+        return view('grupos.show', compact('grupo','users','alumnosxGrupo','P1','P2','P3','FechaPeri'))
         ->with('success', 'Periodo guardado en el grupo');
     }
     /**
@@ -163,12 +165,13 @@ class GrupoController extends Controller
             $i1=$periodoxunidad[0]->id;
         }if(count($periodoxunidad)>=2){
             $P2=explode(",", $periodoxunidad[1]->Unidades);
+            $i2=$periodoxunidad[1]->id;
         }if(count($periodoxunidad)>=3){
             $P3=explode(",", $periodoxunidad[2]->Unidades);
+            $i3=$periodoxunidad[2]->id;
         }
-        //dd($P1,$P2,$P3);
-        //dd($alumnosxGrupo);
-        return view('grupos.show', compact('grupo','users','alumnosxGrupo','P1','P2','P3'));
+        $FechaPeri = Periodo::all();
+        return view('grupos.show', compact('grupo','users','alumnosxGrupo','P1','P2','P3','FechaPeri'));
     }
 
     /**
@@ -316,7 +319,7 @@ class GrupoController extends Controller
         unset($datosaguardar['user_id']);
         $tamano=count($datosaguardar['calificaciones_id']);
 
-    //    /dd($tamano);
+        //dd($request['unidad2']);
         //dd($datosaguardar);
        for ($i=0; $i < $tamano; $i++) {
 
