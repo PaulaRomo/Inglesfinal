@@ -44,6 +44,9 @@
                           <li class="nav-item">
                             <a style="color:white;" class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
                           </li>
+                          <li class="nav-item">
+                            <a style="color:white;" class="nav-link" href="{{ route('periodo.index') }}">Periodos</a>
+                          </li>
                           @endcan
                           @can ('grupos.index')
                           <li class="nav-item">

@@ -15,6 +15,11 @@ class CreateUnidadPeriodosTable extends Migration
     {
         Schema::create('unidad__periodos', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('grup_id');
+            $table->foreign('grup_id')->references('id')->on('grupos');
+            $table->string('Unidades');
+            $table->unsignedInteger('perio_id');
+            $table->foreign('perio_id')->references('id')->on('periodos');
             $table->timestamps();
         });
     }

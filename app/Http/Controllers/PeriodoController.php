@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Periodo;
 
 class PeriodoController extends Controller
 {
@@ -14,6 +15,8 @@ class PeriodoController extends Controller
     public function index()
     {
         //
+        $periodos = Periodo::paginate(10);
+        return view ('periodos.index', compact('periodos'));
     }
 
     /**
@@ -54,9 +57,10 @@ class PeriodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Periodo $periodo)
     {
         //
+        return view('periodos.edit', compact('periodo'));
     }
 
     /**
@@ -66,9 +70,12 @@ class PeriodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Periodo $periodo)
     {
         //
+        $periodo->update($request->all());
+        return redirect()->route('periodo.index', $periodo->id)
+        ->with('success', 'Periodo actualizado');
     }
 
     /**

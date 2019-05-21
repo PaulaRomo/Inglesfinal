@@ -90,26 +90,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <script>
-                                $(document).ready(function () {
-                                    $("form").submit(function () {
-                                        if ($('input:checkbox').filter(':checked').length < 1) {
-                                            $('#TUh')
-
-                                            if ($('#TUh').is(':checked')) {
-                                                alert("Elija al menos 1 día");
-                                            return false;
-
-                                            }
-                                        }
-                                    });
-                                });
-                            </script>
                             <div class="form-group row">
                                 <label for="horario"
                                     class="col-md-2 col-form-label text-md-right">{{ __('Inicio: ') }}</label>
 
-                                <div class="col-md-3">
+                                <input type="time" name="horainicio" id="horario1" required autofocus>
+
+                                {{-- <div class="col-md-3">
                                     <select id="horario" name="horainicio" class="form-control" required autofocus>
                                         <option value="">---seleccionar---</option>
                                         <option value="07:00 AM">07:00 AM</option>
@@ -127,12 +114,13 @@
                                         <option value="07:00 PM">07:00 PM</option>
                                         <option value="08:00 PM">08:00 PM</option>
                                     </select>
-                                </div>
+                                </div> --}}
 
                                 <label for="horario"
                                     class="col-md-2 col-form-label text-md-right">{{ __('Termina: ') }}</label>
+                                <input type="time" name="horafin" id="horario2" required autofocus>
 
-                                <div class="col-md-3">
+                                {{-- <div class="col-md-3">
                                     <select id="horario" name="horafin" class="form-control" required autofocus>
                                         <option value="">---seleccionar---</option>
                                         <option value="07:00 AM">07:00 AM</option>
@@ -151,12 +139,12 @@
                                         <option value="08:00 PM">08:00 PM</option>
 
                                     </select>
-                                </div>
+                                </div> --}}
                             </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button id="hora" type="submit" class="btn btn-primary">
                                         {{ __('Añadir') }}
                                     </button>
                                 </div>
@@ -202,7 +190,7 @@
                             Docente--','id'=>'docentes','required autofocus']) !!}
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button id="docente" type="submit" class="btn btn-primary">
                                         {{ __('Agregar') }}
                                     </button>
                                 </div>
@@ -236,7 +224,7 @@
             datosusuario = JSON.parse(ajax.response);
             console.log('-----------');
 
-            if (confirm('Nombre del usuario:' + datosusuario[0]['name'] + '\n     desea continuar?')) {
+            if (confirm('Nombre del usuario: ' + datosusuario[0]['name'] + '\n     desea continuar?')) {
 
             } else {
                 event.preventDefault();
@@ -245,6 +233,37 @@
             $("#infoalumno").html(datosusuario);
             console.log('-----------');
 
+
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#docente").submit(function () {
+            if ($('input:checkbox').filter(':checked').length < 1) {
+                $('#TUh')
+
+                if ($('#TUh').is(':checked')) {
+                    alert("Elija al menos 1 día");
+                    return false;
+
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#hora").submit(function () {
+            a=$("#horario1").val()
+            b=$("#horario2").val()
+            if (a>=b){
+                alert("La hora de inicio debe de ser menor");
+                return false;
+
+            }
 
         });
     });

@@ -148,7 +148,7 @@
                             <label for="numcontrol" class="col-md-4 col-form-label text-md-right">{{ __('Número de Control: ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="numcontrol" type="text" class="form-control{{ $errors->has('numcontrol') ? ' is-invalid' : '' }}" name="numcontrol" value="{{ $alumno->numcontrol ?? old('numcontrol') }}" required autofocus>
+                                <input onkeyup="mayus(this);" id="numcontrol" type="text" class="form-control{{ $errors->has('numcontrol') ? ' is-invalid' : '' }}" name="numcontrol" value="{{ $alumno->numcontrol ?? old('numcontrol') }}" required autofocus>
                             </div>
                         </div>
                         <div class="form-group2 row">
@@ -226,7 +226,7 @@
                                 <select id="semestre" name="semestre" class="randol form-control">
                                         <option value="null">---Seleccione---</option>
                                         <option value="I">I</option>
-                                        <option value="II`">II</option>
+                                        <option value="II">II</option>
                                         <option value="III">III</option>
                                         <option value="IV">IV</option>
                                         <option value="V">V</option>
@@ -257,10 +257,10 @@
                     <form method="POST" action="{{ route('users.storeD') }}" aria-label="{{ __('Docentes') }}">
                         @csrf
                         <div class="form-group row">
-                            <label for="numcontrol" class="col-md-4 col-form-label text-md-right">{{ __('Número de Control: ') }}</label>
+                            <label  for="numcontrol" class="col-md-4 col-form-label text-md-right">{{ __('Número de Control: ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="numcontrol" type="text" class="form-control{{ $errors->has('numcontrol') ? ' is-invalid' : '' }}" name="numcontrol" value="{{ old('numcontrol') }}" required autofocus>
+                                <input onkeyup="mayus(this);" id="numcontrol" type="text" class="form-control{{ $errors->has('numcontrol') ? ' is-invalid' : '' }}" name="numcontrol" value="{{ old('numcontrol') }}" required autofocus>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -318,7 +318,6 @@
                 <div id='Nac' hide>
                     <form method="POST" action="{{ route('users.storeU') }}" aria-label="{{ __('General') }}">
                         @csrf
-
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Completo: ') }}</label>
 
@@ -378,4 +377,9 @@
   </div>
 </div>
 
+<script>
+function mayus(e) {
+    e.value = e.value.toUpperCase();
+}
+</script>
 @endsection

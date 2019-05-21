@@ -16,7 +16,7 @@
                   @endcan
                   <a style="background-color:#185FC2; border:#185FC2;" href="{{ route ('grupos.pdfalumno')}}"
                   class="btn btn-sm btn-primary">
-                    PDF Alumnos
+                    Alumnos
                   </a>
               </div>
 
@@ -132,14 +132,6 @@
                             <td width="10px">
                               @can ('grupos.show')
                                 <a href="{{ route('grupos.pdf', $grupo->id) }}"
-                                class="btn btn-sm btn-primary">
-                                  PDF
-                                </a>
-                              @endcan
-                            </td>
-                            <td width="10px">
-                              @can ('grupos.show')
-                                <a href="{{ route('grupos.pdfin', $grupo->id) }}"
                                 class="btn btn-sm btn-primary">
                                   PDF
                                 </a>

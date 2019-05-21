@@ -87,8 +87,7 @@ Route::middleware(['auth'])->group(function(){
 
   Route::get('grupos/{grupo}/pdf', 'GrupoController@pdf')->name('grupos.pdf');
 
-
-  Route::post('grupos/pdfalumno', 'GrupoController@pdfalumno')->name('grupos.pdfalumno');
+  Route::get('grupos/pdfalumno', 'GrupoController@pdfalumno')->name('grupos.pdfalumno');
 
   Route::get('grupos/{grupo}/pdfin', 'GrupoController@pdfin')->name('grupos.pdfin');
 
@@ -110,6 +109,21 @@ Route::middleware(['auth'])->group(function(){
   Route::put('grupos/{grupo}/agregar/doc', 'GrupoController@agreDoc')->name('grupos.agreDoc')
   ->middleware('permission:grupos.agreDoc');
 
+  //acceso a periodo
+  Route::get('grupos/{grupo}/agregarPeriodos', 'GrupoController@periodo')->name('grupos.periodo')
+  ->middleware('permission:users.index');
+
+  Route::put('grupos/{grupo}/agregar/Periodo', 'GrupoController@agregarPeriodo')->name('grupos.guardarPeriodo')
+  ->middleware('permission:grupos.idex');
+
+  Route::get('periodos', 'PeriodoController@index')->name('periodo.index')
+  ->middleware('permission:users.index');
+
+  Route::get('periodos/{periodo}/edit', 'PeriodoController@edit')->name('periodo.edit')
+  ->middleware('permission:users.index');
+
+  Route::put('periodos/{periodo}', 'PeriodoController@update')->name('periodo.update')
+  ->middleware('permission:users.edit');
 
   //acceso a usuarios
 

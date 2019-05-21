@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Grupo;
 use App\User;
 use App\Dia;
+use App\Unidad_Periodo;
 use App\UpdateDias;
 use App\UpdateGrupos;
 use App\UserAlum_Grup;
 use App\UserDoc_Grup;
 use App\DatosDocente;
 use App\DatosAlumno;
+use App\Periodo;
 use Illuminate\Http\Request;
 use App\Http\Requests\GruposCreateRequest;
 use Carbon\Carbon;
@@ -35,6 +37,68 @@ class GrupoController extends Controller
         return view ('grupos.index', compact('grupos'));
     }
 
+    public function periodo(Grupo $grupo)
+    {
+        return view ('grupos.periodo', compact('grupo'));
+    }
+
+    public function agregarPeriodo(Request $request,Grupo $grupo){
+        $periodo1=$request['periodo1'];
+        $periodo2=$request['periodo2'];
+        $periodo3=$request['periodo3'];
+        //dd($periodo1,$periodo2,$periodo3);
+        $c1='';
+        $c2='';
+        $c3='';
+        for($i=0;count($periodo1)>$i;$i++){
+            $c1=$c1.$periodo1[$i].',';
+        }
+        for($i=0;count($periodo2)>$i;$i++){
+            $c2=$c2.$periodo2[$i].',';
+        }
+        for($i=0;count($periodo3)>$i;$i++){
+            $c3=$c3.$periodo3[$i].',';
+        }
+        if (count($periodo1)>0) {
+            Unidad_Periodo::create([
+                'grup_id'=>$grupo->id,
+                'Unidades'=>$c1,
+                'perio_id'=>1,
+            ]);
+        }
+        if (count($periodo2)>0) {
+            Unidad_Periodo::create([
+                'grup_id'=>$grupo->id,
+                'Unidades'=>$c2,
+                'perio_id'=>2,
+            ]);
+        }
+        if (count($periodo3)>0) {
+            Unidad_Periodo::create([
+                'grup_id'=>$grupo->id,
+                'Unidades'=>$c3,
+                'perio_id'=>3,
+            ]);
+        }
+        $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
+        $users = User::all();
+
+        $periodoxunidad = Unidad_Periodo::all()->where('grup_id',$grupo->id);
+        $P1='';
+        $P2='';
+        $P3='';
+        if(count($periodoxunidad)>=1){
+            $P1=explode(",", $periodoxunidad[0]->Unidades);
+            $i1=$periodoxunidad[0]->id;
+        }if(count($periodoxunidad)>=2){
+            $P2=explode(",", $periodoxunidad[1]->Unidades);
+        }if(count($periodoxunidad)>=3){
+            $P3=explode(",", $periodoxunidad[2]->Unidades);
+        }
+        $FechaPeri = Periodo::all();
+        return view('grupos.show', compact('grupo','users','alumnosxGrupo','P1','P2','P3','FechaPeri'))
+        ->with('success', 'Periodo guardado en el grupo');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -90,8 +154,24 @@ class GrupoController extends Controller
 
         $users = User::all();
 
-        //dd($alumnosxGrupo);
-        return view('grupos.show', compact('grupo','users','alumnosxGrupo'));
+        $periodoxunidad = Unidad_Periodo::all()->where('grup_id',$grupo->id);
+
+        //dd($periodoxunidad);
+        $P1=[];
+        $P2=[];
+        $P3=[];
+        if(count($periodoxunidad)>=1){
+            $P1=explode(",", $periodoxunidad[0]->Unidades);
+            $i1=$periodoxunidad[0]->id;
+        }if(count($periodoxunidad)>=2){
+            $P2=explode(",", $periodoxunidad[1]->Unidades);
+            $i2=$periodoxunidad[1]->id;
+        }if(count($periodoxunidad)>=3){
+            $P3=explode(",", $periodoxunidad[2]->Unidades);
+            $i3=$periodoxunidad[2]->id;
+        }
+        $FechaPeri = Periodo::all();
+        return view('grupos.show', compact('grupo','users','alumnosxGrupo','P1','P2','P3','FechaPeri'));
     }
 
     /**
@@ -239,7 +319,7 @@ class GrupoController extends Controller
         unset($datosaguardar['user_id']);
         $tamano=count($datosaguardar['calificaciones_id']);
 
-    //    /dd($tamano);
+        //dd($request['unidad2']);
         //dd($datosaguardar);
        for ($i=0; $i < $tamano; $i++) {
 
@@ -255,15 +335,23 @@ class GrupoController extends Controller
 
             ] ;
         $calificaciones = DB::table('calificacion_alumnos')->where('calificaciones_id',$datosaguardar['calificaciones_id'][$i]);
-
-        if ($datosaguardar['unidad1'][$i] !=null && $datosaguardar['unidad2'][$i] !=null && $datosaguardar['unidad3'][$i] !=null && $datosaguardar['unidad4'][$i] !=null && $datosaguardar['unidad5'][$i] !=null && $datosaguardar['unidad6'][$i] !=null && $datosaguardar['unidad7'][$i] !=null && $datosaguardar['unidad8'][$i] !=null) {
+        if ($datosaguardar['unidad1'][$i] >70 && $datosaguardar['unidad2'][$i] >70&& $datosaguardar['unidad3'][$i] >70 && $datosaguardar['unidad4'][$i] >70 && $datosaguardar['unidad5'][$i] >70 && $datosaguardar['unidad6'][$i] >70 && $datosaguardar['unidad7'][$i] >70 && $datosaguardar['unidad8'][$i] >70) {
 
             $calif=$datosaguardar['unidad1'][$i]+$datosaguardar['unidad2'][$i]+$datosaguardar['unidad3'][$i]+$datosaguardar['unidad4'][$i]+$datosaguardar['unidad5'][$i]+$datosaguardar['unidad6'][$i]+$datosaguardar['unidad7'][$i]+$datosaguardar['unidad8'][$i];
             $calif=intdiv($calif,8);
             $datoalumno[$datosaguardar['nivelActual']]=$calif;
-
+            $datoalumno2 = [
+            'unidad1'=>null,
+            'unidad2'=>null,
+            'unidad3'=>null,
+            'unidad4'=>null,
+            'unidad5'=>null,
+            'unidad6'=>null,
+            'unidad7'=>null,
+            'unidad8'=>null,
+            ];
+            $calificaciones->update($datoalumno2);
         }
-
         $calificaciones->update($datoalumno);
        }
        return back();
@@ -364,7 +452,7 @@ class GrupoController extends Controller
         $today = Carbon::now()->format('d/m/Y');
         $pdf = \PDF::loadView('grupos.pdf',  compact('grupo','today','alumnosxGrupo','final'));
 
-        return $pdf->download('ejemplo.pdf');
+        return $pdf->download('Reporte del grupo '.$grupo->nombre_grupo.'.pdf');
     }
 
 
@@ -385,6 +473,13 @@ class GrupoController extends Controller
 
             return $pdf->download('ejemplo.pdf');
         }
+
+        public function pdfalumno()
+         {
+            $grupos = Grupo::paginate(10);
+            echo json_encode($grupos);
+         }
+
 
     /*
      * Update the specified resource in storage.
