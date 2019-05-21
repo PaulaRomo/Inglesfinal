@@ -138,14 +138,6 @@
                               @endcan
                             </td>
                             <td width="10px">
-                              @can ('grupos.show')
-                                <a href="{{ route('grupos.pdfin', $grupo->id) }}"
-                                class="btn btn-sm btn-primary">
-                                  PDF
-                                </a>
-                              @endcan
-                            </td>
-                            <td width="10px">
                               @can ('grupos.destroy')
                                 {!! Form::open(['route' => ['grupos.destroy', $grupo->id],
                                   'method'=>'DELETE']) !!}
