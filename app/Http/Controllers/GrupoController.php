@@ -157,9 +157,9 @@ class GrupoController extends Controller
         $periodoxunidad = Unidad_Periodo::all()->where('grup_id',$grupo->id);
 
         //dd($periodoxunidad);
-        $P1='';
-        $P2='';
-        $P3='';
+        $P1=[];
+        $P2=[];
+        $P3=[];
         if(count($periodoxunidad)>=1){
             $P1=explode(",", $periodoxunidad[0]->Unidades);
             $i1=$periodoxunidad[0]->id;
@@ -350,9 +350,9 @@ class GrupoController extends Controller
             'unidad7'=>null,
             'unidad8'=>null,
             ];
+            $calificaciones->update($datoalumno2);
         }
         $calificaciones->update($datoalumno);
-        $calificaciones->update($datoalumno2);
        }
        return back();
 

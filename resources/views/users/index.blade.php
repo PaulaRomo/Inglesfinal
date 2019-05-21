@@ -226,7 +226,7 @@
                                 <select id="semestre" name="semestre" class="randol form-control">
                                         <option value="null">---Seleccione---</option>
                                         <option value="I">I</option>
-                                        <option value="II`">II</option>
+                                        <option value="II">II</option>
                                         <option value="III">III</option>
                                         <option value="IV">IV</option>
                                         <option value="V">V</option>
