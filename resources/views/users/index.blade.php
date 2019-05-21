@@ -148,7 +148,7 @@
                             <label for="numcontrol" class="col-md-4 col-form-label text-md-right">{{ __('Número de Control: ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="numcontrol" type="text" class="form-control{{ $errors->has('numcontrol') ? ' is-invalid' : '' }}" name="numcontrol" value="{{ $alumno->numcontrol ?? old('numcontrol') }}" required autofocus>
+                                <input onkeyup="mayus(this);" id="numcontrol" type="text" class="form-control{{ $errors->has('numcontrol') ? ' is-invalid' : '' }}" name="numcontrol" value="{{ $alumno->numcontrol ?? old('numcontrol') }}" required autofocus>
                             </div>
                         </div>
                         <div class="form-group2 row">
@@ -257,10 +257,10 @@
                     <form method="POST" action="{{ route('users.storeD') }}" aria-label="{{ __('Docentes') }}">
                         @csrf
                         <div class="form-group row">
-                            <label for="numcontrol" class="col-md-4 col-form-label text-md-right">{{ __('Número de Control: ') }}</label>
+                            <label  for="numcontrol" class="col-md-4 col-form-label text-md-right">{{ __('Número de Control: ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="numcontrol" type="text" class="form-control{{ $errors->has('numcontrol') ? ' is-invalid' : '' }}" name="numcontrol" value="{{ old('numcontrol') }}" required autofocus>
+                                <input onkeyup="mayus(this);" id="numcontrol" type="text" class="form-control{{ $errors->has('numcontrol') ? ' is-invalid' : '' }}" name="numcontrol" value="{{ old('numcontrol') }}" required autofocus>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -377,4 +377,9 @@
   </div>
 </div>
 
+<script>
+function mayus(e) {
+    e.value = e.value.toUpperCase();
+}
+</script>
 @endsection

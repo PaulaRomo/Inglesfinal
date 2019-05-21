@@ -28,7 +28,7 @@ class PeriodosSeeder extends Seeder
             'fin'=>'2019-06-20',
         ]);
         DB::table('periodos')->insert([
-            'periodo'=>'segundas',
+            'periodo'=>'Segunda oportunidad',
             'inicio'=>'2019-06-02',
             'fin'=>'2019-06-16',
         ]);

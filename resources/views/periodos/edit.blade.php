@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Editar') }}</div>
                 <div class="card-body">
-                  {!! Form::model($periodo,['route'=>['periodo.update', $periodo->id], 'method'=>'PUT']) !!}
+                  {!! Form::model($periodo,['route'=>['periodo.update', $periodo->id], 'method'=>'PUT','id'=>'form'  ]) !!}
                     @csrf
 
                         <div class="form-group row">
@@ -65,4 +65,20 @@
         </div>
     </div>
 </div>
+
+<script>
+        $(document).ready(function () {
+            $("form").submit(function () {
+                a=$("#inicio").val()
+                b=$("#fin").val()
+
+                if (a>=b){
+                    alert("La fecha de inicio debe de ser menor");
+                    return false;
+                
+                }
+    
+            });
+        });
+    </script>
 @endsection
