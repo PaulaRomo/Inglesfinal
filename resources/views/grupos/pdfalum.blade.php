@@ -40,7 +40,41 @@
               ?></TD>
             </TR>
             <TR>
-              <TD style="font-weight: bold; text-align:center;">HORARIO</TD> <TD style="text-align:center;">{{$grupo['horario']}}</TD> <TD style="font-weight: bold; text-align:center;">PERIODO</TD><TD style="text-align:center;">{{$grupo['periodo']}}</TD>
+              <TD style="font-weight: bold; text-align:center;">HORARIO</TD><TD style="text-align:center;"><?php
+                $hay=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
+                $dias=DB::table('dias')->where('grupos_id',$grupo->id)->get();
+                $horario='';
+                $di='';
+                if(count($dias)>0){
+                  if($dias[0]->lunes){
+                    $horario=$dias[0]->lunes;
+                    $di=$di.' '.'Lunes';
+                  }
+                  if($dias[0]->martes){
+                    $horario=$dias[0]->martes;
+                    $di=$di.' '.'Martes';
+                  }
+                  if($dias[0]->miercoles){
+                    $horario=$dias[0]->miercoles;
+                    $di=$di.' '.'Miercoles';
+                  }
+                  if($dias[0]->jueves){
+                    $horario=$dias[0]->jueves;
+                    $di=$di.' '.'Jueves';
+                  }
+                  if($dias[0]->viernes){
+                    $horario=$dias[0]->viernes;
+                    $di=$di.' '.'Viernes';
+                  }
+                  if($dias[0]->sabado){
+                    $horario=$dias[0]->sabado;
+                    $di=$di.' '.'Sabado';
+                  }
+              ?>
+                  {{$di}}
+              <?php
+                }
+              ?>{{ $horario }}</TD>  <TD style="font-weight: bold; text-align:center;">PERIODO</TD><TD style="text-align:center;">{{$grupo['periodo']}}</TD>
             </TR></TABLE2></div>
         <div class="datagrid">
           <TABLE WIDTH=100% cellpadding="0" cellspacing="0">
@@ -50,17 +84,10 @@
               <TD ALIGN=center ROWSPAN=2 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">CONTROL</TD>
               <TD ALIGN=center ROWSPAN=2 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">NOMBRE DE ALUMNO</TD>
               <TD ALIGN=center ROWSPAN=2 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">PLAN EST.</TD>
-              <TD ALIGN=center COLSPAN=8 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">CALIFICACIÓN UNIDAD</TD>
+              <TD ALIGN=center COLSPAN=1 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">CALIFICACIÓN</TD>
             </TR>
             <TR>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">1</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">2</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">3</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">4</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">5</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">6</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">7</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">8</TD>
+              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">PROMEDIO</TD>
             </TR>
             </thead>
           @foreach ($alumnosxGrupo as $num => $alumno)
@@ -69,20 +96,20 @@
               <td style="border: black .5px solid;">{{$num+1}}</td>
               <td style="border: black .5px solid;">{{$final[$num]->numcontrol}}</td>
           		<td style="border: black .5px solid;">{{$alumno->name}}</td>
-          		<td style="border: black .5px solid;">{{$final[$num]->carrera}} {{$final[$num]->semestre}}</td>
-
-              <td style="border: black .5px solid;">{{$alumno->unidad1}}</td>
-              <td style="border: black .5px solid;">{{$alumno->unidad2}}</td>
-          		<td style="border: black .5px solid;">{{$alumno->unidad3}}</td>
-          		<td style="border: black .5px solid;">{{$alumno->unidad4}}</td>
-              <td style="border: black .5px solid;">{{$alumno->unidad1}}</td>
-              <td style="border: black .5px solid;">{{$alumno->unidad2}}</td>
-              <td style="border: black .5px solid;">{{$alumno->unidad3}}</td>
-              <td style="border: black .5px solid;">{{$alumno->unidad4}}</td>
+          		<td style="border: black .5px solid;"><center>{{$final[$num]->carrera}} {{$final[$num]->semestre}}</center></td>
+              @php
+                 $nivelac='nivel'.$alumno->nivelActual;
+             @endphp
+           <td style="border: black .5px solid;"><center>{{$alumno->$nivelac}}</center></td>
           	</tr>
           </thead>
             @endforeach
           </TABLE>
+          <br>
+          <br>
+          <br>
+          <br>
+          <hr style="width: 200px;"><center>Firma del Profesor<br>{{ $today }}</center>
           </div>
       </body>
 </html>

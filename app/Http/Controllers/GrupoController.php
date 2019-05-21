@@ -367,7 +367,26 @@ class GrupoController extends Controller
         return $pdf->download('ejemplo.pdf');
     }
 
-    /**
+
+       public function pdfin(Grupo $grupo)
+        {
+            $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
+            $datos=DatosAlumno::all();
+            $final=[];
+            foreach ($alumnosxGrupo as $key => $fila) {
+              foreach ($datos as $k => $value) {
+                if ($value['id']==$fila['id']) {
+                  $final[]=$value;
+                }
+              }
+            }
+            $today = Carbon::now()->format('d/m/Y');
+            $pdf = \PDF::loadView('grupos.pdfin',  compact('grupo','today','alumnosxGrupo','final'));
+
+            return $pdf->download('ejemplo.pdf');
+        }
+
+    /*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

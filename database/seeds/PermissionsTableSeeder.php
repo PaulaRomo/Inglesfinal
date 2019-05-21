@@ -13,6 +13,7 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         //user
+
         Permission::create([
         'name' => 'Navegar usuarios',
         'slug' => 'users.index',
@@ -174,6 +175,11 @@ class PermissionsTableSeeder extends Seeder
         'name' => 'PDF por alumno',
         'slug' => 'grupos.pdf',
         'description' => 'Generar un pdf por grupo de ingles (Administrador, Docente)',
+    ]);
+        Permission::create([
+        'name' => 'Clasificacin de alumnos reporte PDF',
+        'slug' => 'grupos.pdfalum',
+        'description' => 'Generar pdf para clasificar a los alumnos internos y externos (Administrador)',
     ]);
   }
 }

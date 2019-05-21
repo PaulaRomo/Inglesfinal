@@ -26,7 +26,7 @@
                             <select style="position:absolute; top:0px; left:400px;"  id="semestre" name="semestre" class="randol form-control">
                                     <option value="null">---Semestre---</option>
                                     <option value="I">I</option>
-                                    <option value="II`">II</option>
+                                    <option value="II">II</option>
                                     <option value="III">III</option>
                                     <option value="IV">IV</option>
                                     <option value="V">V</option>

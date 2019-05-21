@@ -40,7 +40,7 @@
               ?></TD>
             </TR>
             <TR>
-              <TD style="font-weight: bold; text-align:center;">HORARIO</TD> <TD style="text-align:center;"><?php
+              <TD style="font-weight: bold; text-align:center;">HORARIO</TD><TD style="text-align:center;"><?php
                 $hay=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
                 $dias=DB::table('dias')->where('grupos_id',$grupo->id)->get();
                 $horario='';
@@ -74,7 +74,7 @@
                   {{$di}}
               <?php
                 }
-              ?>{{ $horario }}</TD> <TD style="font-weight: bold; text-align:center;">PERÍODO</TD><TD style="text-align:center;">{{$grupo['periodo']}}</TD>
+              ?>{{ $horario }}</TD>  <TD style="font-weight: bold; text-align:center;">PERIODO</TD><TD style="text-align:center;">{{$grupo['periodo']}}</TD>
             </TR></TABLE2></div>
         <div class="datagrid">
           <TABLE WIDTH=100% cellpadding="0" cellspacing="0">
@@ -84,17 +84,10 @@
               <TD ALIGN=center ROWSPAN=2 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">CONTROL</TD>
               <TD ALIGN=center ROWSPAN=2 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">NOMBRE DE ALUMNO</TD>
               <TD ALIGN=center ROWSPAN=2 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">PLAN EST.</TD>
-              <TD ALIGN=center COLSPAN=8 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">CALIFICACIÓN UNIDAD</TD>
+              <TD ALIGN=center COLSPAN=1 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">CALIFICACIÓN</TD>
             </TR>
             <TR>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">1</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">2</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">3</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">4</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">5</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">6</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">7</TD>
-              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">8</TD>
+              <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">PROMEDIO</TD>
             </TR>
             </thead>
           @foreach ($alumnosxGrupo as $num => $alumno)
@@ -104,46 +97,10 @@
               <td style="border: black .5px solid;">{{$final[$num]->numcontrol}}</td>
           		<td style="border: black .5px solid;">{{$alumno->name}}</td>
           		<td style="border: black .5px solid;"><center>{{$final[$num]->carrera}} {{$final[$num]->semestre}}</center></td>
-              @if ($alumno->unidad1<70)
-                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
-              @else
-                <td style="border: black .5px solid;"><center>{{$alumno->unidad1}}</center></td>
-              @endif
-              @if ($alumno->unidad2<70)
-                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
-              @else
-                <td style="border: black .5px solid;"><center>{{$alumno->unidad2}}</center></td>
-              @endif
-              @if ($alumno->unidad3<70)
-                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
-              @else
-                <td style="border: black .5px solid;"><center>{{$alumno->unidad3}}</center></td>
-              @endif
-              @if ($alumno->unidad4<70)
-                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
-              @else
-                <td style="border: black .5px solid;"><center>{{$alumno->unidad4}}</center></td>
-              @endif
-              @if ($alumno->unidad5<70)
-                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
-              @else
-                <td style="border: black .5px solid;"><center>{{$alumno->unidad5}}</center></td>
-              @endif
-              @if ($alumno->unidad6<70)
-                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
-              @else
-                <td style="border: black .5px solid;"><center>{{$alumno->unidad6}}</center></td>
-              @endif
-              @if ($alumno->unidad7<70)
-                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
-              @else
-                <td style="border: black .5px solid;"><center>{{$alumno->unidad7}}</center></td>
-              @endif
-              @if ($alumno->unidad8<70)
-                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
-              @else
-                <td style="border: black .5px solid;"><center>{{$alumno->unidad8}}</center></td>
-              @endif
+              @php
+                 $nivelac='nivel'.$alumno->nivelActual;
+             @endphp
+           <td style="border: black .5px solid;"><center>{{$alumno->$nivelac}}</center></td>
           	</tr>
           </thead>
             @endforeach
