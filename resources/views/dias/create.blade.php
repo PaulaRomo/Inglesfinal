@@ -96,55 +96,14 @@
 
                                 <input type="time" name="horainicio" id="horario1" required autofocus>
 
-                                {{-- <div class="col-md-3">
-                                    <select id="horario" name="horainicio" class="form-control" required autofocus>
-                                        <option value="">---seleccionar---</option>
-                                        <option value="07:00 AM">07:00 AM</option>
-                                        <option value="08:00 AM">08:00 AM</option>
-                                        <option value="09:00 AM">09:00 AM</option>
-                                        <option value="10:00 AM">10:00 AM</option>
-                                        <option value="11:00 AM">11:00 AM</option>
-                                        <option value="12:00 PM">12:00 PM</option>
-                                        <option value="01:00 PM">01:00 PM</option>
-                                        <option value="02:00 PM">02:00 PM</option>
-                                        <option value="03:00 PM">03:00 PM</option>
-                                        <option value="04:00 PM">04:00 PM</option>
-                                        <option value="05:00 PM">05:00 PM</option>
-                                        <option value="06:00 PM">06:00 PM</option>
-                                        <option value="07:00 PM">07:00 PM</option>
-                                        <option value="08:00 PM">08:00 PM</option>
-                                    </select>
-                                </div> --}}
-
                                 <label for="horario"
                                     class="col-md-2 col-form-label text-md-right">{{ __('Termina: ') }}</label>
                                 <input type="time" name="horafin" id="horario2" required autofocus>
-
-                                {{-- <div class="col-md-3">
-                                    <select id="horario" name="horafin" class="form-control" required autofocus>
-                                        <option value="">---seleccionar---</option>
-                                        <option value="07:00 AM">07:00 AM</option>
-                                        <option value="08:00 AM">08:00 AM</option>
-                                        <option value="09:00 AM">09:00 AM</option>
-                                        <option value="10:00 AM">10:00 AM</option>
-                                        <option value="11:00 AM">11:00 AM</option>
-                                        <option value="12:00 PM">12:00 PM</option>
-                                        <option value="01:00 PM">01:00 PM</option>
-                                        <option value="02:00 PM">02:00 PM</option>
-                                        <option value="03:00 PM">03:00 PM</option>
-                                        <option value="04:00 PM">04:00 PM</option>
-                                        <option value="05:00 PM">05:00 PM</option>
-                                        <option value="06:00 PM">06:00 PM</option>
-                                        <option value="07:00 PM">07:00 PM</option>
-                                        <option value="08:00 PM">08:00 PM</option>
-
-                                    </select>
-                                </div> --}}
                             </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button id="hora" type="submit" class="btn btn-primary">
                                         {{ __('Añadir') }}
                                     </button>
                                 </div>
@@ -190,7 +149,7 @@
                             Docente--','id'=>'docentes','required autofocus']) !!}
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button id="docente" type="submit" class="btn btn-primary">
                                         {{ __('Agregar') }}
                                     </button>
                                 </div>
@@ -240,7 +199,7 @@
 
 <script>
     $(document).ready(function () {
-        $("form").submit(function () {
+        $("#docente").submit(function () {
             if ($('input:checkbox').filter(':checked').length < 1) {
                 $('#TUh')
 
@@ -256,7 +215,7 @@
 
 <script>
     $(document).ready(function () {
-        $("form").submit(function () {
+        $("#hora").submit(function () {
             a=$("#horario1").val()
             b=$("#horario2").val()
             if (a>=b){

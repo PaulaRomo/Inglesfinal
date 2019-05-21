@@ -8,6 +8,7 @@ use App\Dia;
 use App\Unidad_Periodo;
 use App\UpdateDias;
 use App\UpdateGrupos;
+use App\UpdateAlum;
 use App\UserAlum_Grup;
 use App\UserDoc_Grup;
 use App\DatosDocente;
@@ -84,9 +85,9 @@ class GrupoController extends Controller
         $users = User::all();
 
         $periodoxunidad = Unidad_Periodo::all()->where('grup_id',$grupo->id);
-        $P1='';
-        $P2='';
-        $P3='';
+        $P1=[];
+        $P2=[];
+        $P3=[];
         if(count($periodoxunidad)>=1){
             $P1=explode(",", $periodoxunidad[0]->Unidades);
             $i1=$periodoxunidad[0]->id;
@@ -335,7 +336,7 @@ class GrupoController extends Controller
 
             ] ;
         $calificaciones = DB::table('calificacion_alumnos')->where('calificaciones_id',$datosaguardar['calificaciones_id'][$i]);
-        if ($datosaguardar['unidad1'][$i] >70 && $datosaguardar['unidad2'][$i] >70&& $datosaguardar['unidad3'][$i] >70 && $datosaguardar['unidad4'][$i] >70 && $datosaguardar['unidad5'][$i] >70 && $datosaguardar['unidad6'][$i] >70 && $datosaguardar['unidad7'][$i] >70 && $datosaguardar['unidad8'][$i] >70) {
+        if ($datosaguardar['unidad1'][$i] >=70 && $datosaguardar['unidad2'][$i] >=70&& $datosaguardar['unidad3'][$i] >=70 && $datosaguardar['unidad4'][$i] >=70 && $datosaguardar['unidad5'][$i] >=70 && $datosaguardar['unidad6'][$i] >=70 && $datosaguardar['unidad7'][$i] >=70 && $datosaguardar['unidad8'][$i] >=70) {
 
             $calif=$datosaguardar['unidad1'][$i]+$datosaguardar['unidad2'][$i]+$datosaguardar['unidad3'][$i]+$datosaguardar['unidad4'][$i]+$datosaguardar['unidad5'][$i]+$datosaguardar['unidad6'][$i]+$datosaguardar['unidad7'][$i]+$datosaguardar['unidad8'][$i];
             $calif=intdiv($calif,8);
@@ -374,12 +375,17 @@ class GrupoController extends Controller
     public function agreAlum(Request $request,Grupo $grupo)
     {
         $idUser=DB::table('datos_alumnos')->where('numcontrol',$request['numcontrol'])->pluck('user_id');
+        $idUs=DB::table('datos_alumnos')->where('numcontrol',$request['numcontrol'])->pluck('id');
         if(count($idUser)>0){
             $hay=DB::table('user_alum__grups')->where('user_id',$idUser[0])->pluck('user_id');
             $enGrup=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
             $capaciadGrup=DB::table('grupos')->where('id',$grupo->id)->pluck('capacidad');
             if($capaciadGrup[0]>count($enGrup)){
                 if(count($hay)==0){
+                    $act="1";
+                    $apro = UpdateAlum::find($idUs[0]);
+                    $apro->activo = $act;
+                    $apro->save();
                     UserAlum_Grup::create([
                         'user_id' => $idUser[0],
                         'grup_id' => $grupo->id,

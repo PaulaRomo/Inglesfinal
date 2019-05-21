@@ -72,7 +72,7 @@ class UserController extends Controller
             'IntExt'=>$request['IntExt'],
             'numcontrol' => $request['numcontrol'],
             'sexo'=>$request['sexo'],
-            'activo'=>'1',
+            'activo'=>'randol',
             'carrera'=>$request['carrera'],
             'semestre'=>$request['semestre'],
             'user_id'=>$us[0]
