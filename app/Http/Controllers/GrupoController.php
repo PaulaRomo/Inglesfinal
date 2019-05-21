@@ -155,7 +155,7 @@ class GrupoController extends Controller
         $users = User::all();
 
         $periodoxunidad = Unidad_Periodo::all()->where('grup_id',$grupo->id);
-        
+
         //dd($periodoxunidad);
         $P1='';
         $P2='';
@@ -335,16 +335,24 @@ class GrupoController extends Controller
 
             ] ;
         $calificaciones = DB::table('calificacion_alumnos')->where('calificaciones_id',$datosaguardar['calificaciones_id'][$i]);
-
-        if ($datosaguardar['unidad1'][$i] !=null && $datosaguardar['unidad2'][$i] !=null && $datosaguardar['unidad3'][$i] !=null && $datosaguardar['unidad4'][$i] !=null && $datosaguardar['unidad5'][$i] !=null && $datosaguardar['unidad6'][$i] !=null && $datosaguardar['unidad7'][$i] !=null && $datosaguardar['unidad8'][$i] !=null) {
+        if ($datosaguardar['unidad1'][$i] >70 && $datosaguardar['unidad2'][$i] >70&& $datosaguardar['unidad3'][$i] >70 && $datosaguardar['unidad4'][$i] >70 && $datosaguardar['unidad5'][$i] >70 && $datosaguardar['unidad6'][$i] >70 && $datosaguardar['unidad7'][$i] >70 && $datosaguardar['unidad8'][$i] >70) {
 
             $calif=$datosaguardar['unidad1'][$i]+$datosaguardar['unidad2'][$i]+$datosaguardar['unidad3'][$i]+$datosaguardar['unidad4'][$i]+$datosaguardar['unidad5'][$i]+$datosaguardar['unidad6'][$i]+$datosaguardar['unidad7'][$i]+$datosaguardar['unidad8'][$i];
             $calif=intdiv($calif,8);
             $datoalumno[$datosaguardar['nivelActual']]=$calif;
-
+            $datoalumno2 = [
+            'unidad1'=>null,
+            'unidad2'=>null,
+            'unidad3'=>null,
+            'unidad4'=>null,
+            'unidad5'=>null,
+            'unidad6'=>null,
+            'unidad7'=>null,
+            'unidad8'=>null,
+            ];
         }
-
         $calificaciones->update($datoalumno);
+        $calificaciones->update($datoalumno2);
        }
        return back();
 
