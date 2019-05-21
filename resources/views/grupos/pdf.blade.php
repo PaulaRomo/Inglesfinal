@@ -103,6 +103,7 @@
               <td style="border: black .5px solid;">{{$num+1}}</td>
               <td style="border: black .5px solid;">{{$final[$num]->numcontrol}}</td>
           		<td style="border: black .5px solid;">{{$alumno->name}}</td>
+
           		<td style="border: black .5px solid;">{{$final[$num]->carrera}} {{$final[$num]->semestre}}</td>
 
               <td style="border: black .5px solid;">{{$alumno->unidad1}}</td>
@@ -113,6 +114,49 @@
               <td style="border: black .5px solid;">{{$alumno->unidad6}}</td>
               <td style="border: black .5px solid;">{{$alumno->unidad7}}</td>
               <td style="border: black .5px solid;">{{$alumno->unidad8}}</td>
+
+          		<td style="border: black .5px solid;"><center>{{$final[$num]->carrera}} {{$final[$num]->semestre}}</center></td>
+              @if ($alumno->unidad1<70)
+                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
+              @else
+                <td style="border: black .5px solid;"><center>{{$alumno->unidad1}}</center></td>
+              @endif
+              @if ($alumno->unidad2<70)
+                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
+              @else
+                <td style="border: black .5px solid;"><center>{{$alumno->unidad2}}</center></td>
+              @endif
+              @if ($alumno->unidad3<70)
+                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
+              @else
+                <td style="border: black .5px solid;"><center>{{$alumno->unidad3}}</center></td>
+              @endif
+              @if ($alumno->unidad4<70)
+                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
+              @else
+                <td style="border: black .5px solid;"><center>{{$alumno->unidad4}}</center></td>
+              @endif
+              @if ($alumno->unidad5<70)
+                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
+              @else
+                <td style="border: black .5px solid;"><center>{{$alumno->unidad5}}</center></td>
+              @endif
+              @if ($alumno->unidad6<70)
+                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
+              @else
+                <td style="border: black .5px solid;"><center>{{$alumno->unidad6}}</center></td>
+              @endif
+              @if ($alumno->unidad7<70)
+                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
+              @else
+                <td style="border: black .5px solid;"><center>{{$alumno->unidad7}}</center></td>
+              @endif
+              @if ($alumno->unidad8<70)
+                <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
+              @else
+                <td style="border: black .5px solid;"><center>{{$alumno->unidad8}}</center></td>
+              @endif
+
           	</tr>
           </thead>
             @endforeach
