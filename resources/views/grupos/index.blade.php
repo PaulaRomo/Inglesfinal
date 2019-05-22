@@ -10,13 +10,13 @@
 
                   @can ('grupos.create')
                     <a href="#popup"
-                    class="bth btn-sm btn-primary pull-right">
+                    class="btn btn-sm btn-primary">
                       Crear
                     </a>
                   @endcan
                   <a style="background-color:#185FC2; border:#185FC2;" href="{{ route ('grupos.pdfalumno')}}"
                   class="btn btn-sm btn-primary">
-                    Alumnos
+                    Alumnos Inscritos
                   </a>
               </div>
 
