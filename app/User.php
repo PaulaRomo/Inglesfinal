@@ -88,5 +88,33 @@ class User extends Authenticatable
         }
 
     }
+
+    public function scopeSearchalumnoxgrupo_calif($query,$name){
+        if($name){
+
+            return $query->join('user_alum__grups','users.id','=','user_alum__grups.user_id')->where('user_alum__grups.grup_id','=',$name)->join('datos_alumnos','users.id','=','datos_alumnos.user_id');
+        }else{
+            return $query->join('user_alum__grups','users.id','=','user_alum__grups.user_id');
+
+        }
+
+    }
+
+
+    public function scopeSearchalumnoxgrupo_califsonret($query,$name,$sexo,$origen){
+
+
+        if($name){
+
+            return $query->join('user_alum__grups','users.id','=','user_alum__grups.user_id')->where('user_alum__grups.grup_id','=',$name)->join('datos_alumnos','users.id','=','datos_alumnos.user_id')->where('datos_alumnos.sexo','=',$sexo)->where('datos_alumnos.IntExt','=',$origen);
+        }else{
+            return $query->join('user_alum__grups','users.id','=','user_alum__grups.user_id');
+
+        }
+
+    }
+
+
+
 /* TODO: ---------- */
 }

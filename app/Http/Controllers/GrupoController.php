@@ -477,77 +477,97 @@ class GrupoController extends Controller
         public function pdfalumno()
          {
            $today = Carbon::now()->format('d/m/Y');
-            $grupos = Grupo::paginate(10);
-            $a=UserAlum_Grup::all();
-            $alumnostotales=DatosAlumno::all();
-            $users = User::all();
-            $i=0;
-            $q=0;
-            $x=1;
-            $arrefin=[];
-            while ($i <count($grupos)) {
-              $linea=$grupos[$i];
-              $idGrupo=$linea['id'];
-              $arreindi=[];
-              $mujeres=0;
-              $hombres=0;
-              $internas=0;
-              $internos=0;
-              $arreindi[]=$idGrupo;
-              $arreindi[]=$linea['nombre_grupo'];
-              $arreindi[]=$linea['nivel'];
-              foreach ($a as $key => $relacion) {
-                if ($idGrupo==$relacion['grup_id']) {
-                  foreach ($alumnostotales as $key => $alumno) {
-                    if ($relacion['user_id']==$alumno['user_id']) {
-                      if ($alumno['sexo']=='F') {
-                        $mujeres++;
-                        if ($alumno['IntExt']=='Interno') {
-                          $internas++;
-                        }
-                      }
-                      else {
-                        $hombres++;
-                        if ($alumno['IntExt']=='Interno') {
-                          $internos++;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              $arreindi[]=$hombres;
-              $arreindi[]=$mujeres;
-              $arreindi[]=$hombres-$internos;
-              $arreindi[]=$mujeres-$internas;
-              $arrefin[]=$arreindi;
-              $i++;
-            }
-          /*
-            while ($x <= 6) {
-              if ($x==1 && $linea['nivel']=='I' ) {
-                echo "soy nivel 1";
-              }
-              if ($x==2 && $linea['nivel']=='II' ) {
-                echo "soy nivel 2";
-              }
-              if ($x==3 && $linea['nivel']=='III' ) {
-                echo "soy nivel 3";
-              }
-              if ($x==4 && $linea['nivel']=='IV' ) {
-                echo "soy nivel 4";
-              }
-              if ($x==5 && $linea['nivel']=='V' ) {
-                echo "soy nivel 5";
-              }
-              if ($x==6 && $linea['nivel']=='VI' ) {
-                echo "soy nivel 6";
-              }
-              $x++;
-            }
 
-*/
-            $pdf = \PDF::loadView('grupos.pdfalumo',  compact('today','arrefin'));
+           $grupos = DB::table('grupos')->select('id', 'nombre_grupo','nivel')->orderBy('nivel')->get();
+
+           foreach ($grupos as $grupo) {
+
+                  $alumnosFex=User::searchalumnoxgrupo_califsonret($grupo->id,'F','externo');
+                  /* alumnos */
+                  $alumnosM=User::searchalumnoxgrupo_califsonret($grupo->id,'M','interno');
+                  $alumnosF=User::searchalumnoxgrupo_califsonret($grupo->id,'F','interno');
+
+                  /* externos */
+                  $alumnosMex=User::searchalumnoxgrupo_califsonret($grupo->id,'M','externo');
+                  $alumnosFex=User::searchalumnoxgrupo_califsonret($grupo->id,'F','externo');
+
+                  /* total */
+                  $alumnos=User::searchalumnoxgrupo_calif($grupo->id);
+                  //agregar resultados a grupos
+
+                  $grupo->alumnos=$alumnosM->get()->count();
+                  $grupo->alumnas=$alumnosF->get()->count();
+                  $grupo->alumnosex=$alumnosMex->get()->count();
+                  $grupo->alumnasex=$alumnosFex->get()->count();
+                  $grupo->alumnostot=$alumnos->get()->count();
+                  $grupo->subtotal="";
+
+           }
+
+           $arrayFinal = array( );
+           $totales = array( );
+           $sumanivel="I";
+
+           //dd($grupos);
+           $totales["id"]="";
+           $totales["nombre_grupo"]="Totales";
+           $totales["nivel"]="I";
+           $totales["alumnos"]=0;
+           $totales["alumnas"]=0;
+           $totales["alumnosex"]=0;
+           $totales["alumnasex"]=0;
+           $totales["alumnostot"]="";
+           $totales["subtotal"]=0;
+           foreach ($grupos  as $grupo) {
+
+
+                    if ($grupo->nivel!=$sumanivel   ) {
+                        $sumanivel=$grupo->nivel;
+                        $arrayFinal[]=$totales;
+                        $totales = array( );
+
+                        $totales["id"]="-";
+                        $totales["nombre_grupo"]="";
+                        $totales["nivel"]="-";
+                        $totales["alumnos"]="-";
+                        $totales["alumnas"]="-";
+                        $totales["alumnosex"]="-";
+                        $totales["alumnasex"]="-";
+                        $totales["alumnostot"]="-";
+                        $totales["subtotal"]="-";
+
+                        $arrayFinal[]=$totales;
+                        $totales["id"]="";
+                        $totales["nombre_grupo"]="Totales";
+                        $totales["nivel"]=$sumanivel;
+                        $totales["alumnos"]=0;
+                        $totales["alumnas"]=0;
+                        $totales["alumnosex"]=0;
+                        $totales["alumnasex"]=0;
+                        $totales["alumnostot"]="";
+                        $totales["subtotal"]=0;
+
+
+                    }
+                    $totales["alumnos"]+=$grupo->alumnos;
+
+                    $totales["alumnas"]+=$grupo->alumnas;
+                    $totales["alumnosex"]+=$grupo->alumnosex;
+                    $totales["alumnasex"]+=$grupo->alumnasex;
+                    $totales["alumnostot"]="";
+                    $totales["subtotal"]+=$grupo->alumnostot;
+
+                    $arrayFinal[]=$grupo;
+
+
+
+           }
+           $arrayFinal[]=$totales;
+            $arrayFinal=json_decode(json_encode($arrayFinal),true);
+
+
+
+            $pdf = \PDF::loadView('grupos.pdfalumo',  compact('today','arrayFinal'));
 
             return $pdf->download('Inscripciones.pdf');
          }
