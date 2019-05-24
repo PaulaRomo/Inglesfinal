@@ -86,6 +86,7 @@
               <TD ALIGN=center ROWSPAN=2 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">PLAN EST.</TD>
               <TD ALIGN=center COLSPAN=8 style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">CALIFICACIÓN UNIDAD</TD>
             </TR>
+
             <TR>
               <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">1</TD>
               <TD ALIGN=center style="background:#E9E9E9; font-weight:bold; border: black .5px solid;">2</TD>

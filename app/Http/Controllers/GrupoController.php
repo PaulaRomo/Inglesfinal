@@ -482,8 +482,100 @@ class GrupoController extends Controller
 
         public function pdfalumno()
          {
-            $grupos = Grupo::paginate(10);
-            echo json_encode($grupos);
+           $today = Carbon::now()->format('d/m/Y');
+
+           $grupos = DB::table('grupos')->select('id', 'nombre_grupo','nivel')->orderBy('nivel')->get();
+
+           foreach ($grupos as $grupo) {
+
+                  $alumnosFex=User::searchalumnoxgrupo_califsonret($grupo->id,'F','externo');
+                  /* alumnos */
+                  $alumnosM=User::searchalumnoxgrupo_califsonret($grupo->id,'M','interno');
+                  $alumnosF=User::searchalumnoxgrupo_califsonret($grupo->id,'F','interno');
+
+                  /* externos */
+                  $alumnosMex=User::searchalumnoxgrupo_califsonret($grupo->id,'M','externo');
+                  $alumnosFex=User::searchalumnoxgrupo_califsonret($grupo->id,'F','externo');
+
+                  /* total */
+                  $alumnos=User::searchalumnoxgrupo_calif($grupo->id);
+                  //agregar resultados a grupos
+
+                  $grupo->alumnos=$alumnosM->get()->count();
+                  $grupo->alumnas=$alumnosF->get()->count();
+                  $grupo->alumnosex=$alumnosMex->get()->count();
+                  $grupo->alumnasex=$alumnosFex->get()->count();
+                  $grupo->alumnostot=$alumnos->get()->count();
+                  $grupo->subtotal="";
+
+           }
+
+           $arrayFinal = array( );
+           $totales = array( );
+           $sumanivel="I";
+
+           //dd($grupos);
+           $totales["id"]="";
+           $totales["nombre_grupo"]="Totales";
+           $totales["nivel"]="I";
+           $totales["alumnos"]=0;
+           $totales["alumnas"]=0;
+           $totales["alumnosex"]=0;
+           $totales["alumnasex"]=0;
+           $totales["alumnostot"]="";
+           $totales["subtotal"]=0;
+           foreach ($grupos  as $grupo) {
+
+
+                    if ($grupo->nivel!=$sumanivel   ) {
+                        $sumanivel=$grupo->nivel;
+                        $arrayFinal[]=$totales;
+                        $totales = array( );
+
+                        $totales["id"]="-";
+                        $totales["nombre_grupo"]="";
+                        $totales["nivel"]="-";
+                        $totales["alumnos"]="-";
+                        $totales["alumnas"]="-";
+                        $totales["alumnosex"]="-";
+                        $totales["alumnasex"]="-";
+                        $totales["alumnostot"]="-";
+                        $totales["subtotal"]="-";
+
+                        $arrayFinal[]=$totales;
+                        $totales["id"]="";
+                        $totales["nombre_grupo"]="Totales";
+                        $totales["nivel"]=$sumanivel;
+                        $totales["alumnos"]=0;
+                        $totales["alumnas"]=0;
+                        $totales["alumnosex"]=0;
+                        $totales["alumnasex"]=0;
+                        $totales["alumnostot"]="";
+                        $totales["subtotal"]=0;
+
+
+                    }
+                    $totales["alumnos"]+=$grupo->alumnos;
+
+                    $totales["alumnas"]+=$grupo->alumnas;
+                    $totales["alumnosex"]+=$grupo->alumnosex;
+                    $totales["alumnasex"]+=$grupo->alumnasex;
+                    $totales["alumnostot"]="";
+                    $totales["subtotal"]+=$grupo->alumnostot;
+
+                    $arrayFinal[]=$grupo;
+
+
+
+           }
+           $arrayFinal[]=$totales;
+            $arrayFinal=json_decode(json_encode($arrayFinal),true);
+
+
+
+            $pdf = \PDF::loadView('grupos.pdfalumo',  compact('today','arrayFinal'));
+
+            return $pdf->download('Inscripciones.pdf');
          }
 
 
