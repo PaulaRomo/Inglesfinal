@@ -87,8 +87,7 @@ Route::middleware(['auth'])->group(function(){
 
   Route::get('grupos/{grupo}/pdf', 'GrupoController@pdf')->name('grupos.pdf');
 
-
-  Route::post('grupos/pdfalumno', 'GrupoController@pdfalumno')->name('grupos.pdfalumno');
+  Route::get('grupos/pdfalumno', 'GrupoController@pdfalumno')->name('grupos.pdfalumno');
 
   Route::get('grupos/{grupo}/pdfin', 'GrupoController@pdfin')->name('grupos.pdfin');
 

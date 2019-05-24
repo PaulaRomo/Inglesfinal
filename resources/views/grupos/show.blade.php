@@ -15,6 +15,10 @@
                     class="btn btn-sm btn-primary">
                       Ver instrumentacion
                     </a>
+                    <a style="position:absolute; right:280px;" href="{{ route('grupos.pdfin', $grupo->id) }}"
+                    class="btn btn-sm btn-success">
+                      Reporte Final
+                    </a>
                 </h4>
               </div>
               <div class="panel-body">

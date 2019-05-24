@@ -114,7 +114,6 @@
               <td style="border: black .5px solid;">{{$alumno->unidad6}}</td>
               <td style="border: black .5px solid;">{{$alumno->unidad7}}</td>
               <td style="border: black .5px solid;">{{$alumno->unidad8}}</td>
-
           		<td style="border: black .5px solid;"><center>{{$final[$num]->carrera}} {{$final[$num]->semestre}}</center></td>
               @if ($alumno->unidad1<70)
                 <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
@@ -156,7 +155,6 @@
               @else
                 <td style="border: black .5px solid;"><center>{{$alumno->unidad8}}</center></td>
               @endif
-
           	</tr>
           </thead>
             @endforeach

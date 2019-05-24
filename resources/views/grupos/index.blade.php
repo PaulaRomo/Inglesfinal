@@ -16,7 +16,7 @@
                   @endcan
                   <a style="background-color:#185FC2; border:#185FC2;" href="{{ route ('grupos.pdfalumno')}}"
                   class="btn btn-sm btn-primary">
-                    PDF Alumnos
+                    Alumnos
                   </a>
               </div>
 

@@ -480,6 +480,13 @@ class GrupoController extends Controller
             return $pdf->download('ejemplo.pdf');
         }
 
+        public function pdfalumno()
+         {
+            $grupos = Grupo::paginate(10);
+            echo json_encode($grupos);
+         }
+
+
     /*
      * Update the specified resource in storage.
      *

@@ -221,7 +221,7 @@
             if (a>=b){
                 alert("La hora de inicio debe de ser menor");
                 return false;
-            
+
             }
 
         });
