@@ -10,7 +10,7 @@
 
                 <div class="card-body">
 
-                      {!! Form::model($grupo,['route'=>['grupos.update', $grupo->id], 'method'=>'PUT', "files"=>"true", 'enctype'=>'multipart/form-data']) !!}
+                      {!! Form::model($grupo,['route'=>['grupos.update', $grupo->id], 'method'=>'PUT']) !!}
                         @csrf
 
                         <div class="form-group row">
