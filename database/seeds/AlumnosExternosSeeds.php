@@ -60,12 +60,12 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'90',  'unidad2'=>'84',    'unidad3'=>'90',    'unidad4'=>'96',    'calificaciones_id'=>'10']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'97',  'unidad2'=>'88',    'unidad3'=>'92',    'unidad4'=>'96',    'calificaciones_id'=>'11']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'100', 'unidad2'=>'94',    'unidad3'=>'100',   'unidad4'=>'100',   'calificaciones_id'=>'12']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'0',   'unidad2'=>'98',    'unidad3'=>'97',    'unidad4'=>'0',     'calificaciones_id'=>'13']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'0',   'unidad2'=>'96',    'unidad3'=>'95',    'unidad4'=>'96',    'calificaciones_id'=>'14']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'0',   'unidad2'=>'94',    'unidad3'=>'97',    'unidad4'=>'100',   'calificaciones_id'=>'15']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'1',   'unidad2'=>'98',    'unidad3'=>'97',     'unidad4'=>'1',     'calificaciones_id'=>'13']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'1',   'unidad2'=>'96',    'unidad3'=>'95',    'unidad4'=>'96',    'calificaciones_id'=>'14']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'1',   'unidad2'=>'94',    'unidad3'=>'97',    'unidad4'=>'100',   'calificaciones_id'=>'15']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'87',  'unidad2'=>'80',    'unidad3'=>'95',    'unidad4'=>'85',    'calificaciones_id'=>'16']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'92',  'unidad2'=>'86',    'unidad3'=>'100',   'unidad4'=>'85',    'calificaciones_id'=>'17']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'0',   'unidad2'=>'0',     'unidad3'=>'0',     'unidad4'=>'0',     'calificaciones_id'=>'18']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'4','unidad1'=>'1',   'unidad2'=>'1',    'unidad3'=>'1',      'unidad4'=>'1',     'calificaciones_id'=>'18']);
 
 
         
@@ -164,12 +164,12 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'100', 'unidad2'=>'97',    'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'33']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'100', 'unidad2'=>'100',   'unidad3'=>'88',    'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'34']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'97',  'unidad2'=>'100',   'unidad3'=>'100',   'unidad4'=>'90',    'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'35']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'98',  'unidad2'=>'83',    'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'0',     'calificaciones_id'=>'36']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'98',  'unidad2'=>'83',    'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'1',     'calificaciones_id'=>'36']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'95',  'unidad2'=>'97',    'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'37']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'95',  'unidad2'=>'82',    'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'0',     'calificaciones_id'=>'38']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'100', 'unidad2'=>'90',    'unidad3'=>'97',    'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'0',     'calificaciones_id'=>'39']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'95',  'unidad2'=>'82',    'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'1',     'calificaciones_id'=>'38']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'100', 'unidad2'=>'90',    'unidad3'=>'97',    'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'1',     'calificaciones_id'=>'39']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'98',  'unidad2'=>'100',   'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'95',    'unidad6'=>'100',   'calificaciones_id'=>'40']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'98',  'unidad2'=>'100',   'unidad3'=>'0',     'unidad4'=>'0',     'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'41']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'98',  'unidad2'=>'100',  'unidad3'=>'1',      'unidad4'=>'1',     'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'41']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'100', 'unidad2'=>'100',   'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'42']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'100', 'unidad2'=>'95',    'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'43']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'98',  'unidad2'=>'95',    'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'95',    'unidad6'=>'100',   'calificaciones_id'=>'44']);
@@ -177,7 +177,7 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'98',  'unidad2'=>'97',    'unidad3'=>'84',    'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'46']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'95',  'unidad2'=>'97',    'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'91',    'unidad6'=>'100',   'calificaciones_id'=>'47']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'100', 'unidad2'=>'95',    'unidad3'=>'87',    'unidad4'=>'90',    'unidad5'=>'95',    'unidad6'=>'100',   'calificaciones_id'=>'48']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'98',  'unidad2'=>'92',    'unidad3'=>'97',    'unidad4'=>'0',     'unidad5'=>'0',     'unidad6'=>'0',     'calificaciones_id'=>'49']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'98',  'unidad2'=>'92',    'unidad3'=>'97',     'unidad4'=>'1',     'unidad5'=>'1',     'unidad6'=>'1',     'calificaciones_id'=>'49']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'100', 'unidad2'=>'95',    'unidad3'=>'97',    'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'50']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'100', 'unidad2'=>'100',   'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'51']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'100', 'unidad2'=>'100',   'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'52']);
@@ -236,23 +236,23 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'87',  'unidad2'=>'100',   'unidad3'=>'91',    'unidad4'=>'100',   'unidad5'=>'100',   'calificaciones_id'=>'56']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'97',  'unidad2'=>'100',   'unidad3'=>'98',    'unidad4'=>'91',    'unidad5'=>'100',   'calificaciones_id'=>'57']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'100', 'unidad2'=>'94',    'unidad3'=>'98',    'unidad4'=>'95',    'unidad5'=>'100',   'calificaciones_id'=>'58']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'0',   'unidad2'=>'80',    'unidad3'=>'87',    'unidad4'=>'91',    'unidad5'=>'100',   'calificaciones_id'=>'59']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'0',   'unidad2'=>'0',     'unidad3'=>'0',     'unidad4'=>'0',     'unidad5'=>'0',     'calificaciones_id'=>'60']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'1',   'unidad2'=>'80',    'unidad3'=>'87',    'unidad4'=>'91',    'unidad5'=>'100',   'calificaciones_id'=>'59']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'1',   'unidad2'=>'1',    'unidad3'=>'1',      'unidad4'=>'1',     'unidad5'=>'1',     'calificaciones_id'=>'60']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'95',  'unidad2'=>'100',   'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'100',   'calificaciones_id'=>'61']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'0',   'unidad2'=>'0',     'unidad3'=>'0',     'unidad4'=>'0',     'unidad5'=>'0',     'calificaciones_id'=>'62']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'1',   'unidad2'=>'1',    'unidad3'=>'1',      'unidad4'=>'1',     'unidad5'=>'1',     'calificaciones_id'=>'62']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'97',  'unidad2'=>'89',    'unidad3'=>'98',    'unidad4'=>'100',   'unidad5'=>'100',   'calificaciones_id'=>'63']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'95',  'unidad2'=>'97',    'unidad3'=>'100',   'unidad4'=>'95',    'unidad5'=>'96',    'calificaciones_id'=>'64']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'90',  'unidad2'=>'100',   'unidad3'=>'98',    'unidad4'=>'86',    'unidad5'=>'88',    'calificaciones_id'=>'65']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'0',   'unidad2'=>'0',     'unidad3'=>'96',    'unidad4'=>'91',    'unidad5'=>'100',   'calificaciones_id'=>'66']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'1',   'unidad2'=>'1',     'unidad3'=>'96',    'unidad4'=>'91',    'unidad5'=>'100',   'calificaciones_id'=>'66']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'84',  'unidad2'=>'91',    'unidad3'=>'89',    'unidad4'=>'82',    'unidad5'=>'100',   'calificaciones_id'=>'67']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'70',  'unidad2'=>'71',    'unidad3'=>'79',    'unidad4'=>'73',    'unidad5'=>'92',    'calificaciones_id'=>'68']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'100', 'unidad2'=>'100',   'unidad3'=>'100',   'unidad4'=>'100',   'unidad5'=>'100',   'calificaciones_id'=>'69']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'100', 'unidad2'=>'100',   'unidad3'=>'96',    'unidad4'=>'95',    'unidad5'=>'96',    'calificaciones_id'=>'70']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'92',  'unidad2'=>'94',    'unidad3'=>'98',    'unidad4'=>'95',    'unidad5'=>'100',   'calificaciones_id'=>'71']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'100', 'unidad2'=>'100',   'unidad3'=>'0',     'unidad4'=>'95',    'unidad5'=>'96',    'calificaciones_id'=>'72']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'100', 'unidad2'=>'100',  'unidad3'=>'1',     'unidad4'=>'95',    'unidad5'=>'96',    'calificaciones_id'=>'72']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'95',  'unidad2'=>'86',    'unidad3'=>'91',    'unidad4'=>'95',    'unidad5'=>'100',   'calificaciones_id'=>'73']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'100', 'unidad2'=>'100',   'unidad3'=>'100',   'unidad4'=>'91',    'unidad5'=>'100',   'calificaciones_id'=>'74']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'0',   'unidad2'=>'0',     'unidad3'=>'0',     'unidad4'=>'0',     'unidad5'=>'0',     'calificaciones_id'=>'75']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'1',   'unidad2'=>'1',    'unidad3'=>'1',      'unidad4'=>'1',     'unidad5'=>'1',     'calificaciones_id'=>'75']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'97',  'unidad2'=>'83',    'unidad3'=>'98',    'unidad4'=>'100',   'unidad5'=>'100',   'calificaciones_id'=>'76']);
        
         //TODO:
@@ -456,7 +456,7 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'3','unidad1'=>'94',  'unidad2'=>'91',    'unidad3'=>'94',    'unidad4'=>'92',    'unidad5'=>'96',    'unidad6'=>'100',   'calificaciones_id'=>'128']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'3','unidad1'=>'92',  'unidad2'=>'91',    'unidad3'=>'98',    'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'129']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'3','unidad1'=>'97',  'unidad2'=>'96',    'unidad3'=>'87',    'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'130']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'3','unidad1'=>'0',   'unidad2'=>'0',     'unidad3'=>'94',    'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'0',     'calificaciones_id'=>'131']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'3','unidad1'=>'1',   'unidad2'=>'1',     'unidad3'=>'94',    'unidad4'=>'100',   'unidad5'=>'100',   'unidad6'=>'1',     'calificaciones_id'=>'131']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'3','unidad1'=>'84',  'unidad2'=>'95',    'unidad3'=>'96',    'unidad4'=>'88',    'unidad5'=>'98',    'unidad6'=>'100',   'calificaciones_id'=>'132']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'3','unidad1'=>'94',  'unidad2'=>'96',    'unidad3'=>'96',    'unidad4'=>'100',   'unidad5'=>'96',    'unidad6'=>'100',   'calificaciones_id'=>'133']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'3','unidad1'=>'92',  'unidad2'=>'86',    'unidad3'=>'89',    'unidad4'=>'88',    'unidad5'=>'98',    'unidad6'=>'100',   'calificaciones_id'=>'134']);
@@ -520,12 +520,12 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'90',  'unidad2'=>'80',    'unidad3'=>'93',    'unidad4'=>'88',    'unidad5'=>'100',   'unidad6'=>'95',    'calificaciones_id'=>'145']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'90',  'unidad2'=>'93',    'unidad3'=>'100',   'unidad4'=>'97',    'unidad5'=>'100',   'unidad6'=>'95',    'calificaciones_id'=>'146']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'96',  'unidad2'=>'95',    'unidad3'=>'93',    'unidad4'=>'91',    'unidad5'=>'91',    'unidad6'=>'93',    'calificaciones_id'=>'147']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'90',  'unidad2'=>'90',    'unidad3'=>'100',   'unidad4'=>'91',    'unidad5'=>'94',    'unidad6'=>'0',     'calificaciones_id'=>'148']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'92',  'unidad2'=>'88',    'unidad3'=>'95',    'unidad4'=>'82',    'unidad5'=>'85',    'unidad6'=>'0',     'calificaciones_id'=>'149']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'90',  'unidad2'=>'90',    'unidad3'=>'100',   'unidad4'=>'91',    'unidad5'=>'94',    'unidad6'=>'1',     'calificaciones_id'=>'148']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'92',  'unidad2'=>'88',    'unidad3'=>'95',    'unidad4'=>'82',    'unidad5'=>'85',    'unidad6'=>'1',     'calificaciones_id'=>'149']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'88',  'unidad2'=>'85',    'unidad3'=>'92',    'unidad4'=>'94',    'unidad5'=>'97',    'unidad6'=>'100',   'calificaciones_id'=>'150']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'86',  'unidad2'=>'71',    'unidad3'=>'23',    'unidad4'=>'91',    'unidad5'=>'94',    'unidad6'=>'98',    'calificaciones_id'=>'151']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'98',  'unidad2'=>'100',   'unidad3'=>'98',    'unidad4'=>'100',   'unidad5'=>'97',    'unidad6'=>'95',    'calificaciones_id'=>'152']);
-        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'82',  'unidad2'=>'95',    'unidad3'=>'97',    'unidad4'=>'91',    'unidad5'=>'97',    'unidad6'=>'0',     'calificaciones_id'=>'153']);
+        DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'82',  'unidad2'=>'95',    'unidad3'=>'97',    'unidad4'=>'91',    'unidad5'=>'97',    'unidad6'=>'1',     'calificaciones_id'=>'153']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'86',  'unidad2'=>'90',    'unidad3'=>'98',    'unidad4'=>'88',    'unidad5'=>'97',    'unidad6'=>'83',    'calificaciones_id'=>'154']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'92',  'unidad2'=>'93',    'unidad3'=>'93',    'unidad4'=>'85',    'unidad5'=>'97',    'unidad6'=>'98',    'calificaciones_id'=>'155']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'5','unidad1'=>'88',  'unidad2'=>'88',    'unidad3'=>'93',    'unidad4'=>'95',    'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'156']);
