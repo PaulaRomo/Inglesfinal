@@ -7,10 +7,17 @@
             <div class="card">
                 <div class="card-header">
                 <h4>Grupo
-                    <a style="background-color:orange; border:orange; position:absolute; right:170px;" href="{{ route('grupos.periodo', $grupo->id ) }}"
-                        class="btn btn-sm btn-primary">
-                          Agregar Periodo
-                    </a>
+                    @php
+                        $Peri=DB::table('unidad__periodos')->where('grup_id',$grupo->id)->pluck('id');
+                    @endphp
+                    @if(count($Peri)==0)
+                      @can('grupo.create')
+                        <a style="background-color:orange; border:orange; position:absolute; right:170px;" href="{{ route('grupos.periodo', $grupo->id ) }}"
+                            class="btn btn-sm btn-primary">
+                              Agregar Periodo
+                        </a>
+                      @endcan
+                    @endif
                     <a target="_blank" href="{{asset($grupo->instrumentacion)}} " style="position:absolute; right:40px;"
                     class="btn btn-sm btn-primary">
                       Ver instrumentacion
@@ -104,9 +111,12 @@
           </div>
           <br>
               <div class="card">
-                  <div class="card-header">
+                <div class="card-header">
                   <h4>Alumnos</h4>
                 </div>
+                @if(count($Peri)==0)
+                    <b><p>Los Alumnos no se mostraran, hasta que se agregen las unidades a calificar por periodo</p></b>
+                @endif
                 <div class="card-body">
                   {!! Form::model($grupo,['route'=>['grupos.guardarCalificaciones', $grupo], 'method'=>'PUT']) !!}
                       <table class="table">
@@ -127,7 +137,7 @@
                           <tbody>
                             @php
                             $fecha=date("Y-m-d");
-
+                            //dd($FechaPeri[0]->inicio);
                             @endphp
                             @if (($fecha>=$FechaPeri[3]->inicio)&&($fecha<=$FechaPeri[3]->fin))
                               <h3>Segundas</h3>
@@ -258,14 +268,13 @@
                             @else
                               @if ((count($P1)>1)||(count($P2)>1)||(count($P3)>1))
                                 @foreach ($alumnosxGrupo as $alumno)
-
                                   <tr>
                                     <th scope="row">
                                       {{$alumno->name}}
                                       <input type="hidden" name='user_id[]' value="{{$alumno->user_id}}">
                                     </th>
                                     @if(in_array("Unidad1", $P1))
-                                      @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      @if(($fecha>=$FechaPeri[0]->inicio)&&($fecha<=$FechaPeri[0]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad1[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad1}}" tabindex="1">
@@ -279,7 +288,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad1", $P2))
-                                      @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      @if(($fecha>=$FechaPeri[1]->inicio)&&($fecha<=$FechaPeri[1]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad1[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad1}}" tabindex="1">
@@ -293,7 +302,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad1", $P3))
-                                      @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      @if(($fecha>=$FechaPeri[2]->inicio)&&($fecha<=$FechaPeri[2]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad1[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad1}}" tabindex="1">
@@ -309,7 +318,7 @@
                                     @endif
 
                                     @if(in_array("Unidad2", $P1))
-                                      @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      @if(($fecha>=$FechaPeri[0]->inicio)&&($fecha<=$FechaPeri[0]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad2[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad2}}" tabindex="2">
@@ -323,7 +332,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad2", $P2))
-                                      @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      @if(($fecha>=$FechaPeri[1]->inicio)&&($fecha<=$FechaPeri[1]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad2[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad2}}" tabindex="2">
@@ -337,7 +346,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad2", $P3))
-                                      @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      @if(($fecha>=$FechaPeri[2]->inicio)&&($fecha<=$FechaPeri[2]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad2[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad2}}" tabindex="2">
@@ -353,7 +362,7 @@
                                     @endif
 
                                     @if(in_array("Unidad3", $P1))
-                                      @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      @if(($fecha>=$FechaPeri[0]->inicio)&&($fecha<=$FechaPeri[0]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad3[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad3}}" tabindex="3">
@@ -367,7 +376,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad3", $P2))
-                                      @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      @if(($fecha>=$FechaPeri[1]->inicio)&&($fecha<=$FechaPeri[1]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad3[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad3}}" tabindex="3">
@@ -381,7 +390,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad3", $P3))
-                                      @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      @if(($fecha>=$FechaPeri[2]->inicio)&&($fecha<=$FechaPeri[2]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad3[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad3}}" tabindex="3">
@@ -397,7 +406,7 @@
                                     @endif
 
                                     @if(in_array("Unidad4", $P1))
-                                      @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      @if(($fecha>=$FechaPeri[0]->inicio)&&($fecha<=$FechaPeri[0]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad4[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad4}}" tabindex="4">
@@ -411,7 +420,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad4", $P2))
-                                      @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      @if(($fecha>=$FechaPeri[1]->inicio)&&($fecha<=$FechaPeri[1]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad4[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad4}}" tabindex="4">
@@ -425,7 +434,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad4", $P3))
-                                      @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      @if(($fecha>=$FechaPeri[2]->inicio)&&($fecha<=$FechaPeri[2]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad4[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad4}}" tabindex="4">
@@ -442,7 +451,7 @@
 
 
                                     @if(in_array("Unidad5", $P1))
-                                      @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      @if(($fecha>=$FechaPeri[0]->inicio)&&($fecha<=$FechaPeri[0]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad5[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad5}}" tabindex="5">
@@ -456,7 +465,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad5", $P2))
-                                      @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      @if(($fecha>=$FechaPeri[1]->inicio)&&($fecha<=$FechaPeri[1]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad5[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad5}}" tabindex="5">
@@ -470,7 +479,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad5", $P3))
-                                      @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      @if(($fecha>=$FechaPeri[2]->inicio)&&($fecha<=$FechaPeri[2]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad5[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad5}}" tabindex="5">
@@ -486,7 +495,7 @@
                                     @endif
 
                                     @if(in_array("Unidad6", $P1))
-                                      @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      @if(($fecha>=$FechaPeri[0]->inicio)&&($fecha<=$FechaPeri[0]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad6[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad6}}" tabindex="6">
@@ -500,7 +509,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad6", $P2))
-                                      @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      @if(($fecha>=$FechaPeri[1]->inicio)&&($fecha<=$FechaPeri[1]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad6[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad6}}" tabindex="6">
@@ -514,7 +523,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad6", $P3))
-                                      @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      @if(($fecha>=$FechaPeri[2]->inicio)&&($fecha<=$FechaPeri[2]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad6[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad6}}" tabindex="6">
@@ -530,7 +539,7 @@
                                     @endif
 
                                     @if(in_array("Unidad7", $P1))
-                                      @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      @if(($fecha>=$FechaPeri[0]->inicio)&&($fecha<=$FechaPeri[0]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad7[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad7}}" tabindex="7">
@@ -544,7 +553,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad7", $P2))
-                                      @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      @if(($fecha>=$FechaPeri[1]->inicio)&&($fecha<=$FechaPeri[1]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad7[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad7}}" tabindex="7">
@@ -558,7 +567,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad7", $P3))
-                                      @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      @if(($fecha>=$FechaPeri[2]->inicio)&&($fecha<=$FechaPeri[2]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad7[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad7}}" tabindex="7">
@@ -574,7 +583,7 @@
                                     @endif
 
                                     @if(in_array("Unidad8", $P1))
-                                      @if(($fecha>$FechaPeri[0]->inicio)&&($fecha<$FechaPeri[0]->fin))
+                                      @if(($fecha>=$FechaPeri[0]->inicio)&&($fecha<=$FechaPeri[0]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad8[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad8}}" tabindex="8">
@@ -588,7 +597,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad8", $P2))
-                                      @if(($fecha>$FechaPeri[1]->inicio)&&($fecha<$FechaPeri[1]->fin))
+                                      @if(($fecha>=$FechaPeri[1]->inicio)&&($fecha<=$FechaPeri[1]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad8[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad8}}" tabindex="8">
@@ -602,7 +611,7 @@
                                         </th>
                                       @endif
                                     @elseif(in_array("Unidad8", $P3))
-                                      @if(($fecha>$FechaPeri[2]->inicio)&&($fecha<$FechaPeri[2]->fin))
+                                      @if(($fecha>=$FechaPeri[2]->inicio)&&($fecha<=$FechaPeri[2]->fin))
                                         <th>
                                           <input min="0" max="100" name='unidad8[]' class='form-control form-control-sm' type="number"
                                           value="{{$alumno->unidad8}}" tabindex="8">

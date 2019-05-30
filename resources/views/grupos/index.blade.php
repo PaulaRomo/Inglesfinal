@@ -153,6 +153,22 @@
                               $idUser=Auth::User()->id;
                               $idGrup=DB::table('user_doc__grups')->where('user_id',$idUser)->pluck('grup_id');
                               $i=0;
+                              $k=-1;
+                              $men=0;
+                              for($j=0;$j<50;$j++){
+                                  $k=$k+1;
+                                  if($k<count($idGrup)-1){
+                                    if($idGrup[$k]>$idGrup[$k+1]){
+                                      $men=$idGrup[$k+1];
+                                      $idGrup[$k+1]=$idGrup[$k];
+                                      $idGrup[$k]=$men;
+                                    }
+                                  }else {
+                                    $k=-1;
+                                  }
+
+                              }
+                              //dd($idGrup);
                             ?>
                             @if(count($idGrup)>0)
                               @foreach ($grupos as $grupo)

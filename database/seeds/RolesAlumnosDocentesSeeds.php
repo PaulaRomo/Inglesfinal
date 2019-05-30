@@ -1,0 +1,187 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class RolesAlumnosDocentesSeeds extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        //alumnos
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 2,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 3,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 4,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 5,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 6,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 7]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 8,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 9,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 10,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 11,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 12,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 13,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 14,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 15,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 16,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 17,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 18,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 19,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 20,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 21,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 22,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 23,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 24,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 25,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 26,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 27,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 28,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 29,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 30,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 31,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 32,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 33,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 34,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 35,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 36,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 37,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 38,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 39,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 40,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 41,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 42,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 43,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 44,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 45,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 46,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 47,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 48,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 49,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 50,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 51,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 52,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 53,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 54,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 55,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 56,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 57,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 58,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 59,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 60,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 61,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 62,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 63,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 64,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 65,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 66,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 67,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 68,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 69,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 70,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 71,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 72,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 73,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 74,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 75,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 76,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 77,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 78,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 79,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 80,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 81,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 82,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 83,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 84,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 85,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 86,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 87,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 88,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 89,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 90,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 91,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 92,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 93,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 94,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 95,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 96,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 97,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 98,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 99,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 100,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 101,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 102,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 103,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 104,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 105,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 106,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 107]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 108,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 109,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 110,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 111,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 112,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 113,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 114,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 115,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 116,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 117,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 118,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 119,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 120,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 121,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 122,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 123,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 124,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 125,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 126,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 127,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 128,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 129,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 130,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 131,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 132,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 133,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 134,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 135,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 136,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 137,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 138,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 139,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 140,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 141,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 142,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 143,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 144,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 145,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 146,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 147,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 148,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 149,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 150,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 151,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 152,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 153,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 154,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 155,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 156,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 157,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 158,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 159,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 160,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 161,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 162,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 163,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 164,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 165,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 166,]);
+        //docetes
+        DB::table('role_user')->insert(['role_id' => 2,'user_id' => 167,]);
+        DB::table('role_user')->insert(['role_id' => 2,'user_id' => 168,]);
+        DB::table('role_user')->insert(['role_id' => 2,'user_id' => 169,]);
+        DB::table('role_user')->insert(['role_id' => 2,'user_id' => 170,]);
+
+    }
+}
