@@ -140,8 +140,10 @@
               @else
                 <td style="border: black .5px solid;"><center>{{$alumno->unidad7}}</center></td>
               @endif
-              @if ($alumno->unidad8<70)
+              @if (($alumno->unidad8<70)&&($alumno->unidad8>1))
                 <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
+              @elseif (($alumno->unidad8)==0)
+                <td style="border: black .5px solid;"><center></center></td>
               @else
                 <td style="border: black .5px solid;"><center>{{$alumno->unidad8}}</center></td>
               @endif

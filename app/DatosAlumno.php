@@ -18,7 +18,7 @@ class DatosAlumno extends Model
      * @var array
      */
     protected $fillable = [
-        'IntExt', 'numcontrol','sexo','avtivo','carrera','semestre','user_id',
+        'IntExt', 'numcontrol','sexo','avtivo','carrera','semestre','user_id', 'path_certificado',
     ];
 
     /**

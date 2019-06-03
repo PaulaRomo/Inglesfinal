@@ -9,7 +9,7 @@
                   <div class="card-header">{{ __('Editar') }}</div>
                   <div class="card-body">
 
-                          {!! Form::model($alumno,['route'=>['alumnos.update', $alumno->id], 'method'=>'PUT']) !!}
+                          {!! Form::model($alumno,['route'=>['alumnos.update', $alumno->id], 'method'=>'PUT', "files"=>"true", 'enctype'=>'multipart/form-data']) !!}
                           @csrf
 
 
@@ -81,6 +81,12 @@
                                           <option value="XV">XV</option>
                                   </select>
                                   </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="certificado" class="col-md-4 col-form-label text-md-right">{{ __('Certificado: ') }}</label>
+                            <div class="col-md-6">
+                              <input class="form-control" type="file" name="file" accept="application/pdf">
+                            </div>
                           </div>
 
                           <div class="form-group row mb-0">

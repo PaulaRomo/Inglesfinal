@@ -70,6 +70,7 @@
                         <th>Carrera </th>
                         <th>Estado</th>
 
+
                         <th colspan="3">&nbsp;</th>
                       </tr>
                     </thead>
@@ -118,6 +119,15 @@
                           </td>
 
                           <td width="10px">
+                            @can ('users.edit')
+                              <a href="{{ route('alumnos.certificadoview', $user->user_id ) }}"
+                              class="btn btn-sm btn-primary">
+                                Agregar certificado
+                              </a>
+                            @endcan
+                          </td>
+
+                          <td width="10px">
                             @can ('users.destroy')
                               {!! Form::open(['route' => ['users.destroy', $user->user_id],
                                 'method'=>'DELETE']) !!}
@@ -126,11 +136,13 @@
                             @endcan
                           </td>
 
+
+
                         </tr>
                       @endforeach
                     </tbody>
                   </table>
-                  {{-- {{ $users->render() }} --}}
+                  {{ $users->render() }}
                 </div>
             </div>
         </div>
