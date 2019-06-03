@@ -25,7 +25,6 @@
                   <table class="table table-striped table-hover">
                     <thead>
                       <tr>
-                        <th width="10px">ID</th>
                         <th>Nombre</th>
                         <th>Periodo</th>
                         <th>Nivel</th>
@@ -40,7 +39,6 @@
                       @can ('grupos.create')
                         @foreach ($grupos as $grupo)
                           <tr>
-                            <td>{{ $grupo->id }}</td>
                             <td>{{ $grupo->nombre_grupo }}</td>
                             <td>{{ $grupo->periodo }}</td>
                             <td>{{ $grupo->nivel }}</td>
@@ -133,7 +131,7 @@
                               @can ('grupos.show')
                                 <a href="{{ route('grupos.pdf', $grupo->id) }}"
                                 class="btn btn-sm btn-primary">
-                                  PDF
+                                  Rep.Unidades
                                 </a>
                               @endcan
                             </td>

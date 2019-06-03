@@ -63,7 +63,6 @@
                   <table class="table table-striped table-hover">
                     <thead>
                       <tr>
-                        <th width="10px">ID</th>
                         <th>Nombre</th>
                         <th>Numero de control</th>
                         <th>Sexo</th>
@@ -81,7 +80,6 @@
                     <tbody>
                       @foreach ($users as $user)
                         <tr>
-                          <td>{{ $user->user_id }}</td>
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->numcontrol }}</td>
                           <td>{{ $user->sexo }}</td>
@@ -89,7 +87,7 @@
                           @if ($user->activo==1)
                             <td>Activo</td>
                           @else
-                            <td>No esta Activo</td>
+                            <td>Inactivo</td>
                           @endif
 
 
