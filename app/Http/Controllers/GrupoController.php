@@ -16,13 +16,10 @@ use App\DatosAlumno;
 use App\Periodo;
 use Illuminate\Http\Request;
 use App\Http\Requests\GruposCreateRequest;
-use App\Http\Requests\GruposUpdateRequest;
 use Carbon\Carbon;
-use Dompdf\Dompdf;
 use Illuminate\Support\Facades\DB;
-use File;
-use Filesystem;
 use Alert;
+use Auth;
 
 class GrupoController extends Controller
 {
@@ -34,9 +31,15 @@ class GrupoController extends Controller
     public function index()
     {
         //
-
-        $grupos = Grupo::paginate(10);
-        return view ('grupos.index', compact('grupos'));
+        $user = Auth::user();
+        $hay=DB::table('datos_docentes')->where('user_id',$user->id)->pluck('id');
+        if(count($hay)>0){
+            $grupos = Grupo::all();
+            return view ('grupos.index', compact('grupos'));   
+        }else{
+            $grupos = Grupo::paginate(10);
+            return view ('grupos.index', compact('grupos'));
+        }
     }
 
     public function periodo(Grupo $grupo)
@@ -60,6 +63,12 @@ class GrupoController extends Controller
         }
         for($i=0;count($periodo3)>$i;$i++){
             $c3=$c3.$periodo3[$i].',';
+        }
+        $user=DB::table('unidad__periodos')->where('grup_id',$grupo->id)->pluck('perio_id');
+        for($i=0;$i<count($user);$i++) {
+            # code...
+            $eliG=Unidad_Periodo::where('grup_id', '=', $grupo->id)->first();
+            $eliG->delete();
         }
         if (count($periodo1)>0) {
             Unidad_Periodo::create([
@@ -454,10 +463,6 @@ class GrupoController extends Controller
         $calificaciones->update($datoalumno);
        }
        return back();
-
-
-
-
     }
 
     public function agregarCalificaciones($id){
@@ -677,10 +682,10 @@ class GrupoController extends Controller
            }
            $arrayFinal[]=$totales;
             $arrayFinal=json_decode(json_encode($arrayFinal),true);
+            $totaldealumnos=DB::table('user_alum__grups')->count();
 
 
-
-            $pdf = \PDF::loadView('grupos.pdfalumo',  compact('today','arrayFinal'));
+            $pdf = \PDF::loadView('grupos.pdfalumo',  compact('today','arrayFinal','totaldealumnos'));
 
             return $pdf->download('Inscripciones.pdf');
          }
@@ -744,6 +749,10 @@ class GrupoController extends Controller
         $user=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
         for($i=0;$i<count($user);$i++) {
             # code...
+            $act="0";
+            $apro = UpdateAlum::find($user[$i]);
+            $apro->activo = $act;
+            $apro->save();
             $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
             $eliG->delete();
         }

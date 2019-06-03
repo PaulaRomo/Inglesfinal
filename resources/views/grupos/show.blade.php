@@ -10,14 +10,12 @@
                     @php
                         $Peri=DB::table('unidad__periodos')->where('grup_id',$grupo->id)->pluck('id');
                     @endphp
-                    @if(count($Peri)==0)
-                      @can('grupo.create')
-                        <a style="background-color:orange; border:orange; position:absolute; right:170px;" href="{{ route('grupos.periodo', $grupo->id ) }}"
-                            class="btn btn-sm btn-primary">
-                            Agregar/Unidades/Periodo
-                        </a>
-                      @endcan
-                    @endif
+                    @can('grupo.create')
+                      <a style="background-color:orange; border:orange; position:absolute; right:170px;" href="{{ route('grupos.periodo', $grupo->id ) }}"
+                          class="btn btn-sm btn-primary">
+                          Agregar/Unidades/Periodo
+                      </a>
+                    @endcan
                     <a target="_blank" href="{{asset($grupo->instrumentacion)}} " style="position:absolute; right:40px;"
                     class="btn btn-sm btn-primary">
                       Ver instrumentacion

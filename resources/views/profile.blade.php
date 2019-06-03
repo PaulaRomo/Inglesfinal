@@ -10,11 +10,8 @@
     <div class="row justify-content-center">
         <div class="col-md-10 col-md-offset-1">
             <div class="card">
-                <div class="card-header">Perfil</div>
-                <div class="card-body">
-
-
-                    <h2>{{ $user->name }}'s Profile</h2>
+                <div class="card-header">Perfil: {{ $user->name }}</div>
+                <div class="card-body">Calificaciones por unidad
                     <div>
                         <table class="table">
                             <thead>
@@ -144,7 +141,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10 col-md-offset-1">
             <div class="card">
-                <div class="card-header">Calificaciones de los semestres</div>
+                <div class="card-header">Calificaciones por nivel</div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -223,7 +220,7 @@
 
                                 @endif
                             </th>
-                           
+
                         </tr>
                     </tbody>
                 </table>

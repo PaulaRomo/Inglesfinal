@@ -13,11 +13,12 @@
                     class="btn btn-sm btn-primary">
                       Crear
                     </a>
-                  @endcan
+
                   <a style="background-color:#185FC2; border:#185FC2;" href="{{ route ('grupos.pdfalumno')}}"
                   class="btn btn-sm btn-primary">
                     Alumnos Inscritos
                   </a>
+                  @endcan
               </div>
 
 
@@ -31,7 +32,9 @@
                         <th>Docente</th>
                         <th>Días</th>
                         <th>Horario</th>
+                        @can ('grupos.create')
                         <th>Vacantes</th>
+                        @endcan
                         <th colspan="3">&nbsp;</th>
                       </tr>
                     </thead>
@@ -166,7 +169,7 @@
                                   }
 
                               }
-                              //dd($idGrup);
+                              //dd($grupos);
                             ?>
                             @if(count($idGrup)>0)
                               @foreach ($grupos as $grupo)
@@ -177,7 +180,6 @@
                                     }
                                   ?>
                                   <tr>
-                                    <td>{{ $grupo->id }}</td>
                                     <td>{{ $grupo->nombre_grupo }}</td>
                                     <td>{{ $grupo->periodo }}</td>
                                     <td>{{ $grupo->nivel }}</td>
@@ -232,7 +234,6 @@
                                       ?>
                                     </td>
                                     <td>{{ $horario }}</td>
-                                    <td>{{ $grupo->capacidad-count($hay)}}</td>
                                     <td width="10px">
                                       @can ('grupos.index')
                                         <a style="background-color:#185FC2; border:#185FC2;" href="{{ route('grupos.documento', $grupo->id ) }}"
@@ -289,7 +290,9 @@
                       @endcan
                     </tbody>
                   </table>
-                  {{ $grupos->render() }}
+                  @can ('grupos.create')
+                    {{ $grupos->render() }}
+                  @endcan
                 </div>
             </div>
         </div>
@@ -300,7 +303,7 @@
       <div class="row justify-content-center">
           <div class="col-md-12">
               <div class="card">
-                  <div class="card-header">{{ __('Crear Grupo') }}<a style="background:transparent; color: black; position: absolute; right:25px;" href="{{ route('grupos.index',$grupos) }}">X</a></div>
+                  <div class="card-header">{{ __('Crear Grupo') }}<a style="background:transparent; color: black; position: absolute; right:25px;" href="{{ route('grupos.index') }}">X</a></div>
 
                   <div class="card-body">
                       <form method="POST" action="{{ route('grupos.store') }}" aria-label="{{ __('grupos') }}">

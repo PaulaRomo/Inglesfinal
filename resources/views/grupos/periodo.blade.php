@@ -107,57 +107,146 @@
         $('#P21').on('change',function(){
             if (this.checked) {
                     $("#P313").hide();
+                    $("#P111").hide();
                 } else {
                     $("#P313").show();
+                    $("#P111").show();
                 }
         })
         $('#P22').on('change',function(){
             if (this.checked) {
                     $("#P323").hide();
+                    $("#P121").hide();
                 } else {
                     $("#P323").show();
+                    $("#P121").show();
                 }
         })
         $('#P23').on('change',function(){
             if (this.checked) {
                     $("#P333").hide();
+                    $("#P131").hide();
                 } else {
                     $("#P333").show();
+                    $("#P131").show();
                 }
         })
         $('#P24').on('change',function(){
             if (this.checked) {
                     $("#P343").hide();
+                    $("#P141").hide();
                 } else {
                     $("#P343").show();
+                    $("#P141").show();
                 }
         })
         $('#P25').on('change',function(){
             if (this.checked) {
                     $("#P353").hide();
+                    $("#P151").hide();
                 } else {
                     $("#P353").show();
+                    $("#P151").show();
                 }
         })
         $('#P26').on('change',function(){
             if (this.checked) {
                     $("#P363").hide();
+                    $("#P161").hide();
                 } else {
                     $("#P363").show();
+                    $("#P161").show();
                 }
         })
         $('#P27').on('change',function(){
             if (this.checked) {
                     $("#P373").hide();
+                    $("#P171").hide();
                 } else {
                     $("#P373").show();
+                    $("#P171").show();
                 }
         })
         $('#P28').on('change',function(){
             if (this.checked) {
                     $("#P383").hide();
+                    $("#P181").hide();
                 } else {
                     $("#P383").show();
+                    $("#P181").show();
+                }
+        })
+        //periodo 3
+        $('#P31').on('change',function(){
+            if (this.checked) {
+                    $("#P212").hide();
+                    $("#P111").hide();
+                } else {
+                    $("#P212").show();
+                    $("#P111").show();
+                }
+        })
+        $('#P32').on('change',function(){
+            if (this.checked) {
+                    $("#P222").hide();
+                    $("#P121").hide();
+                } else {
+                    $("#P222").show();
+                    $("#P121").show();
+                }
+        })
+        $('#P33').on('change',function(){
+            if (this.checked) {
+                    $("#P232").hide();
+                    $("#P131").hide();
+                } else {
+                    $("#P232").show();
+                    $("#P131").show();
+                }
+        })
+        $('#P34').on('change',function(){
+            if (this.checked) {
+                    $("#P242").hide();
+                    $("#P141").hide();
+                } else {
+                    $("#P242").show();
+                    $("#P141").show();
+                }
+        })
+        $('#P35').on('change',function(){
+            if (this.checked) {
+                    $("#P252").hide();
+                    $("#P151").hide();
+                } else {
+                    $("#P252").show();
+                    $("#P151").show();
+                }
+        })
+        $('#P36').on('change',function(){
+            if (this.checked) {
+                    $("#P262").hide();
+                    $("#P161").hide();
+                } else {
+                    $("#P262").show();
+                    $("#P161").show();
+                }
+        })
+        $('#P37').on('change',function(){
+            if (this.checked) {
+                    $("#P272").hide();
+                    $("#P171").hide();
+                } else {
+                    $("#P272").show();
+                    $("#P171").show();
+                }
+        })
+        $('#P38').on('change',function(){
+            if (this.checked) {
+                    $("#P282").hide();
+                    $("#P181").hide();
+                } else {
+                    $("#P282").show();
+                    $("#P181").show();
                 }
         })
     });   

@@ -50,7 +50,10 @@
                   <td style="border: black .5px solid;">{{ $value['subtotal'] }}</td>
             	</tr>
             @endforeach
+
           </thead>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+            <td style="border: black .5px solid;">Total de alumnos:{{$totaldealumnos}}</td>
           </TABLE>
           <br>
           <br>
