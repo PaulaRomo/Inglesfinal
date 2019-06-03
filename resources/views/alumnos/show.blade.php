@@ -12,23 +12,21 @@
                 <table class="table table-striped table-hover">
                   <thead>
                     <tr>
-                      <th width="10px">ID</th>
                       <th>Nombre</th>
                       <th>Numero de control</th>
                       <th>Sexo</th>
                       <th>Carrera </th>
-                      <th>Estado</th>
+
                       <th>Correo</th>
                     </tr>
                   </thead>
                   <tbody>
                       <tr>
-                        <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $datos->numcontrol }}</td>
                         <td>{{ $datos->sexo }}</td>
                         <td>{{ $datos->carrera.' '.$datos->semestre }}</td>
-                        <td></td>
+
                         <td>{{ $user->email }}</td>
                       </tr>
                   </tbody>

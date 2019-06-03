@@ -14,7 +14,7 @@
                       @can('grupo.create')
                         <a style="background-color:orange; border:orange; position:absolute; right:170px;" href="{{ route('grupos.periodo', $grupo->id ) }}"
                             class="btn btn-sm btn-primary">
-                              Agregar Periodo
+                            Agregar/Unidades/Periodo
                         </a>
                       @endcan
                     @endif
@@ -22,7 +22,7 @@
                     class="btn btn-sm btn-primary">
                       Ver instrumentacion
                     </a>
-                    <a style="position:absolute; right:280px;" href="{{ route('grupos.pdfin', $grupo->id) }}"
+                    <a style="position:absolute; right:330px;" href="{{ route('grupos.pdfin', $grupo->id) }}"
                     class="btn btn-sm btn-success">
                       Reporte Final
                     </a>
