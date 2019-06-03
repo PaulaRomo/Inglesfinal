@@ -21,6 +21,7 @@ class CreateDatosAlumnosTable extends Migration
             $table->string('activo')->nullable();
             $table->string("carrera")->nullable();
             $table->string('semestre')->nullable();
+            $table->string('path_certificado')->nullable();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

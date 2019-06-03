@@ -211,99 +211,197 @@ class GrupoController extends Controller
     public function agreDias(Request $request,Grupo $grupo)
     {
         //
-        foreach ($request['dias'] as $dia) {
-            # code...
-            switch ($dia) {
-                case 'Lunes':
-                    # code...
-                    $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
-                    if(count($hay)>0){
-                        $apro = UpdateDias::find($hay[0]);
-                        $apro->lunes = $request['horainicio'].'-'.$request['horafin'];
-                        $apro->save();
-                    }else{
-                        Dia::create([
-                            'lunes' => $request['horainicio'].' a '.$request['horafin'],
-                            'grupos_id' => $grupo->id,
-                          ]);
-                    }
-                    break;
-                case 'Martes':
-                    # code...
-                    $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
-                    if(count($hay)>0){
-                        $apro = UpdateDias::find($hay[0]);
-                        $apro->martes = $request['horainicio'].'-'.$request['horafin'];
-                        $apro->save();
-                    }else{
-                        Dia::create([
-                            'martes' => $request['horainicio'].' a '.$request['horafin'],
-                            'grupos_id' => $grupo->id,
-                          ]);
-                    }
-                    break;
-                case 'Miercoles':
-                    # code...
-                    $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
-                    if(count($hay)>0){
-                        $apro = UpdateDias::find($hay[0]);
-                        $apro->miercoles = $request['horainicio'].'-'.$request['horafin'];
-                        $apro->save();
-                    }else{
-                        Dia::create([
-                            'miercoles' => $request['horainicio'].' a '.$request['horafin'],
-                            'grupos_id' => $grupo->id,
-                          ]);
-                    }
-                    break;
-                case 'Jueves':
-                    # code...
-                    $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
-                    if(count($hay)>0){
-                        $apro = UpdateDias::find($hay[0]);
-                        $apro->jueves = $request['horainicio'].'-'.$request['horafin'];
-                        $apro->save();
-                    }else{
-                        Dia::create([
-                            'jueves' => $request['horainicio'].' a '.$request['horafin'],
-                            'grupos_id' => $grupo->id,
-                          ]);
-                    }
-                    break;
-                case 'Viernes':
-                    # code...
-                    $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
-                    if(count($hay)>0){
-                        $apro = UpdateDias::find($hay[0]);
-                        $apro->viernes = $request['horainicio'].'-'.$request['horafin'];
-                        $apro->save();
-                    }else{
-                        Dia::create([
-                            'viernes' => $request['horainicio'].' a '.$request['horafin'],
-                            'grupos_id' => $grupo->id,
-                          ]);
-                    }
-                    break;
-                case 'Sabado':
-                    # code...
-                    $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
-                    if(count($hay)>0){
-                        $apro = UpdateDias::find($hay[0]);
-                        $apro->sabado = $request['horainicio'].'-'.$request['horafin'];
-                        $apro->save();
-                    }else{
-                        Dia::create([
-                            'sabado' => $request['horainicio'].' a '.$request['horafin'],
-                            'grupos_id' => $grupo->id,
-                          ]);
-                    }
-                    break;
-                default:
-                    # code...
-
-                    break;
+        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+        if(count($hay)==0){
+            foreach ($request['dias'] as $dia) {
+                # code...
+                switch ($dia) {
+                    case 'Lunes':
+                        # code...
+                        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+                        if(count($hay)>0){
+                            $apro = UpdateDias::find($hay[0]);
+                            $apro->lunes = $request['horainicio'].'-'.$request['horafin'];
+                            $apro->save();
+                        }else{
+                            Dia::create([
+                                'lunes' => $request['horainicio'].' a '.$request['horafin'],
+                                'grupos_id' => $grupo->id,
+                              ]);
+                        }
+                        break;
+                    case 'Martes':
+                        # code...
+                        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+                        if(count($hay)>0){
+                            $apro = UpdateDias::find($hay[0]);
+                            $apro->martes = $request['horainicio'].'-'.$request['horafin'];
+                            $apro->save();
+                        }else{
+                            Dia::create([
+                                'martes' => $request['horainicio'].' a '.$request['horafin'],
+                                'grupos_id' => $grupo->id,
+                              ]);
+                        }
+                        break;
+                    case 'Miercoles':
+                        # code...
+                        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+                        if(count($hay)>0){
+                            $apro = UpdateDias::find($hay[0]);
+                            $apro->miercoles = $request['horainicio'].'-'.$request['horafin'];
+                            $apro->save();
+                        }else{
+                            Dia::create([
+                                'miercoles' => $request['horainicio'].' a '.$request['horafin'],
+                                'grupos_id' => $grupo->id,
+                              ]);
+                        }
+                        break;
+                    case 'Jueves':
+                        # code...
+                        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+                        if(count($hay)>0){
+                            $apro = UpdateDias::find($hay[0]);
+                            $apro->jueves = $request['horainicio'].'-'.$request['horafin'];
+                            $apro->save();
+                        }else{
+                            Dia::create([
+                                'jueves' => $request['horainicio'].' a '.$request['horafin'],
+                                'grupos_id' => $grupo->id,
+                              ]);
+                        }
+                        break;
+                    case 'Viernes':
+                        # code...
+                        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+                        if(count($hay)>0){
+                            $apro = UpdateDias::find($hay[0]);
+                            $apro->viernes = $request['horainicio'].'-'.$request['horafin'];
+                            $apro->save();
+                        }else{
+                            Dia::create([
+                                'viernes' => $request['horainicio'].' a '.$request['horafin'],
+                                'grupos_id' => $grupo->id,
+                              ]);
+                        }
+                        break;
+                    case 'Sabado':
+                        # code...
+                        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+                        if(count($hay)>0){
+                            $apro = UpdateDias::find($hay[0]);
+                            $apro->sabado = $request['horainicio'].'-'.$request['horafin'];
+                            $apro->save();
+                        }else{
+                            Dia::create([
+                                'sabado' => $request['horainicio'].' a '.$request['horafin'],
+                                'grupos_id' => $grupo->id,
+                              ]);
+                        }
+                        break;
+                    default:
+                        # code
+                        break;
+                }
+            }
+        }else{
+            $eliG=Dia::where('grupos_id', '=', $grupo->id)->first();
+            $eliG->delete();
+            foreach ($request['dias'] as $dia) {
+                # code...
+                switch ($dia) {
+                    case 'Lunes':
+                        # code...
+                        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+                        if(count($hay)>0){
+                            $apro = UpdateDias::find($hay[0]);
+                            $apro->lunes = $request['horainicio'].'-'.$request['horafin'];
+                            $apro->save();
+                        }else{
+                            Dia::create([
+                                'lunes' => $request['horainicio'].' a '.$request['horafin'],
+                                'grupos_id' => $grupo->id,
+                              ]);
+                        }
+                        break;
+                    case 'Martes':
+                        # code...
+                        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+                        if(count($hay)>0){
+                            $apro = UpdateDias::find($hay[0]);
+                            $apro->martes = $request['horainicio'].'-'.$request['horafin'];
+                            $apro->save();
+                        }else{
+                            Dia::create([
+                                'martes' => $request['horainicio'].' a '.$request['horafin'],
+                                'grupos_id' => $grupo->id,
+                              ]);
+                        }
+                        break;
+                    case 'Miercoles':
+                        # code...
+                        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+                        if(count($hay)>0){
+                            $apro = UpdateDias::find($hay[0]);
+                            $apro->miercoles = $request['horainicio'].'-'.$request['horafin'];
+                            $apro->save();
+                        }else{
+                            Dia::create([
+                                'miercoles' => $request['horainicio'].' a '.$request['horafin'],
+                                'grupos_id' => $grupo->id,
+                              ]);
+                        }
+                        break;
+                    case 'Jueves':
+                        # code...
+                        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+                        if(count($hay)>0){
+                            $apro = UpdateDias::find($hay[0]);
+                            $apro->jueves = $request['horainicio'].'-'.$request['horafin'];
+                            $apro->save();
+                        }else{
+                            Dia::create([
+                                'jueves' => $request['horainicio'].' a '.$request['horafin'],
+                                'grupos_id' => $grupo->id,
+                              ]);
+                        }
+                        break;
+                    case 'Viernes':
+                        # code...
+                        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+                        if(count($hay)>0){
+                            $apro = UpdateDias::find($hay[0]);
+                            $apro->viernes = $request['horainicio'].'-'.$request['horafin'];
+                            $apro->save();
+                        }else{
+                            Dia::create([
+                                'viernes' => $request['horainicio'].' a '.$request['horafin'],
+                                'grupos_id' => $grupo->id,
+                              ]);
+                        }
+                        break;
+                    case 'Sabado':
+                        # code...
+                        $hay=DB::table('dias')->where('grupos_id',$grupo->id)->pluck('id');
+                        if(count($hay)>0){
+                            $apro = UpdateDias::find($hay[0]);
+                            $apro->sabado = $request['horainicio'].'-'.$request['horafin'];
+                            $apro->save();
+                        }else{
+                            Dia::create([
+                                'sabado' => $request['horainicio'].' a '.$request['horafin'],
+                                'grupos_id' => $grupo->id,
+                              ]);
+                        }
+                        break;
+                    default:
+                        # code
+                        break;
+                }
             }
         }
+
         return redirect()->route('grupos.index', $grupo->id)
         ->with('success', 'Horario agregado al grupo');
     }
@@ -435,10 +533,19 @@ class GrupoController extends Controller
                 }
             }
         }
-        UserDoc_Grup::create([
-            'user_id' => $docentes[$request['docente']],
-            'grup_id' => $grupo->id,
-        ]);
+        $hay=DB::table('user_doc__grups')->where('grup_id',$grupo->id)->pluck('id');
+        if(count($hay)==0){
+            UserDoc_Grup::create([
+                'user_id' => $docentes[$request['docente']],
+                'grup_id' => $grupo->id,
+            ]);
+        }else{
+            $eliG=UserDoc_Grup::where('grup_id', '=', $grupo->id)->first();
+            $eliG->delete();UserDoc_Grup::create([
+                'user_id' => $docentes[$request['docente']],
+                'grup_id' => $grupo->id,
+            ]);
+        }
         return redirect()->route('grupos.index', $grupo->id)
         ->with('info', 'Docente agregado al grupo');
     }
@@ -570,10 +677,10 @@ class GrupoController extends Controller
            }
            $arrayFinal[]=$totales;
             $arrayFinal=json_decode(json_encode($arrayFinal),true);
+            $totaldealumnos=DB::table('user_alum__grups')->count();
 
 
-
-            $pdf = \PDF::loadView('grupos.pdfalumo',  compact('today','arrayFinal'));
+            $pdf = \PDF::loadView('grupos.pdfalumo',  compact('today','arrayFinal','totaldealumnos'));
 
             return $pdf->download('Inscripciones.pdf');
          }
@@ -605,9 +712,9 @@ class GrupoController extends Controller
        return view ('grupos.documento', compact('grupo'));
      }
 
-    public function update(GruposUpdateRequest $request, Grupo $grupo)
+    public function update(Request $request, Grupo $grupo)
     {
-        //dd($grupo);
+        dd($grupo);
         $grupo->update($request->all());
         /* TODO:nacho */
         $nivelactual=array_search($grupo->nivel,['I','II',"III","IV","V","VI"]);
@@ -640,8 +747,10 @@ class GrupoController extends Controller
             $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
             $eliG->delete();
         }
-        $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
-        if($eliG!=null){
+        $user=DB::table('unidad__periodos')->where('grup_id',$grupo->id)->pluck('perio_id');
+        for($i=0;$i<count($user);$i++) {
+            # code...
+            $eliG=Unidad_Periodo::where('grup_id', '=', $grupo->id)->first();
             $eliG->delete();
         }
         $eliG=UserDoc_Grup::where('grup_id', '=', $grupo->id)->first();

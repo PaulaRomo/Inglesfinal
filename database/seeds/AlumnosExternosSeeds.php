@@ -186,6 +186,7 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'2','unidad1'=>'100', 'unidad2'=>'100',   'unidad3'=>'100',   'unidad4'=>'90',    'unidad5'=>'100',   'unidad6'=>'100',   'calificaciones_id'=>'55']);
        
 
+
         //TODO: alumnos grupo 1 a
         //usuarios alumnos
         DB::table('users')->insert(['password' => bcrypt('1234'),    'id' => '56',   'name' => 'Anaya Delgado Roque',               'email' => 'alumno_55@gmail.com']);
@@ -255,6 +256,7 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'1',   'unidad2'=>'1',    'unidad3'=>'1',      'unidad4'=>'1',     'unidad5'=>'1',     'calificaciones_id'=>'75']);
         DB::table('calificacion_alumnos')->insert(['nivelActual'=>'1','unidad1'=>'97',  'unidad2'=>'83',    'unidad3'=>'98',    'unidad4'=>'100',   'unidad5'=>'100',   'calificaciones_id'=>'76']);
        
+
         //TODO:
 
         //alumnos grupo CUARTO
@@ -283,7 +285,7 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('users')->insert(['password' => bcrypt('1234'),  'id' => '98',    'name' => 'Rivera Valenzuela Eric Iván',            'email' => 'alumno_78@gmail.com']);
         DB::table('users')->insert(['password' => bcrypt('1234'),  'id' => '99',    'name' => 'Rosales Bobadilla Karen Michelle',       'email' => 'karen-16-esbo@hotmail.com']);
         DB::table('users')->insert(['password' => bcrypt('1234'),  'id' => '100',   'name' => 'Sánchez Kú Alejandra',                   'email' => 'aleku992@gmail.com']);
-        DB::table('users')->insert(['password' => bcrypt('1234'),  'id' => '101',   'name' => 'Sandoval Gómez Silvia',                  'email' => 'silvia143@itszas.edu.mx']);
+        DB::table('users')->insert(['password' => bcrypt('1234'),  'id' => '101',   'name' => 'Sandoval Gómez Silvia',                  'email' => 'chivizduriz@hotmail.com']);
         DB::table('users')->insert(['password' => bcrypt('1234'),  'id' => '102',   'name' => 'Santana Mendoza Jorge',                  'email' => 'jorgesantamen@gmail.com']);
         DB::table('users')->insert(['password' => bcrypt('1234'),  'id' => '103',   'name' => 'Valdez Luna Cristian Antonio',           'email' => 'alumno_79@gmail.com']);
         DB::table('users')->insert(['password' => bcrypt('1234'),  'id' => '104',   'name' => 'Velásquez Robledo Luis Humberto',        'email' => 'lhvr.beto@gmail.com']);
@@ -316,8 +318,8 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('datos_alumnos')->insert(['id' => '97',   'IntExt' => 'Interno',   'sexo' => 'M',  'activo' => '1',    'numcontrol' => 'Z16020179',    'carrera' => 'Ingeniería en Gestión Empresarial',        'semestre'=>'VI',  'user_id' => '98']);
         DB::table('datos_alumnos')->insert(['id' => '98',   'IntExt' => 'Externo',   'sexo' => 'F',  'activo' => '1',    'numcontrol' => 'Externo33',                                                                                'user_id' => '99']);
         DB::table('datos_alumnos')->insert(['id' => '99',   'IntExt' => 'Interno',   'sexo' => 'F',  'activo' => '1',    'numcontrol' => 'Z18020001',    'carrera' => 'Ingeniería en Electromecánica',            'semestre'=>'II',  'user_id' => '100']);
-        DB::table('datos_alumnos')->insert(['id' => '100',  'IntExt' => 'Externo',   'sexo' => 'F',  'activo' => '1',    'numcontrol' => 'Extern100',                                                                               'user_id' => '101']);
-        DB::table('datos_alumnos')->insert(['id' => '101',  'IntExt' => 'Externo',   'sexo' => 'M',  'activo' => '1',    'numcontrol' => 'Externo34',                                                                                'user_id' => '102']);
+        DB::table('datos_alumnos')->insert(['id' => '100',  'IntExt' => 'Externo',   'sexo' => 'F',  'activo' => '1',    'numcontrol' => 'Extern100',                                                                                'user_id' => '101']);
+        DB::table('datos_alumnos')->insert(['id' => '101',  'IntExt' => 'Externo',   'sexo' => 'F',  'activo' => '1',    'numcontrol' => 'Externo34',                                                                                'user_id' => '102']);
         DB::table('datos_alumnos')->insert(['id' => '102',  'IntExt' => 'Externo',   'sexo' => 'M',  'activo' => '1',    'numcontrol' => 'Externo35',                                                                                'user_id' => '103']);
         DB::table('datos_alumnos')->insert(['id' => '103',  'IntExt' => 'Interno',   'sexo' => 'M',  'activo' => '1',    'numcontrol' => 'Z16020213',    'carrera' => 'Ingeniería en Electromecánica',            'semestre'=>'VI',  'user_id' => '104']);
         DB::table('datos_alumnos')->insert(['id' => '104',  'IntExt' => 'Interno',   'sexo' => 'M',  'activo' => '1',    'numcontrol' => 'Z17020017',    'carrera' => 'Ingeniería en Sistemas Computacionales',   'semestre'=>'VI',  'user_id' => '105']);

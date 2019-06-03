@@ -20,6 +20,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'2 "A" ',
@@ -29,6 +30,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'2 "B" ',
@@ -38,6 +40,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>37,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'2 "C" ',
@@ -47,6 +50,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'2 "D" ',
@@ -56,6 +60,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'2 "E" ',
@@ -65,6 +70,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'3 "A" ',
@@ -74,6 +80,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'3 "B" ',
@@ -83,6 +90,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>38,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'3 "C" ',
@@ -92,6 +100,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'4 FS TGO ',
@@ -101,6 +110,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'4 "A"',
@@ -110,6 +120,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'5 "A" ',
@@ -119,6 +130,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'5 "B" ',
@@ -128,6 +140,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'5 "C" ',
@@ -137,6 +150,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'5 "D" ',
@@ -146,6 +160,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'6 "A" ',
@@ -155,6 +170,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'6 FS TGO ',
@@ -164,6 +180,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
         DB::table('grupos')->insert([
             'nombre_grupo'=>'CUARTO',
@@ -173,6 +190,7 @@ class GrupoSeeder extends Seeder
             'capacidad'=>30,
             'instrumentacion'=>'',
   
+
         ]);
     }
 }

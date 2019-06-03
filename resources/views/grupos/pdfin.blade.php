@@ -23,7 +23,7 @@
     </head>
     <body>
       <h1 style="font-size:16px; margin-top: 10px;" ><img style="height:70px; width:70px; margin-top: 20px;" src={{ public_path ('img/logo.png') }} alt=""><br>INSTITUTO TECNOLOGICO SUPERIOR ZACATECAS SUR</h1>
-      <h1 style="font-size:16px;">INGLES</h1>
+      <h1 style="font-size:16px;">INGLÉS</h1>
       <div class="datagrid">
         <TABLE BORDER WIDTH="100%" HEIGHT="10px" align:"center">
             <TR>

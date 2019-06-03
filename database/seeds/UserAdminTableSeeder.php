@@ -13,8 +13,8 @@ class UserAdminTableSeeder extends Seeder
     {
         //
         DB::table('users')->insert([
-            'name'=>'Yarmi',
-            'email'=>'yarmi@gmail.com',
+            'name'=>'Yarmi Lisbet Arellano Bugarin',
+            'email'=>'leng_dzacatecassur@tecnm.mx',
             'password'=>bcrypt('superuser'),
         ]);
     }
