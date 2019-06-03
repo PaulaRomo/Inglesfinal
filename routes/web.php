@@ -78,6 +78,9 @@ Route::middleware(['auth'])->group(function(){
   Route::delete('grupos/{grupo}', 'GrupoController@destroy')->name('grupos.destroy')
   ->middleware('permission:grupos.destroy');
 
+  Route::put('grupos/{grupo}/remove/', 'GrupoController@removeralumno')->name('grupos.removeralumno')
+  ->middleware('permission:grupos.destroy');
+
   Route::get('grupos/{grupo}/edit', 'GrupoController@edit')->name('grupos.edit')
   ->middleware('permission:grupos.edith');
 
@@ -201,6 +204,14 @@ Route::middleware(['auth'])->group(function(){
   ->middleware('permission:alumnos.show');
 
   Route::get('profile', 'ProfileController@profile')
-  ->middleware('permission:alumno.profile');;
+  ->middleware('permission:alumno.profile');
+
+  Route::get('profile', 'ProfileController@profile')
+  ->middleware('permission:alumno.profile');
+
+  Route::post('profile/updatemail', 'ProfileController@updatemail')->name('profile.updatemail')
+  ->middleware('permission:alumno.profile');
+
+  Route::get('alumnos/{alumnos}/documento', 'alumnosController@certificadoview')->name('alumnos.certificadoview');
 
 });

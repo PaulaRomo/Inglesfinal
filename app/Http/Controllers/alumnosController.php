@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Dompdf\Dompdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use File;
+use Filesystem;
 use Alert;
 
 
@@ -126,13 +128,17 @@ class alumnosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, DatosAlumno $alumno)
-    {
-        //dd($request['numcontrol']);
+    {   if($request->hasFile('file')){
+          $file=$request->file('file');
+          $name=time().$file->getClientOriginalName();
+          $file->move(public_path().'/certificados/', $name);
+        }
         $apro = UpdateAlum::find($request['idU']);
         $apro->numcontrol=$request['numcontrol'];
         $apro->sexo=$request['sexo'];
         $apro->carrera=$request['carrera'];
         $apro->semestre=$request['semestre'];
+        $apro->path_certificado=$name;
         $apro->save();
         return redirect()->route('alumnos.index', $alumno->id)
         ->with('success', 'Alumno actualizado');

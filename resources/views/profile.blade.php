@@ -10,10 +10,16 @@
     <div class="row justify-content-center">
         <div class="col-md-10 col-md-offset-1">
             <div class="card">
-                <div class="card-header">Perfil: {{ $user->name }}</div>
+                <div class="card-header">Perfil: {{ $user->name }}
+                    <a target="_blank" href="certificados/{{$datosAlumno->path_certificado}} " style="position:absolute; right:40px;"
+                        class="btn btn-sm btn-primary">
+                          Ver certificado
+                        </a>
+                </div>
                 <div class="card-body">Calificaciones por unidad
                     <div>
                         <table class="table">
+
                             <thead>
                                 <tr>
                                     <th>{{ __('Nivel')  }} </th>
@@ -224,7 +230,35 @@
                         </tr>
                     </tbody>
                 </table>
+
             </div>
+
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-md-offset-1">
+                <div class="card">
+                  <div class="card-header">Correo del alumno</div>
+
+                  <form enctype="multipart/form-data" action="{{ route('profile.updatemail') }}" method="POST">
+                    <label class="col-md-4 col-form-label text-md-right">Actualizar correo</label>
+
+
+                      <br>
+                      <div class="form-group row">
+                          <label for="numcontrol" class="col-md-4 col-form-label text-md-right">{{ __('E-mail: ') }}</label>
+
+                          <div class="col-md-6">
+                              <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $datosAlumno->email}}">
+                          </div>
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <input type="submit" name="upload" value="Actualizar" class="pull-right btn btn-sm btn-primary">
+                      </div>
+
+
+                  </form>
+                </div>
+              </div>
+            </div>
+
         </div>
     </div>
 </div>

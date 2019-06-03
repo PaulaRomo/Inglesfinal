@@ -14,10 +14,10 @@
                       Crear
                     </a>
 
-                  <a style="background-color:#185FC2; border:#185FC2;" href="{{ route ('grupos.pdfalumno')}}"
-                  class="btn btn-sm btn-primary">
-                    Alumnos Inscritos
-                  </a>
+                      <a style="background-color:#185FC2; border:#185FC2;" href="{{ route ('grupos.pdfalumno')}}"
+                      class="btn btn-sm btn-primary">
+                      Alumnos Inscritos
+                    </a>
                   @endcan
               </div>
 

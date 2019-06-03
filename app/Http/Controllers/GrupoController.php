@@ -166,7 +166,6 @@ class GrupoController extends Controller
 
         //dd($alumnosxGrupo);
         $users = User::all();
-        //dd($users);
         //$periodoxunidad = Unidad_Periodo::all()->where('grup_id',$grupo->id);
         $periodoxunidad =DB::table('unidad__periodos')->where('grup_id',$grupo->id)->pluck('Unidades');
         //dd($periodoxunidad);
@@ -719,7 +718,7 @@ class GrupoController extends Controller
 
     public function update(Request $request, Grupo $grupo)
     {
-        dd($grupo);
+
         $grupo->update($request->all());
         /* TODO:nacho */
         $nivelactual=array_search($grupo->nivel,['I','II',"III","IV","V","VI"]);
@@ -739,6 +738,17 @@ class GrupoController extends Controller
      * @param  \App\Grupo  $grupo
      * @return \Illuminate\Http\Response
      */
+
+    public function removeralumno(Request $request){
+        //dd();
+        $act="0";
+        $apro = UpdateAlum::find($request['userId']);
+        $apro->activo = $act;
+        $apro->save();
+        $eliG=UserAlum_Grup::where('user_id', '=', $request['userId'])->first();
+        $eliG->delete();
+        return back()->with('success', 'Eliminado correctamente');
+    }
     public function destroy(Grupo $grupo)
     {
         //

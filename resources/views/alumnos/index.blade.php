@@ -69,6 +69,7 @@
                         <th>Carrera </th>
                         <th>Estado</th>
 
+
                         <th colspan="3">&nbsp;</th>
                       </tr>
                     </thead>
@@ -127,7 +128,6 @@
                               {!! Form::close() !!}
                             @endcan
                           </td>
-
                         </tr>
                       @endforeach
                     </tbody>
