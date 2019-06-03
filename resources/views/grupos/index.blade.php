@@ -27,12 +27,12 @@
                       <tr>
                         <th width="10px">ID</th>
                         <th>Nombre</th>
-                        <th>Período</th>
+                        <th>Periodo</th>
                         <th>Nivel</th>
                         <th>Docente</th>
                         <th>Días</th>
                         <th>Horario</th>
-                        <th>Capacidad</th>
+                        <th>Vacantes</th>
                         <th colspan="3">&nbsp;</th>
                       </tr>
                     </thead>
@@ -301,7 +301,7 @@
                           </div>
 
                           <div class="form-group row">
-                              <label for="periodo" class="col-md-4 col-form-label text-md-right">{{ __('Período: ') }}</label>
+                              <label for="periodo" class="col-md-4 col-form-label text-md-right">{{ __('Periodo: ') }}</label>
 
                               <div class="col-md-3">
                                   <select id="periodo" name="periodo" class="form-control" required autofocus>

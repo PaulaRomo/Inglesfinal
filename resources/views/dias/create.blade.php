@@ -186,7 +186,7 @@
                         <div id='docent' hide>
                             {!! Form::model($grupo,['route'=>['grupos.agreDoc', $grupo->id], 'method'=>'PUT']) !!}
                             {!! Form::label('Docente','Docente') !!}
-                            {!! Form::select('docente', $docentes,null,['placeholder'=>'--Seleccie
+                            {!! Form::select('docente', $docentes,null,['placeholder'=>'--Seleccionar
                             Docente--','id'=>'docentes','required autofocus']) !!}
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

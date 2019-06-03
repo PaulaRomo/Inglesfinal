@@ -86,8 +86,12 @@
                           <td>{{ $user->numcontrol }}</td>
                           <td>{{ $user->sexo }}</td>
                           <td>{{ $user->carrera.' '.$user->semestre }}</td>
+                          @if ($user->activo==1)
+                            <td>Activo</td>
+                          @else
+                            <td>No esta Activo</td>
+                          @endif
 
-                          <td>{{ $user->activo }}</td>
 
                           <td width="10px">
                             @can ('users.show')
