@@ -146,7 +146,6 @@
                                   $nivelac='nivel'.$alumno->nivelActual;
 
                                 @endphp
-                                @if($alumno->$nivelac==null)
                                   <tr>
                                     <th scope="row">
                                       {{$alumno->name}}
@@ -263,7 +262,6 @@
                                       <input type="hidden" name="nivelActual" value="{{$nivelac}}">
                                       <label for="  ">{{$alumno->$nivelac}}</label>
                                     </th>
-                                  @endif
                                 @endforeach
                             @else
                               @if ((count($P1)>1)||(count($P2)>1)||(count($P3)>1))

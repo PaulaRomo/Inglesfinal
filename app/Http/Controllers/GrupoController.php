@@ -142,7 +142,7 @@ class GrupoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource.F
      *
      * @param  \App\Grupo  $grupo
      * @return \Illuminate\Http\Response
