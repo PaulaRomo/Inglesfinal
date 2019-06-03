@@ -205,8 +205,12 @@ Route::middleware(['auth'])->group(function(){
 
   Route::get('profile', 'ProfileController@profile')
   ->middleware('permission:alumno.profile');
-//certificado
-  Route::post('alumnos/{alumnos}/documento/intru', 'alumnosController@certificado')->name('alumnos.certificado');
+
+  Route::get('profile', 'ProfileController@profile')
+  ->middleware('permission:alumno.profile');
+
+  Route::post('profile/updatemail', 'ProfileController@updatemail')->name('profile.updatemail')
+  ->middleware('permission:alumno.profile');
 
   Route::get('alumnos/{alumnos}/documento', 'alumnosController@certificadoview')->name('alumnos.certificadoview');
 

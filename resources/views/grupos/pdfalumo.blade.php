@@ -23,7 +23,7 @@
     </head>
     <body>
       <h1 style="font-size:16px; margin-top: 10px;" ><img style="height:70px; width:70px; margin-top: 20px;" src={{ public_path ('img/logo.png') }} alt=""><br>INSTITUTO TECNOLOGICO SUPERIOR ZACATECAS SUR</h1>
-      <h1 style="font-size:16px;">ALUMNOS INSCRITOS EN INGLES</h1>
+      <h1 style="font-size:16px;">ALUMNOS INSCRITOS EN INGLÉS</h1>
         <div class="datagrid">
 
           <TABLE WIDTH=100% cellpadding="0" cellspacing="0">

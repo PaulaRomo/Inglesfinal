@@ -83,7 +83,7 @@
                                   </div>
                           </div>
                           <div class="form-group row">
-                            <label for="certificado" class="col-md-4 col-form-label text-md-right">{{ __('Certificado: ') }}</label>
+                            <label for="file" class="col-md-4 col-form-label text-md-right">{{ __('Certificado: ') }}</label>
                             <div class="col-md-6">
                               <input class="form-control" type="file" name="file" accept="application/pdf">
                             </div>

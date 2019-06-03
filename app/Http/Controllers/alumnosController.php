@@ -40,24 +40,6 @@ class alumnosController extends Controller
 
     }
 
-    public function certificado(Request $request)
-    {
-      //dd($_FILES["file"]["name"]);
-      $documento=$_FILES["file"]["tmp_name"];
-      $destino="certificados/".$_FILES["file"]["name"];
-      move_uploaded_file($documento,$destino);
-      $guardar=UpdateAlum::find($user->user_id);
-      $guardar->path_certificado=$destino;
-      $guardar->save();
-      return redirect()->route('alumnos.index', $user->user_id)
-      ->with('success', 'Certificado subido');
-    }
-
-    public function certificadoview($id)
-    {
-      return view ('alumnos.certificado', compact('user'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -146,13 +128,17 @@ class alumnosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, DatosAlumno $alumno)
-    {
+    {   if($request->hasFile('file')){
+          $file=$request->file('file');
+          $name=time().$file->getClientOriginalName();
+          $file->move(public_path().'/certificados/', $name);
+        }
         $apro = UpdateAlum::find($request['idU']);
         $apro->numcontrol=$request['numcontrol'];
         $apro->sexo=$request['sexo'];
         $apro->carrera=$request['carrera'];
         $apro->semestre=$request['semestre'];
-        //$apro->path_certificado=$destino;
+        $apro->path_certificado=$name;
         $apro->save();
         return redirect()->route('alumnos.index', $alumno->id)
         ->with('success', 'Alumno actualizado');
