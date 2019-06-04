@@ -105,45 +105,43 @@
               <td style="border: black .5px solid;">{{$final[$num]->numcontrol}}</td>
           		<td style="border: black .5px solid;">{{$alumno->name}}</td>
           		<td style="border: black .5px solid;"><center>{{$final[$num]->carrera}} {{$final[$num]->semestre}}</center></td>
-              @if ($alumno->unidad1<70)
+              @if ($alumno->unidad1<70 && $alumno->unidad1>0)
                 <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
               @else
                 <td style="border: black .5px solid;"><center>{{$alumno->unidad1}}</center></td>
               @endif
-              @if ($alumno->unidad2<70)
+              @if ($alumno->unidad2<70 && $alumno->unidad2>0)
                 <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
               @else
                 <td style="border: black .5px solid;"><center>{{$alumno->unidad2}}</center></td>
               @endif
-              @if ($alumno->unidad3<70)
+              @if ($alumno->unidad3<70 && $alumno->unidad3>0)
                 <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
               @else
                 <td style="border: black .5px solid;"><center>{{$alumno->unidad3}}</center></td>
               @endif
-              @if ($alumno->unidad4<70)
+              @if ($alumno->unidad4<70 && $alumno->unidad4>0)
                 <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
               @else
                 <td style="border: black .5px solid;"><center>{{$alumno->unidad4}}</center></td>
               @endif
-              @if ($alumno->unidad5<70)
+              @if ($alumno->unidad5<70 && $alumno->unidad5>0)
                 <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
               @else
                 <td style="border: black .5px solid;"><center>{{$alumno->unidad5}}</center></td>
               @endif
-              @if ($alumno->unidad6<70)
+              @if ($alumno->unidad6<70 && $alumno->unidad6>0)
                 <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
               @else
                 <td style="border: black .5px solid;"><center>{{$alumno->unidad6}}</center></td>
               @endif
-              @if ($alumno->unidad7<70)
+              @if ($alumno->unidad7<70 && $alumno->unidad7>0)
                 <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
               @else
                 <td style="border: black .5px solid;"><center>{{$alumno->unidad7}}</center></td>
               @endif
-              @if (($alumno->unidad8<70)&&($alumno->unidad8>1))
+              @if (($alumno->unidad8<70)&&($alumno->unidad8>0))
                 <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>
-              @elseif (($alumno->unidad8)==0)
-                <td style="border: black .5px solid;"><center></center></td>
               @else
                 <td style="border: black .5px solid;"><center>{{$alumno->unidad8}}</center></td>
               @endif

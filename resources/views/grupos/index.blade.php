@@ -271,7 +271,7 @@
                                       @can ('grupos.show')
                                         <a href="{{ route('grupos.pdf', $grupo->id) }}"
                                         class="btn btn-sm btn-primary">
-                                          PDF
+                                          ReporteCalificaciones
                                         </a>
                                       @endcan
                                     </td>
