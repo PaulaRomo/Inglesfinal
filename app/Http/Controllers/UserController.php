@@ -186,7 +186,7 @@ class UserController extends Controller
                 $eliA->delete();
             }
             $user->delete();
-            return back()->with('info', 'Eliminado correctamente');
+            return back()->with('success', 'Eliminado correctamente');
         }
         $idUser=DB::table('Datos_Docentes')->where('user_id',$user->id)->pluck('id');
         if(count($idUser)>0){
@@ -199,7 +199,7 @@ class UserController extends Controller
                 $eliD->delete();
             }
             $user->delete();
-            return back()->with('info', 'Eliminado correctamente');
+            return back()->with('success', 'Eliminado correctamente');
         }
         $idUser=DB::table('users')->where('id',$user->id)->pluck('id');
         if(count($idUser)>0){
