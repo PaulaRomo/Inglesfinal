@@ -35,7 +35,7 @@ class GrupoController extends Controller
         $hay=DB::table('datos_docentes')->where('user_id',$user->id)->pluck('id');
         if(count($hay)>0){
             $grupos = Grupo::all();
-            return view ('grupos.index', compact('grupos'));   
+            return view ('grupos.index', compact('grupos'));
         }else{
             $grupos = Grupo::paginate(10);
             return view ('grupos.index', compact('grupos'));
@@ -312,7 +312,7 @@ class GrupoController extends Controller
                         # code
                         break;
                 }
-            } 
+            }
         }else{
             $eliG=Dia::where('grupos_id', '=', $grupo->id)->first();
             $eliG->delete();
@@ -407,9 +407,9 @@ class GrupoController extends Controller
                         # code
                         break;
                 }
-            } 
+            }
         }
-        
+
         return redirect()->route('grupos.index', $grupo->id)
         ->with('success', 'Horario agregado al grupo');
     }
@@ -588,7 +588,7 @@ class GrupoController extends Controller
             $today = Carbon::now()->format('d/m/Y');
             $pdf = \PDF::loadView('grupos.pdfin',  compact('grupo','today','alumnosxGrupo','final'));
 
-            return $pdf->download('ejemplo.pdf');
+            return $pdf->download('ReporteFinal'.$grupo->nombre_grupo.'.pdf');
         }
 
         public function pdfalumno()
@@ -729,7 +729,7 @@ class GrupoController extends Controller
         ->where('user_alum__grups.grup_id','=',$grupo->id)->update([ 'nivelActual' => $nivelactual ]);
         //dd($var->get());
         return redirect()->route('grupos.index', $grupo->id)
-        ->with('success', 'Grupo actualizado');
+        ->with('success', 'Instrumentación agregada');
     }
 
     /**
