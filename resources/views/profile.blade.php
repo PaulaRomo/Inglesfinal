@@ -40,82 +40,120 @@
                                     $ultimaRv=0
                                     @endphp
                                     <th> {{$datosAlumno->calificaciones->nivelActual}}</th>
-
-                                    <th scope="row">@if ($datosAlumno->calificaciones->unidad1!=null)
-                                        {{$datosAlumno->calificaciones->unidad1}}
-                                        @php
-                                        $ultimaRv=1
-                                        @endphp
+                                    <th scope="row">
+                                        @if ($datosAlumno->calificaciones->unidad1!=null)
+                                            @if ($datosAlumno->calificaciones->unidad1>69)
+                                                {{$datosAlumno->calificaciones->unidad1}}
+                                                @php
+                                                    $ultimaRv=1
+                                                @endphp
+                                            @else
+                                                NA
+                                            @endif
                                         @else
                                         Sin Calificar
 
                                         @endif
                                     </th>
-                                    <th scope="row">@if ($datosAlumno->calificaciones->unidad2!=null)
-                                        {{$datosAlumno->calificaciones->unidad2}}
-                                        @php
-                                        $ultimaRv=2
-                                        @endphp
+                                    <th scope="row">
+                                        @if ($datosAlumno->calificaciones->unidad2!=null)
+                                            @if ($datosAlumno->calificaciones->unidad2>69)
+                                                {{$datosAlumno->calificaciones->unidad2}}
+                                                @php
+                                                    $ultimaRv=2
+                                                @endphp
+                                            @else
+                                                NA
+                                            @endif
+                                        @else
+                                            Sin Calificar
+                                        @endif
+                                    </th>
+                                    <th scope="row">
+                                        @if ($datosAlumno->calificaciones->unidad3!=null)
+                                            @if ($datosAlumno->calificaciones->unidad3>69)
+                                                {{$datosAlumno->calificaciones->unidad3}}
+                                                @php
+                                                    $ultimaRv=3
+                                                @endphp
+                                            @else
+                                                NA
+                                            @endif
                                         @else
                                         Sin Calificar
 
                                         @endif
                                     </th>
-                                    <th scope="row">@if ($datosAlumno->calificaciones->unidad3!=null)
-                                        {{$datosAlumno->calificaciones->unidad3}}
-                                        @php
-                                        $ultimaRv=3
-                                        @endphp
+                                    <th scope="row">
+                                        @if ($datosAlumno->calificaciones->unidad4!=null)
+                                            @if ($datosAlumno->calificaciones->unidad4>69)
+                                                {{$datosAlumno->calificaciones->unidad4}}
+                                                @php
+                                                    $ultimaRv=4
+                                                @endphp
+                                            @else
+                                                NA
+                                            @endif
                                         @else
                                         Sin Calificar
 
                                         @endif
                                     </th>
-                                    <th scope="row">@if ($datosAlumno->calificaciones->unidad4!=null)
-                                        {{$datosAlumno->calificaciones->unidad4}}
-                                        @php
-                                        $ultimaRv=4
-                                        @endphp
+                                    <th scope="row">
+                                        @if ($datosAlumno->calificaciones->unidad5!=null)
+                                            @if ($datosAlumno->calificaciones->unidad5>69)
+                                                {{$datosAlumno->calificaciones->unidad5}}
+                                                @php
+                                                    $ultimaRv=5
+                                                @endphp
+                                            @else
+                                                NA
+                                            @endif
                                         @else
                                         Sin Calificar
 
                                         @endif
                                     </th>
-                                    <th scope="row">@if ($datosAlumno->calificaciones->unidad5!=null)
-                                        {{$datosAlumno->calificaciones->unidad5}}
-                                        @php
-                                        $ultimaRv=5
-                                        @endphp
+                                    <th scope="row">
+                                        @if ($datosAlumno->calificaciones->unidad6!=null)
+                                            @if ($datosAlumno->calificaciones->unidad6>69)
+                                                {{$datosAlumno->calificaciones->unidad6}}
+                                                @php
+                                                    $ultimaRv=6
+                                                @endphp
+                                            @else
+                                                NA
+                                            @endif
                                         @else
                                         Sin Calificar
 
                                         @endif
                                     </th>
-                                    <th scope="row">@if ($datosAlumno->calificaciones->unidad6!=null)
-                                        {{$datosAlumno->calificaciones->unidad6}}
-                                        @php
-                                        $ultimaRv=6
-                                        @endphp
+                                    <th scope="row">
+                                        @if ($datosAlumno->calificaciones->unidad7!=null)
+                                            @if ($datosAlumno->calificaciones->unidad7>69)
+                                            {{$datosAlumno->calificaciones->unidad7}}
+                                                @php
+                                                    $ultimaRv=7
+                                                @endphp
+                                            @else
+                                                NA
+                                            @endif
                                         @else
                                         Sin Calificar
 
                                         @endif
                                     </th>
-                                    <th scope="row">@if ($datosAlumno->calificaciones->unidad7!=null)
-                                        {{$datosAlumno->calificaciones->unidad7}}
-                                        @php
-                                        $ultimaRv=7
-                                        @endphp
-                                        @else
-                                        Sin Calificar
-
-                                        @endif
-                                    </th>
-                                    <th scope="row">@if ($datosAlumno->calificaciones->unidad8!=null)
-                                        {{$datosAlumno->calificaciones->unidad8}}
-                                        @php
-                                        $ultimaRv=8
-                                        @endphp
+                                    <th scope="row">
+                                        @if ($datosAlumno->calificaciones->unidad8!=null)
+                                            @if ($datosAlumno->calificaciones->unidad8>69)
+                                                {{$datosAlumno->calificaciones->unidad8}}
+                                                @php
+                                                    $ultimaRv=8
+                                                @endphp
+                                            @else
+                                                NA
+                                            @endif
                                         @else
                                         Sin Calificar
 
