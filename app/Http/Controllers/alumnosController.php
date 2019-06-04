@@ -54,7 +54,7 @@ class alumnosController extends Controller
     {
       $carre=$request['carrera'];
       $seme=$request['semestre'];
-      $gru=$request['carrera']." ".$request['semestre'];
+      $gru=$request['carrera'];
       $datos=DatosAlumno::all();
       $final=[];
       $cali=CalificacionAlumno::all();

@@ -27,7 +27,7 @@
       <div class="datagrid">
         <TABLE BORDER WIDTH="100%" HEIGHT="10px" align:"center">
             <TR>
-              <TD style="font-weight: bold; text-align:center;">NIVEL</TD> <TD style="text-align:center;">{{$grupo['nombre_grupo']}} {{$grupo['nivel']}}</TD><TD style="font-weight: bold; text-align:center;">PROFESOR</TD> <TD style="text-align:center;"><?php
+              <TD style="font-weight: bold; text-align:center;">NIVEL</TD> <TD style="text-align:center;">{{$grupo['nombre_grupo']}} </TD><TD style="font-weight: bold; text-align:center;">PROFESOR</TD> <TD style="text-align:center;"><?php
                 $idUs=DB::table('user_doc__grups')->where('grup_id',$grupo->id)->pluck('user_id');
                 if(count($idUs)>0){
                   $idUser=DB::table('users')->where('id',$idUs[0])->pluck('name');

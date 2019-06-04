@@ -94,6 +94,9 @@
                             }
                           ?>
                         </td>
+                        <td>
+                          {{$horario}}
+                        </td>
                       </tr>
                   </tbody>
                 </table>
@@ -105,7 +108,7 @@
                   <h4>Alumnos</h4>
                 </div>
                 @if(count($Peri)==0)
-                    <b><p>Los Alumnos no se mostraran, hasta que se agregen las unidades a calificar por periodo</p></b>
+                    <b><p>Los Alumnos no se le mostraran al docente hasta que se agregen las unidades a calificar por periodo</p></b>
                 @endif
                 @can ('grupos.index')
                   <?php

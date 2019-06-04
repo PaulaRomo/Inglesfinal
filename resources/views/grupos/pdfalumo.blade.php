@@ -41,7 +41,7 @@
           <thead>
             @foreach ($arrayFinal as $key => $value)
               <tr>
-                  <td style="border: black .5px solid;">{{ $value['nombre_grupo'].$value['nivel'] }}</td>
+                  <td style="border: black .5px solid;">{{ $value['nombre_grupo'] }}</td>
                   <td style="border: black .5px solid;">{{ $value['alumnos'] }}</td>
               		<td style="border: black .5px solid;">{{ $value['alumnas'] }}</td>
               		<td style="border: black .5px solid;">{{ $value['alumnosex'] }}<center></center></td>
