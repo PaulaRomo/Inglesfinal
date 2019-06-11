@@ -62,7 +62,7 @@ class alumnosController extends Controller
       $finalcali=[];
       $al=[];
       foreach ($datos as $key => $value) {
-        if ($value['carrera']==$carre && $value['semestre']==$seme) {
+        if ($value['carrera']==$carre && $value['semestre']==$seme && $value['activo']!='') {
           foreach ($cali as $ke => $va) {
             if ($va['calificaciones_id']==$value['user_id']) {
               foreach ($user as $k => $v) {
@@ -77,6 +77,7 @@ class alumnosController extends Controller
         }
       }
       $today = Carbon::now()->format('d/m/Y');
+
       $pdf = \PDF::loadView('alumnos.pdfCarrera',  compact('today','final','gru','finalcali','al'));
       return $pdf->download('Reporte de ingles de '.$carre.' '.$seme.'.pdf');
     }

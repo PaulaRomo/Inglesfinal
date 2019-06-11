@@ -509,7 +509,7 @@ class GrupoController extends Controller
                     'unidad4'=>null,
                     ]);
                     return redirect()->route('grupos.index', $grupo->id)
-                    ->with('info', 'Alumno agregado al grupo');
+                    ->with('success', 'Alumno agregado al grupo');
                 }else{
                     Alert::error('Error', 'Alumno ya registrado a un grupo');
                 }
@@ -551,7 +551,7 @@ class GrupoController extends Controller
             ]);
         }
         return redirect()->route('grupos.index', $grupo->id)
-        ->with('info', 'Docente agregado al grupo');
+        ->with('success', 'Docente agregado al grupo');
     }
 
    public function pdf(Grupo $grupo)
@@ -708,7 +708,7 @@ class GrupoController extends Controller
        $guardar->instrumentacion=$destino;
        $guardar->save();
        return redirect()->route('grupos.index', $grupo->id)
-       ->with('info', 'Grupo actualizado');
+       ->with('success', 'Grupo actualizado');
      }
 
      public function docu(Grupo $grupo)
