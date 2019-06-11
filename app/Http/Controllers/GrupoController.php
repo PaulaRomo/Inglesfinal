@@ -16,6 +16,7 @@ use App\DatosAlumno;
 use App\Periodo;
 use Illuminate\Http\Request;
 use App\Http\Requests\GruposCreateRequest;
+use App\Http\Requests\FileRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Alert;
@@ -698,9 +699,18 @@ class GrupoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function documentacion(Request $request, Grupo $grupo)
+     public function documentacion(FileRequest $request, Grupo $grupo)
      {
        //dd($_FILES["file"]["name"]);
+       $validacion = Validator::make($inputs->all(), [
+        'archivoExamenMedicoDetalle'=> 'max:2560',//indicamos el valor maximo
+]);
+
+if ($validacion->fails()) {
+   return ('Supera el tamaño máximo permitido.');
+} else {
+  //aquí en el caso de que este todo bien
+}
        $documento=$_FILES["file"]["tmp_name"];
        $destino="instrumentacion/".$_FILES["file"]["name"];
        move_uploaded_file($documento,$destino);

@@ -85,7 +85,12 @@
                           <div class="form-group row">
                             <label for="file" class="col-md-4 col-form-label text-md-right">{{ __('Certificado: ') }}</label>
                             <div class="col-md-6">
-                              <input class="form-control" type="file" name="file" accept="application/pdf">
+                              <input class="form-control{{ $errors->has('file') ? ' is-invalid' : '' }}" type="file" name="file" accept="application/pdf">
+                              @if ($errors->has('file'))
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $errors->first('file') }}</strong>
+                                  </span>
+                              @endif
                             </div>
                           </div>
 

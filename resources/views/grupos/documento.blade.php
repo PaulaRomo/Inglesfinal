@@ -13,7 +13,12 @@
                         @csrf
 
                          <div class="form-group">
-                             <input type="file" class="form-control" name="file" accept="application/pdf">
+                             <input type="file" class="form-control{{ $errors->has('file') ? ' is-invalid' : '' }}" name="file" accept="application/pdf">
+                             @if ($errors->has('file'))
+                                 <span class="invalid-feedback" role="alert">
+                                     <strong>{{ $errors->first('file') }}</strong>
+                                 </span>
+                             @endif
                            </div>
                          </div>
 
