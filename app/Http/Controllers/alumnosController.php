@@ -7,6 +7,7 @@ use App\UpdateAlum;
 use App\CalificacionAlumno;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
+use App\Http\Requests\FileRequest;
 use Dompdf\Dompdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -128,7 +129,7 @@ class alumnosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DatosAlumno $alumno)
+    public function update(FileRequest $request, DatosAlumno $alumno)
     {   if($request->hasFile('file')){
           $file=$request->file('file');
           $name=time().$file->getClientOriginalName();
