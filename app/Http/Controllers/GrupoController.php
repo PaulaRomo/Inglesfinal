@@ -743,14 +743,19 @@ class GrupoController extends Controller
 
      public function removeralumno(Request $request){
          //dd($request['userId']);
-         $act="0";
-         $id=DB::table('datos_alumnos')->where('user_id',$request['userId'])->pluck('id');
-         $apro = UpdateAlum::find($id[0]);
-         $apro->activo = $act;
-         $apro->save();
          $eliG=UserAlum_Grup::where('user_id', '=', $request['userId'])->first();
-         $eliG->delete();
-         return back()->with('success', 'Alumno eliminado del grupo correctamente');
+          if($eliG!=null){
+           $act="0";
+           $id=DB::table('datos_alumnos')->where('user_id',$request['userId'])->pluck('id');
+           $apro = UpdateAlum::find($id[0]);
+           $apro->activo = $act;
+           $apro->save();
+           $eliG=UserAlum_Grup::where('user_id', '=', $request['userId'])->first();
+           $eliG->delete();
+           return back()->with('success', 'Alumno eliminado del grupo correctamente');
+         }else {
+           return back()->with('info', 'Alumno ya fue eliminado');
+         }
      }
      public function destroy(Grupo $grupo)
      {
