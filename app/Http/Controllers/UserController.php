@@ -68,28 +68,26 @@ class UserController extends Controller
     {
         $user = User::create($request->all());
         $us=DB::table('users')->where('name',$request['name'])->pluck('id');
-        \App\DatosAlumno::create([
-            'IntExt'=>$request['IntExt'],
-            'numcontrol' => $request['numcontrol'],
-            'sexo'=>$request['sexo'],
-            'activo'=>'randol',
-            'carrera'=>$request['carrera'],
-            'semestre'=>$request['semestre'],
-            'user_id'=>$us[0]
-        ]);
-        \App\Roles::create([
-            'role_id'=>3,
-            'user_id'=>$us[0]
-        ]);
+        $dalum= new DatosAlumno();
+            $dalum->IntExt=$request->input('IntExt');
+            $dalum->numcontrol=$request->input('numcontrol');
+            $dalum->sexo=$request->input('sexo');
+            $dalum->activo='randol';
+            $dalum->carrera=$request->input('carrera');
+            $dalum->semestre=$request->input('semestre');
+            $dalum->user_id=$us[0];
+            $dalum->save();
+
+        $rol= new Roles();
+            $rol->role_id=3;
+            $rol->user_id=$us[0];
+            $rol->save();
         /* TODO: crear calificaciones de alumno */
-        CalificacionAlumno::create([
-            'calificaciones_id'=>$us[0]
-        ]);
+        $cali=new CalificacionAlumno();
+            $cali->calificaciones_id=$us[0];
+            $cali->save();
 
 
-        //$user=DB::table('users');
-        $user = User::paginate(10);
-        //dd($user);
         return redirect()->route('users.index', $user)
         ->with('success', 'Usuario guardado');
     }
