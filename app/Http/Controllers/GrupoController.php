@@ -742,20 +742,17 @@ class GrupoController extends Controller
      */
 
      public function removeralumno(Request $request){
-         //dd($request['userId']);
-         $eliG=UserAlum_Grup::where('user_id', '=', $request['userId'])->first();
-          if($eliG!=null){
-            $user=DB::table('user_alum__grups')->where('user_id',$request['userId'])->pluck('user_id');
-            for($i=0;$i<count($user);$i++) {
-                # code...
-                $act="0";
-                $id=DB::table('datos_alumnos')->where('user_id',$user[$i])->pluck('id');
-                $apro = UpdateAlum::find($id[0]);
-                $apro->activo = $act;
-                $apro->save();
-                $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
-                $eliG->delete();
-            }
+          //dd($request['userId']);
+          $hay=DB::table('user_alum__grups')->where('user_id',$request['userId'])->pluck('user_id');
+          if(count($hay)>0){
+           $act="0";
+           $id=DB::table('datos_alumnos')->where('user_id',$request['userId'])->pluck('id');
+           //dd($id[0]);
+           $apro = UpdateAlum::find($id[0]);
+           $apro->activo = $act;
+           $apro->save();
+           $eliG=UserAlum_Grup::where('user_id', '=', $request['userId'])->first();
+           $eliG->delete();
            return back()->with('success', 'Alumno eliminado del grupo correctamente');
          }else {
            return back()->with('info', 'Alumno ya fue eliminado');
