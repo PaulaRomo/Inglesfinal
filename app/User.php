@@ -50,13 +50,6 @@ class User extends Authenticatable
 
     }
 
-    public function setPasswordAttribute($Valor){
-        if(!empty($Valor)){
-            $this -> attributes['password'] =\Hash::make($Valor);
-        }
-    }
-
-
 /*  TODO:*/
 
 /* TODO: Busca alumnos */
