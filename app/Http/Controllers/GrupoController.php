@@ -752,7 +752,28 @@ class GrupoController extends Controller
            $apro->save();
            $eliG=UserAlum_Grup::where('user_id', '=', $request['userId'])->first();
            $eliG->delete();
-           return back()->with('success', 'Alumno eliminado del grupo correctamente');
+
+
+           $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
+
+           //dd($alumnosxGrupo);
+           $users = User::all();
+           //$periodoxunidad = Unidad_Periodo::all()->where('grup_id',$grupo->id);
+           $periodoxunidad =DB::table('unidad__periodos')->where('grup_id',$grupo->id)->pluck('Unidades');
+           //dd($periodoxunidad);
+           $P1=[];
+           $P2=[];
+           $P3=[];
+           if(count($periodoxunidad)>=1){
+               $P1=explode(",", $periodoxunidad[0]);
+           }if(count($periodoxunidad)>=2){
+               $P2=explode(",", $periodoxunidad[1]);
+           }if(count($periodoxunidad)>=3){
+               $P3=explode(",", $periodoxunidad[2]);
+           }
+           $FechaPeri = Periodo::all();
+           return view('grupos.show', compact('grupo','users','alumnosxGrupo','P1','P2','P3','FechaPeri'))
+           ->with('success', 'Alumno eliminado del grupo correctamente');
          }else {
            return back()->with('info', 'Alumno ya fue eliminado');
          }
