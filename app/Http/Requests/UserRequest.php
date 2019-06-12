@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FileRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,14 +25,9 @@ class FileRequest extends FormRequest
     {
         return [
             //
-            'file' => 'max:1024'
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ];
     }
-    public function messages()
-{
-    return [
-        'file.required' => 'No ha seleccionado ningun archivo.',
-        'file.max' => 'El archivo es demasiado pesado, debe pesar menos de :max kb.',
-    ];
-}
 }

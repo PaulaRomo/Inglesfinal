@@ -10,11 +10,13 @@ use App\UserAlum_Grup;
 use App\UserDoc_Grup;
 use App\CalificacionAlumno;
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserRequest;
 use App\Http\Requests\AlumnosCreateRequest;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Alert;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -82,7 +84,7 @@ class UserController extends Controller
             $rol->role_id=3;
             $rol->user_id=$us[0];
             $rol->save();
-        /* TODO: crear calificaciones de alumno */
+        /* crear calificaciones de alumno */
         $cali=new CalificacionAlumno();
             $cali->calificaciones_id=$us[0];
             $cali->save();
@@ -96,23 +98,26 @@ class UserController extends Controller
     {
         $user = User::create($request->all());
         $us=DB::table('users')->where('name',$request['name'])->pluck('id');
-        \App\DatosDocente::create([
-            'numcontrol' => $request['numcontrol'],
-            'user_id'=>$us[0]
-        ]);
-        \App\Roles::create([
-            'role_id'=>2,
-            'user_id'=>$us[0]
-        ]);
-        $user = User::paginate(10);
-        //dd($user);
+        $ddatos=new DatosDocente();
+            $ddatos->numcontrol = $request->input('numcontrol');
+            $ddatos->user_id=$us[0];
+            $ddatos->save();
+        $rol= new Roles();
+            $rol->role_id=2;
+            $rol->user_id=$us[0];
+            $rol->save(0);
+
         return redirect()->route('users.index', $user)
         ->with('success', 'Usuario guardado');
     }
-    public function storeU(UserCreateRequest $request)
+    public function storeU(UserRequest $request)
     {
-        $user = User::create($request->all());
-        $user = User::paginate(10);
+        $user = new User();
+        $user -> name =$request->input('name');
+        $user -> email =$request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+
         return redirect()->route('users.index', $user)
         ->with('success', 'Usuario guardado');
     }

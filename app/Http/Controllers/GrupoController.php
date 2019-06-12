@@ -749,49 +749,51 @@ if ($validacion->fails()) {
      * @return \Illuminate\Http\Response
      */
 
-    public function removeralumno(Request $request){
-        //dd();
-        $act="0";
-        $apro = UpdateAlum::find($request['userId']);
-        $apro->activo = $act;
-        $apro->save();
-        $eliG=UserAlum_Grup::where('user_id', '=', $request['userId'])->first();
-        $eliG->delete();
-        return back()->with('success', 'Eliminado correctamente');
-    }
-    public function destroy(Grupo $grupo)
-    {
-        //
-        //dd($grupo);
-        // example:
-        // example:
+     public function removeralumno(Request $request){
+         //dd($request['userId']);
+         $act="0";
+         $id=DB::table('datos_alumnos')->where('user_id',$request['userId'])->pluck('id');
+         $apro = UpdateAlum::find($id[0]);
+         $apro->activo = $act;
+         $apro->save();
+         $eliG=UserAlum_Grup::where('user_id', '=', $request['userId'])->first();
+         $eliG->delete();
+         return back()->with('success', 'Eliminado correctamente');
+     }
+     public function destroy(Grupo $grupo)
+     {
+         //
+         //dd($grupo);
+         // example:
+         // example:
 
-        $user=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
-        for($i=0;$i<count($user);$i++) {
-            # code...
-            $act="0";
-            $apro = UpdateAlum::find($user[$i]);
-            $apro->activo = $act;
-            $apro->save();
-            $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
-            $eliG->delete();
-        }
-        $user=DB::table('unidad__periodos')->where('grup_id',$grupo->id)->pluck('perio_id');
-        for($i=0;$i<count($user);$i++) {
-            # code...
-            $eliG=Unidad_Periodo::where('grup_id', '=', $grupo->id)->first();
-            $eliG->delete();
-        }
-        $eliG=UserDoc_Grup::where('grup_id', '=', $grupo->id)->first();
-        if($eliG!=null){
-            $eliG->delete();
-        }
-        $eliG=Dia::where('grupos_id', '=', $grupo->id)->first();
-        if($eliG!=null){
-            $eliG->delete();
-        }
-        $grupo->delete();
+         $user=DB::table('user_alum__grups')->where('grup_id',$grupo->id)->pluck('user_id');
+         for($i=0;$i<count($user);$i++) {
+             # code...
+             $act="0";
+             $id=DB::table('datos_alumnos')->where('user_id',$user[$i])->pluck('id');
+             $apro = UpdateAlum::find($id[0]);
+             $apro->activo = $act;
+             $apro->save();
+             $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();
+             $eliG->delete();
+         }
+         $user=DB::table('unidad__periodos')->where('grup_id',$grupo->id)->pluck('perio_id');
+         for($i=0;$i<count($user);$i++) {
+             # code...
+             $eliG=Unidad_Periodo::where('grup_id', '=', $grupo->id)->first();
+             $eliG->delete();
+         }
+         $eliG=UserDoc_Grup::where('grup_id', '=', $grupo->id)->first();
+         if($eliG!=null){
+             $eliG->delete();
+         }
+         $eliG=Dia::where('grupos_id', '=', $grupo->id)->first();
+         if($eliG!=null){
+             $eliG->delete();
+         }
+         $grupo->delete();
 
-        return back()->with('success', 'Eliminado correctamente');
-    }
+         return back()->with('success', 'Eliminado correctamente');
+     }
 }
