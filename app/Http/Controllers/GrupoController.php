@@ -701,21 +701,13 @@ class GrupoController extends Controller
 
      public function documentacion(FileRequest $request, Grupo $grupo)
      {
-       //dd($_FILES["file"]["name"]);
-       $validacion = Validator::make($inputs->all(), [
-        'archivoExamenMedicoDetalle'=> 'max:2560',//indicamos el valor maximo
-]);
-
-if ($validacion->fails()) {
-   return ('Supera el tamaño máximo permitido.');
-} else {
-  //aquí en el caso de que este todo bien
-}
-       $documento=$_FILES["file"]["tmp_name"];
-       $destino="instrumentacion/".$_FILES["file"]["name"];
-       move_uploaded_file($documento,$destino);
+       if($request->hasFile('file')){
+             $file=$request->file('file');
+             $name=time().$file->getClientOriginalName();
+             $file->move(public_path().'/instrumentacion/', $name);
+           }
        $guardar=updateGrupos::find($grupo->id);
-       $guardar->instrumentacion=$destino;
+       $guardar->instrumentacion=$name;
        $guardar->save();
        return redirect()->route('grupos.index', $grupo->id)
        ->with('success', 'Grupo actualizado');
@@ -758,7 +750,7 @@ if ($validacion->fails()) {
          $apro->save();
          $eliG=UserAlum_Grup::where('user_id', '=', $request['userId'])->first();
          $eliG->delete();
-         return back()->with('success', 'Eliminado correctamente');
+         return back()->with('success', 'Alumno eliminado del grupo correctamente');
      }
      public function destroy(Grupo $grupo)
      {
@@ -794,6 +786,6 @@ if ($validacion->fails()) {
          }
          $grupo->delete();
 
-         return back()->with('success', 'Eliminado correctamente');
+         return back()->with('success', 'Grupo eliminado correctamente');
      }
 }

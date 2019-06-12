@@ -133,13 +133,15 @@ class alumnosController extends Controller
           $file=$request->file('file');
           $name=time().$file->getClientOriginalName();
           $file->move(public_path().'/certificados/', $name);
+          $apro = UpdateAlum::find($request['idU']);
+          $apro->path_certificado=$name;
+          $apro->save();
         }
         $apro = UpdateAlum::find($request['idU']);
         $apro->numcontrol=$request['numcontrol'];
         $apro->sexo=$request['sexo'];
         $apro->carrera=$request['carrera'];
         $apro->semestre=$request['semestre'];
-        $apro->path_certificado=$name;
         $apro->save();
         return redirect()->route('alumnos.index', $alumno->id)
         ->with('success', 'Alumno actualizado');

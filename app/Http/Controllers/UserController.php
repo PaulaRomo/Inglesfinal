@@ -105,7 +105,7 @@ class UserController extends Controller
         $rol= new Roles();
             $rol->role_id=2;
             $rol->user_id=$us[0];
-            $rol->save(0);
+            $rol->save();
 
         return redirect()->route('users.index', $user)
         ->with('success', 'Usuario guardado');
