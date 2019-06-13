@@ -5,15 +5,10 @@ use App\DatosAlumno;
 use App\User;
 use App\UpdateAlum;
 use App\CalificacionAlumno;
-use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Requests\FileRequest;
-use Dompdf\Dompdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use File;
-use Filesystem;
-use Alert;
 
 
 class alumnosController extends Controller

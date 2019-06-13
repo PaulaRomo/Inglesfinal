@@ -19,6 +19,8 @@ use App\Http\Requests\GruposCreateRequest;
 use App\Http\Requests\FileRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Alert;
 use Auth;
 
@@ -569,12 +571,26 @@ class GrupoController extends Controller
         }
         $today = Carbon::now()->format('d/m/Y');
         $pdf = \PDF::loadView('grupos.pdf',  compact('grupo','today','alumnosxGrupo','final'));
-
         return $pdf->download('Reporte del grupo '.$grupo->nombre_grupo.'.pdf');
+
+    }
+
+    public function excel(Grupo $grupo)
+    {
+        $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
+        $data=[];
+        foreach ($alumnosxGrupo as $num => $alumno){
+            $data[]=['name'=>$alumno->name,
+            'correo'=>$alumno->email   
+        ];
+        }
+        //dd($data);
+        return Excel::download(new UsersExport($data), 'Lista Alumnos del Grupo '.$grupo->nombre_grupo.'.xlsx');
+
     }
 
 
-       public function pdfin(Grupo $grupo)
+    public function pdfin(Grupo $grupo)
         {
             $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
             $datos=DatosAlumno::all();
@@ -740,7 +756,6 @@ class GrupoController extends Controller
      * @param  \App\Grupo  $grupo
      * @return \Illuminate\Http\Response
      */
-
     public function removeralumno(Request $request){
         //dd($request['userId']);
         $act="0";
