@@ -120,14 +120,6 @@
                             @endcan
                           </td>
 
-                          <td width="10px">
-                            @can ('users.destroy')
-                              {!! Form::open(['route' => ['users.destroy', $user->user_id],
-                                'method'=>'DELETE']) !!}
-                                {!! Form::submit('Eliminar',['class'=>'btn btn-sm btn-danger']) !!}
-                              {!! Form::close() !!}
-                            @endcan
-                          </td>
                         </tr>
                       @endforeach
                     </tbody>

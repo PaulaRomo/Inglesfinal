@@ -138,14 +138,6 @@
                                 </a>
                               @endcan
                             </td>
-                            <td width="10px">
-                              @can ('grupos.destroy')
-                                {!! Form::open(['route' => ['grupos.destroy', $grupo->id],
-                                  'method'=>'DELETE']) !!}
-                                  {!! Form::submit('Eliminar',['class'=>'btn btn-sm btn-danger']) !!}
-                                {!! Form::close() !!}
-                              @endcan
-                            </td>
                           </tr>
                         @endforeach
                       @endcan
