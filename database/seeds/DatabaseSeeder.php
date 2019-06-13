@@ -18,8 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DocRolSeeder::class);
         $this->call(PeriodosSeeder::class);
         $this->call(AlumnosExternosSeeds::class);
-        $this->call(GrupoSeeder::class);
         $this->call(RolesAlumnosDocentesSeeds::class);
-        $this->call(AlimGrupSeeder::class);
     }
 }

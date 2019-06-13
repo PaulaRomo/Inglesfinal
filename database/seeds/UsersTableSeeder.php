@@ -31,5 +31,10 @@ class UsersTableSeeder extends Seeder
           'slug' => 'alumno',
           'description' => 'Ver sus datos y calificaciones.'
         ]);
+        Role::create([
+          'name' => 'Sin Acceso al Sistema',
+          'slug' => 'Sin Acceso al Sistema',
+          'description' => 'Sin Acceso al Sistema.'
+        ]);
     }
 }
