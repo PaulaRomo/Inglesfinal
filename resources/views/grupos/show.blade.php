@@ -24,10 +24,6 @@
                     class="btn btn-sm btn-success">
                       Reporte Final
                     </a>
-                    <a style="position:absolute; right:430px;" href="{{ route('grupos.excel', $grupo->id) }}"
-                      class="btn btn-sm btn-success">
-                        Lista del grupo
-                    </a>
                 </h4>
               </div>
               <div class="panel-body">
