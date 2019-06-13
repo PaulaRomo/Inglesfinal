@@ -188,6 +188,7 @@ class UserController extends Controller
             if($eliA!=null){
                 $eliA->delete();
             }
+            $user= User::find($user->id);
             $user->delete();
             return back()->with('success', 'Eliminado correctamente');
         }
@@ -201,11 +202,13 @@ class UserController extends Controller
             if($eliD!=null){
                 $eliD->delete();
             }
+            $user= User::find($user->id);
             $user->delete();
             return back()->with('success', 'Eliminado correctamente');
         }
         $idUser=DB::table('users')->where('id',$user->id)->pluck('id');
         if(count($idUser)>0){
+            $user= User::find($user->id);
             $user->delete();
             return back()->with('success', 'Eliminado correctamente');
         }
