@@ -148,7 +148,7 @@ Route::middleware(['auth'])->group(function(){
   Route::get('users/{user}', 'UserController@show')->name('users.show')
   ->middleware('permission:users.show');
 
-  Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy')
+  Route::delete('users/{user}/remove', 'UserController@destroy')->name('users.destroy')
   ->middleware('permission:users.destroy');
 
   Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
