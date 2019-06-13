@@ -17,11 +17,14 @@ Route::get('/', function () {
 
 Route::resource('/dias', 'DiasController');
 
+
+
 Auth::routes();
 
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::middleware(['auth'])->group(function(){
 
@@ -49,6 +52,9 @@ Route::middleware(['auth'])->group(function(){
   ->middleware('permission:roles.edith');
 
   //acceso a grupos
+
+  Route::get('/grupos/{grupo}/lista', 'GrupoController@excel')->name('grupos.excel')
+  ->middleware('permission:grupos.show');
 
   Route::post('grupos/store', 'GrupoController@store')->name('grupos.store')
   ->middleware('permission:grupos.create');
