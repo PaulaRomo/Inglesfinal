@@ -750,9 +750,10 @@ if ($validacion->fails()) {
      */
 
     public function removeralumno(Request $request){
-        //dd();
+        //dd($request['userId']);
         $act="0";
-        $apro = UpdateAlum::find($request['userId']);
+        $id=DB::table('datos_alumnos')->where('user_id',$request['userId'])->pluck('id');
+        $apro = UpdateAlum::find($id[0]);
         $apro->activo = $act;
         $apro->save();
         $eliG=UserAlum_Grup::where('user_id', '=', $request['userId'])->first();
@@ -770,7 +771,8 @@ if ($validacion->fails()) {
         for($i=0;$i<count($user);$i++) {
             # code...
             $act="0";
-            $apro = UpdateAlum::find($user[$i]);
+            $id=DB::table('datos_alumnos')->where('user_id',$user[$i])->pluck('id');
+            $apro = UpdateAlum::find($id[0]);
             $apro->activo = $act;
             $apro->save();
             $eliG=UserAlum_Grup::where('grup_id', '=', $grupo->id)->first();

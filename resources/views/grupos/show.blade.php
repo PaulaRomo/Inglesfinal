@@ -714,7 +714,7 @@
                                          
                                           {!! Form::open(['route' => ['grupos.removeralumno', $grupo->id],
                                             'method'=>'PUT']) !!}
-                                              <input type="hidden" name='userId' id='userId' value="{{$alumno->id}}">
+                                              <input type="hidden" name='userId' id='userId' value="{{$alumno->user_id}}">
                                             {!! Form::submit('Eliminar',['class'=>'btn btn-sm btn-danger']) !!}
                                           {!! Form::close() !!}
                                       </th>

@@ -173,18 +173,22 @@ class UserController extends Controller
         $idUser=DB::table('Datos_Alumnos')->where('user_id',$user->id)->pluck('id');
         //dd($idUser);
         if(count($idUser)>0){
-            $eliA=UserAlum_Grup::where('user_id', '=', $user->id)->first();
-            if($eliA!=null){
+            $idUser=DB::table('user_alum__grups')->where('user_id',$user->id)->pluck('id');
+            if(count($idUser)>0){
+                $eliA=UserAlum_Grup::find($idUser[0]);
                 $eliA->delete();
             }
-            $eliA=CalificacionAlumno::where('calificaciones_id', '=', $user->id)->first();
-            if($eliA!=null){
+            $idUser=DB::table('calificacion_alumnos')->where('calificaciones_id',$user->id)->pluck('id');
+            if(count($idUser)>0){
+                $eliA=CalificacionAlumno::find($idUser[0]);
                 $eliA->delete();
             }
-            $eliA=DatosAlumno::where('user_id', '=', $user->id)->first();
-            if($eliA!=null){
+            $idUser=DB::table('Datos_Alumnos')->where('user_id',$user->id)->pluck('id');
+            if(count($idUser)>0){
+                $eliA=DatosAlumno::find($idUser[0]);
                 $eliA->delete();
-            }
+            } 
+            $user = User::find($user->id);
             $user->delete();
             return back()->with('success', 'Eliminado correctamente');
         }
