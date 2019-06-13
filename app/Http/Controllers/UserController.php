@@ -174,6 +174,7 @@ class UserController extends Controller
     {
         //eliminar un alumno
         $idUser=DB::table('Datos_Alumnos')->where('user_id',$user->id)->pluck('id');
+        dd($user);
         if(count($idUser)>0){
             $idUser=DB::table('user_alum__grups')->where('user_id',$user->id)->pluck('id');
             if(count($idUser)>0){
