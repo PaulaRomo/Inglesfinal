@@ -20,7 +20,7 @@
                     class="btn btn-sm btn-primary">
                       Ver instrumentacion
                     </a>
-                    <a style="position:absolute; right:330px;" href="{{ route('grupos.pdfin', $grupo->id) }}"
+                    <a style="position:absolute; right:330px; " href="{{ route('grupos.pdfin', $grupo->id) }}"
                     class="btn btn-sm btn-success">
                       Reporte Final
                     </a>
