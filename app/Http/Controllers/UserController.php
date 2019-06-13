@@ -10,11 +10,13 @@ use App\UserAlum_Grup;
 use App\UserDoc_Grup;
 use App\CalificacionAlumno;
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserRequest;
 use App\Http\Requests\AlumnosCreateRequest;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Alert;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -68,28 +70,26 @@ class UserController extends Controller
     {
         $user = User::create($request->all());
         $us=DB::table('users')->where('name',$request['name'])->pluck('id');
-        \App\DatosAlumno::create([
-            'IntExt'=>$request['IntExt'],
-            'numcontrol' => $request['numcontrol'],
-            'sexo'=>$request['sexo'],
-            'activo'=>'randol',
-            'carrera'=>$request['carrera'],
-            'semestre'=>$request['semestre'],
-            'user_id'=>$us[0]
-        ]);
-        \App\Roles::create([
-            'role_id'=>3,
-            'user_id'=>$us[0]
-        ]);
-        /* TODO: crear calificaciones de alumno */
-        CalificacionAlumno::create([
-            'calificaciones_id'=>$us[0]
-        ]);
+        $dalum= new DatosAlumno();
+            $dalum->IntExt=$request->input('IntExt');
+            $dalum->numcontrol=$request->input('numcontrol');
+            $dalum->sexo=$request->input('sexo');
+            $dalum->activo='randol';
+            $dalum->carrera=$request->input('carrera');
+            $dalum->semestre=$request->input('semestre');
+            $dalum->user_id=$us[0];
+            $dalum->save();
+
+        $rol= new Roles();
+            $rol->role_id=3;
+            $rol->user_id=$us[0];
+            $rol->save();
+        /* crear calificaciones de alumno */
+        $cali=new CalificacionAlumno();
+            $cali->calificaciones_id=$us[0];
+            $cali->save();
 
 
-        //$user=DB::table('users');
-        $user = User::paginate(10);
-        //dd($user);
         return redirect()->route('users.index', $user)
         ->with('success', 'Usuario guardado');
     }
@@ -98,23 +98,26 @@ class UserController extends Controller
     {
         $user = User::create($request->all());
         $us=DB::table('users')->where('name',$request['name'])->pluck('id');
-        \App\DatosDocente::create([
-            'numcontrol' => $request['numcontrol'],
-            'user_id'=>$us[0]
-        ]);
-        \App\Roles::create([
-            'role_id'=>2,
-            'user_id'=>$us[0]
-        ]);
-        $user = User::paginate(10);
-        //dd($user);
+        $ddatos=new DatosDocente();
+            $ddatos->numcontrol = $request->input('numcontrol');
+            $ddatos->user_id=$us[0];
+            $ddatos->save();
+        $rol= new Roles();
+            $rol->role_id=2;
+            $rol->user_id=$us[0];
+            $rol->save();
+
         return redirect()->route('users.index', $user)
         ->with('success', 'Usuario guardado');
     }
-    public function storeU(UserCreateRequest $request)
+    public function storeU(UserRequest $request)
     {
-        $user = User::create($request->all());
-        $user = User::paginate(10);
+        $user = new User();
+        $user -> name =$request->input('name');
+        $user -> email =$request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+
         return redirect()->route('users.index', $user)
         ->with('success', 'Usuario guardado');
     }
@@ -150,7 +153,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AlumnosCreateRequest $request, User $user)
+    public function update(Request $request, User $user)
     {
         //
         $user->update($request->all());
@@ -201,11 +204,13 @@ class UserController extends Controller
             if($eliD!=null){
                 $eliD->delete();
             }
+            $user= User::find($user->id);
             $user->delete();
             return back()->with('success', 'Eliminado correctamente');
         }
         $idUser=DB::table('users')->where('id',$user->id)->pluck('id');
         if(count($idUser)>0){
+            $user= User::find($user->id);
             $user->delete();
             return back()->with('success', 'Eliminado correctamente');
         }

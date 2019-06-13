@@ -16,7 +16,7 @@
                           Agregar/Unidades/Periodo
                       </a>
                     @endcan
-                    <a target="_blank" href="{{asset($grupo->instrumentacion)}} " style="position:absolute; right:40px;"
+                    <a target="_blank" href="/instrumentacion/{{$grupo->instrumentacion}} " style="position:absolute; right:40px;"
                     class="btn btn-sm btn-primary">
                       Ver instrumentacion
                     </a>
@@ -269,7 +269,7 @@
                                         <th scope="row">
                                           {{$alumno->name}}
                                           <input type="hidden" name='user_id[]' value="{{$alumno->user_id}}">
-                                        
+
                                         </th>
                                         @if(in_array("Unidad1", $P1))
                                           @if(($fecha>=$FechaPeri[0]->inicio)&&($fecha<=$FechaPeri[0]->fin))
@@ -668,7 +668,7 @@
                                   <th scope="row">
                                     {{$alumno->name}}
                                     <input type="hidden" name='user_id[]' value="{{$alumno->user_id}}">
-                                  
+
                                   </th>
                                       <th>
                                         <input min="0" max="100"  class='form-control form-control-sm' type="number"
@@ -711,7 +711,7 @@
                                     <label for="  ">{{$alumno->$nivelac}}</label>
                                   </th>
                                       <th >
-                                         
+
                                           {!! Form::open(['route' => ['grupos.removeralumno', $grupo->id],
                                             'method'=>'PUT']) !!}
                                               <input type="hidden" name='userId' id='userId' value="{{$alumno->user_id}}">
