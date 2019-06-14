@@ -181,5 +181,5 @@ class PermissionsTableSeeder extends Seeder
         'slug' => 'grupos.pdfalum',
         'description' => 'Generar pdf para clasificar a los alumnos internos y externos (Administrador)',
     ]);
-  }
+  } 
 }

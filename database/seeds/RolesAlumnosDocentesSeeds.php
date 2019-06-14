@@ -182,6 +182,5 @@ class RolesAlumnosDocentesSeeds extends Seeder
         DB::table('role_user')->insert(['role_id' => 2,'user_id' => 168,]);
         DB::table('role_user')->insert(['role_id' => 2,'user_id' => 169,]);
         DB::table('role_user')->insert(['role_id' => 2,'user_id' => 170,]);
-
     }
 }

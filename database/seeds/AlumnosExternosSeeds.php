@@ -146,7 +146,7 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('datos_alumnos')->insert(['id' => '52',   'IntExt' => 'Interno',     'sexo' => 'F',  'activo' => '0',    'numcontrol' => 'Z18020015',   'carrera' => 'Ingeniería Industrial',                    'semestre'=>'II',   'user_id' => '53']);
         DB::table('datos_alumnos')->insert(['id' => '53',   'IntExt' => 'Externo',     'sexo' => 'F',  'activo' => '0',    'numcontrol' => 'EXTERNO13',                                                                                'user_id' => '54']);
         DB::table('datos_alumnos')->insert(['id' => '54',   'IntExt' => 'Interno',     'sexo' => 'F',  'activo' => '0',    'numcontrol' => 'Z18020113',   'carrera' => 'Ingeniería en Sistemas Computacionales',   'semestre'=>'II',   'user_id' => '55']);
-        //Crear calificacion
+        //Crear calificacion 
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'19']);
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'20']);
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'21']);

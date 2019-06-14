@@ -13,24 +13,24 @@ class PeriodosSeeder extends Seeder
     {
         //
         DB::table('periodos')->insert([
-            'periodo'=>'1',
-            'inicio'=>'2019-04-19',
-            'fin'=>'2019-05-31',
+            'periodo'=>'1 verano 2019',
+            'inicio'=>'2019-06-10',
+            'fin'=>'2019-06-18',
         ]);
         DB::table('periodos')->insert([
-            'periodo'=>'2',
-            'inicio'=>'2019-05-30',
-            'fin'=>'2019-06-06',
+            'periodo'=>'2 verano 2019',
+            'inicio'=>'2019-06-19',
+            'fin'=>'2019-06-28',
         ]);
         DB::table('periodos')->insert([
-            'periodo'=>'3',
-            'inicio'=>'2019-06-07',
-            'fin'=>'2019-06-10',
+            'periodo'=>'3 verano 2019',
+            'inicio'=>'2019-07-01',
+            'fin'=>'2019-07-09',
         ]);
         DB::table('periodos')->insert([
             'periodo'=>'Segunda oportunidad',
-            'inicio'=>'2019-06-11',
-            'fin'=>'2019-06-16',
+            'inicio'=>'2019-07-10',
+            'fin'=>'2019-07-16',
         ]);
     }
 }

@@ -20,4 +20,4 @@ class DatabaseSeeder extends Seeder
         $this->call(AlumnosExternosSeeds::class);
         $this->call(RolesAlumnosDocentesSeeds::class);
     }
-}
+} 

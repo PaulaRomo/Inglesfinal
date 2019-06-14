@@ -35,6 +35,6 @@ class UsersTableSeeder extends Seeder
           'name' => 'Sin Acceso al Sistema',
           'slug' => 'Sin Acceso al Sistema',
           'description' => 'Sin Acceso al Sistema.'
-        ]);
+        ]); 
     }
 }

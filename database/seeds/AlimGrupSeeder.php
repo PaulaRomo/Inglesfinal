@@ -177,5 +177,5 @@ class AlimGrupSeeder extends Seeder
         DB::table('user_alum__grups')->insert(['grup_id' => 15,'user_id' => 164,]);
         DB::table('user_alum__grups')->insert(['grup_id' => 15,'user_id' => 165,]);
         DB::table('user_alum__grups')->insert(['grup_id' => 15,'user_id' => 166,]);
-    }
+    } 
 }

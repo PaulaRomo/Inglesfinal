@@ -67,6 +67,6 @@ class DocRolSeeder extends Seeder
         DB::table('permission_role')->insert([
             'permission_id'=>25,
             'role_id'=>3,
-        ]);
+        ]); 
     }
 }
