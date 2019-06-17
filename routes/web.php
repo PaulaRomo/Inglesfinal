@@ -104,19 +104,19 @@ Route::middleware(['auth'])->group(function(){
 
 
   Route::get('grupos/{grupo}/agregar', 'GrupoController@dias')->name('grupos.dias')
-  ->middleware('permission:grupos.dias');
+  ->middleware('permission:grupos.agreDias');
 
   Route::put('grupos/{grupo}/agregar/dias', 'GrupoController@agreDias')->name('grupos.agreDias')
   ->middleware('permission:grupos.agreDias');
 
   Route::put('grupos/{grupo}/agregar/alum', 'GrupoController@agreAlum')->name('grupos.agreAlum')
-  ->middleware('permission:grupos.agreAlum');
+  ->middleware('permission:grupos.agreDias');
 
   Route::get('grupos/{grupo}/agregar/alum/b', 'GrupoController@balum')->name('grupos.balum')
-  ->middleware('permission:grupos.agreAlum');
+  ->middleware('permission:grupos.agreDias');
 
   Route::put('grupos/{grupo}/agregar/doc', 'GrupoController@agreDoc')->name('grupos.agreDoc')
-  ->middleware('permission:grupos.agreDoc');
+  ->middleware('permission:grupos.agreDias');
 
   //acceso a periodo
   Route::get('grupos/{grupo}/agregarPeriodos', 'GrupoController@periodo')->name('grupos.periodo')

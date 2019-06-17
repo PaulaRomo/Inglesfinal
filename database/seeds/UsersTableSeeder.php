@@ -32,6 +32,11 @@ class UsersTableSeeder extends Seeder
           'description' => 'Ver sus datos y calificaciones.'
         ]);
         Role::create([
+          'name' => 'Secretaria',
+          'slug' => 'secretaria',
+          'description' => 'Permiso de inscripción.'
+        ]); 
+        Role::create([
           'name' => 'Sin Acceso al Sistema',
           'slug' => 'Sin Acceso al Sistema',
           'description' => 'Sin Acceso al Sistema.'

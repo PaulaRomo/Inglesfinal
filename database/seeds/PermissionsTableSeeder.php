@@ -181,5 +181,15 @@ class PermissionsTableSeeder extends Seeder
         'slug' => 'grupos.pdfalum',
         'description' => 'Generar pdf para clasificar a los alumnos internos y externos (Administrador)',
     ]);
+    Permission::create([
+        'name' => 'Agregar Alumnos, Docente y Horario al grupo',
+        'slug' => 'grupos.agreDias',
+        'description' => 'Agregar Alumnos, Docente y Horario a los grupos (Administrador, Secretaria)',
+    ]);
+    Permission::create([
+        'name' => 'Agregar usuarios',
+        'slug' => 'users.create',
+        'description' => 'Regristrar nuevos usuarios(Administrador, Secretaria)',
+    ]);
   } 
 }
