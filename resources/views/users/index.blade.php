@@ -146,7 +146,7 @@
                         <div class="form-group2 row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Completo: ') }}</label>
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $alumno->name ?? old('name') }}" required autofocus>
+                                <input id="name" onkeyup="mayus(this);"  type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $alumno->name ?? old('name') }}" required autofocus>
                             </div>
                         </div>
 
@@ -259,7 +259,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Completo: ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
                             </div>
                         </div>
 
@@ -314,7 +314,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Completo: ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
                             </div>
                         </div>
 
