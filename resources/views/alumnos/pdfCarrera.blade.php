@@ -48,7 +48,7 @@
             <tr>
               <td style="border: black .5px solid;">{{$num+1}}</td>
               <td style="border: black .5px solid;">{{$final[$num]->numcontrol}}</td>
-              <td style="border: black .5px solid;">{{$al[$num]->name}}</td>
+              <td style="border: black .5px solid;">{{ $al[$num]->ap.' '.$al[$num]->am.' '.$al[$num]->name }}</td>
               <td style="border: black .5px solid;"><center>{{$alumno->nivelActual}}</center></td>
               @if (($alumno->unidad1<70)&&($alumno->unidad1>1))
                 <td style="background:#E9E9E9; border: black .5px solid;"><center>NA</center></td>

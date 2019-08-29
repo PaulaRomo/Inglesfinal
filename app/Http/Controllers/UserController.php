@@ -30,8 +30,8 @@ class UserController extends Controller
         //TODO:
         //
         $busqueda=$request->input('search');
-        $users = User::search($busqueda)->paginate(10);
-
+        $users = User::search($busqueda)->orderBy("ap", "asc")->paginate(10);
+        //dd($users);
     return view ('users.index', compact('users','busqueda'));
         //TODO:
     }
@@ -74,7 +74,7 @@ class UserController extends Controller
             $dalum->IntExt=$request->input('IntExt');
             $dalum->numcontrol=$request->input('numcontrol');
             $dalum->sexo=$request->input('sexo');
-            $dalum->activo='randol';
+            $dalum->activo='1';
             $dalum->carrera=$request->input('carrera');
             $dalum->semestre=$request->input('semestre');
             $dalum->user_id=$us[0];

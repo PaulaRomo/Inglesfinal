@@ -12,7 +12,7 @@
                 @endphp
                 <div class="card-header">
                     Alumno:
-                    {{$datosAlumno->name  }}
+                    {{  $datosAlumno->ap.' .'.$datosAlumno->am.' '.$datosAlumno->name }}
                 </div>
 
                 <div class="card-body">

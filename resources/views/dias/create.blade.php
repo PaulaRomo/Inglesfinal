@@ -183,7 +183,7 @@
             datosusuario = JSON.parse(ajax.response);
             console.log('-----------');
 
-            if (confirm('Nombre del usuario: ' + datosusuario[0]['name'] + '\n     desea continuar?')) {
+            if (confirm('Nombre del usuario: ' + datosusuario[0]['ap']+' '+datosusuario[0]['am'] +' '+datosusuario[0]['name'] + '\n     desea continuar?')) {
 
             } else {
                 event.preventDefault();

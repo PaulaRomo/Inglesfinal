@@ -9,7 +9,7 @@
 
                 <div class="card-header">{{ __('Nivel X ') }}
 
-                    {{$datosAlumno->name  }}
+                    {{ $datosAlumno->ap.' .'.$datosAlumno->am.' '.$datosAlumno->name }}  
                 </div>
 
                 <div class="card-body">

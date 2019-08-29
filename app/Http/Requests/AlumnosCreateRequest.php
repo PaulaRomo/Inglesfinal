@@ -25,7 +25,9 @@ class AlumnosCreateRequest extends FormRequest
     {
       return [
           //
-          'name' => 'required|max:50|min:15|Regex:/^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\-! ,\'\"\/@\.:\(\)]+$/',
+          'name' => 'required|max:50|min:4|Regex:/^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\-! ,\'\"\/@\.:\(\)]+$/',
+          'ap' => 'required|max:50|min:4|Regex:/^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\-! ,\'\"\/@\.:\(\)]+$/',
+          'am' => 'required|max:50|min:4|Regex:/^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\-! ,\'\"\/@\.:\(\)]+$/',
           'numcontrol' => 'required|max:10|min:5|unique:datos_alumnos,numcontrol|regex:/^[a-zA-Z][0-9]+$/'
 
       ];

@@ -22,7 +22,7 @@
                   </thead>
                   <tbody>
                       <tr>
-                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->ap.' '.$user->am.' '.$user->name }}</td>
                         <td>{{ $datos->numcontrol }}</td>
                         <td>{{ $datos->sexo }}</td>
                         <td>{{ $datos->carrera.' '.$datos->semestre }}</td>

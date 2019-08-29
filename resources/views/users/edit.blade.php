@@ -15,13 +15,22 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre: ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name ?? old('name') }}" required autofocus>
+                                <input id="name" onkeyup="mayus(this);" type="text" class="form-control" name="name" value="{{ $user->name ?? old('name') }}" required autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="ap" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Paterno: ') }}</label>
 
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+                            <div class="col-md-6">
+                                <input id="ap" onkeyup="mayus(this);" type="text" class="form-control"  name="ap" value="{{ $user->ap ?? old('ap') }}" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="am" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Materno: ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="am" onkeyup="mayus(this);" type="text" class="form-control" name="am" value="{{ $user->am ?? old('am') }}" required autofocus>
                             </div>
                         </div>
                         <script>
