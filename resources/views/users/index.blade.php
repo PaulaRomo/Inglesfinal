@@ -26,8 +26,7 @@
                   <table class="table table-striped table-hover">
                     <thead>
                       <tr>
-                        <th width="10px">ID</th>
-                        <th>Nombre</th>
+                        <th >Nombre</th>
                         <th>E-mail</th>
                         <th colspan="3">&nbsp;</th>
                       </tr>
@@ -35,8 +34,7 @@
                     <tbody>
                       @foreach ($users as $user)
                         <tr>
-                          <td>{{ $user->id }}</td>
-                          <td>{{ $user->name }}</td>
+                          <td>{{ $user->ap.' '.$user->am.' '.$user->name }}</td>
                           <td>{{ $user->email }}</td>
                           <td width="10px">
                             @can ('users.edit')
@@ -51,6 +49,7 @@
                     </tbody>
                   </table>
                   {{ $users->render() }}
+
                 </div>
             </div>
         </div>
@@ -131,7 +130,7 @@
                             <label for="IntExt" class="col-md-4 col-form-label text-md-right">{{ __('Tipo de Alumno: ') }}</label>
                             <div class="col-md-6">
                                 <input type="radio" id="IntExt" name="IntExt" value="Interno" onclick="habilita()" checked required autofocus> Interno
-                                <br>
+
                                 <input type="radio" id="IntExt" name="IntExt" value="Externo" onclick="deshabilita()" required autofocus> Externo
                             </div>
                         </div>
@@ -143,10 +142,27 @@
                                 <input onkeyup="mayus(this);" id="numcontrol" type="text" class="form-control{{ $errors->has('numcontrol') ? ' is-invalid' : '' }}" name="numcontrol" value="{{ $alumno->numcontrol ?? old('numcontrol') }}" required autofocus>
                             </div>
                         </div>
-                        <div class="form-group2 row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Completo: ') }}</label>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre: ') }}</label>
+
                             <div class="col-md-6">
-                                <input id="name" onkeyup="mayus(this);"  type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $alumno->name ?? old('name') }}" required autofocus>
+                                <input id="name" onkeyup="mayus(this);" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="ap" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Paterno: ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="ap" onkeyup="mayus(this);" type="text" class="form-control"  name="ap" value="{{ old('ap') }}" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="am" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Materno: ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="am" onkeyup="mayus(this);" type="text" class="form-control" name="am" value="{{ old('am') }}" required autofocus>
                             </div>
                         </div>
 
@@ -154,7 +170,7 @@
                             <label for="sexo" class="col-md-4 col-form-label text-md-right">{{ __('Género: ') }}</label>
                             <div class="col-md-6">
                                 <input type="radio" id="sexo" name="sexo" value="M" required autofocus> Masculino
-                                <br>
+
                                 <input type="radio" id="sexo" name="sexo" value="F" required autofocus> Femenino
                             </div>
                         </div>
@@ -256,10 +272,26 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Completo: ') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre: ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="ap" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Paterno: ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="ap" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="ap" value="{{ old('name') }}" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="am" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Materno: ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="am" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="am" value="{{ old('name') }}" required autofocus>
                             </div>
                         </div>
 
@@ -311,10 +343,26 @@
                     <form method="POST" action="{{ route('users.storeU') }}" aria-label="{{ __('General') }}">
                         @csrf
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre Completo: ') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre: ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="ap" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Paterno: ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="ap" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="ap" value="{{ old('name') }}" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="am" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Materno: ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="am" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="am" value="{{ old('name') }}" required autofocus>
                             </div>
                         </div>
 

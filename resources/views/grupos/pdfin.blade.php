@@ -95,7 +95,7 @@
             <tr>
               <td style="border: black .5px solid;">{{$num+1}}</td>
               <td style="border: black .5px solid;">{{$final[$num]->numcontrol}}</td>
-          		<td style="border: black .5px solid;">{{$alumno->name}}</td>
+          		<td style="border: black .5px solid;">{{ $alumno->ap.' '.$alumno->am.' '.$alumno->name}}</td>
           		<td style="border: black .5px solid;"><center>{{$final[$num]->carrera}} {{$final[$num]->semestre}}</center></td>
               @php
                  $nivelac='nivel'.$alumno->nivelActual;

@@ -129,7 +129,7 @@
                                       <th scope="col">Unidad 6</th>
                                       <th scope="col">Unidad 7</th>
                                       <th scope="col">Unidad 8</th>
-                                      <th scope="col">Promedio</th>
+                                      <th scope="col">Promedio 3</th>
 
                                   </tr>
                               </thead>
@@ -147,7 +147,7 @@
                                     @endphp
                                       <tr>
                                         <th scope="row">
-                                          {{$alumno->name}}
+                                          {{ $alumno->ap.' '.$alumno->am.' '.$alumno->name }}
                                           <input type="hidden" name='user_id[]' value="{{$alumno->user_id}}">
                                         </th>
                                         @if(($alumno->unidad1)<70)
@@ -267,7 +267,7 @@
                                     @foreach ($alumnosxGrupo as $alumno)
                                       <tr>
                                         <th scope="row">
-                                          {{$alumno->name}}
+                                          {{ $alumno->ap.' '.$alumno->am.' '.$alumno->name }}
                                           <input type="hidden" name='user_id[]' value="{{$alumno->user_id}}">
 
                                         </th>
@@ -642,7 +642,7 @@
                   @endif
                 @endcan
                 @can ('grupos.create')
-                <div class="card-body col-md-12">
+                  <div class="card-body col-md-12">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -666,7 +666,7 @@
                                 @foreach ($alumnosxGrupo as $alumno)
                                 <tr>
                                   <th scope="row">
-                                    {{$alumno->name}}
+                                    {{ $alumno->ap.' '.$alumno->am.' '.$alumno->name}}
                                     <input type="hidden" name='user_id[]' value="{{$alumno->user_id}}">
 
                                   </th>

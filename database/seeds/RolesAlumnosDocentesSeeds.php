@@ -12,7 +12,7 @@ class RolesAlumnosDocentesSeeds extends Seeder
     public function run()
     {
         //alumnos
-        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 2,]);
+      /*  DB::table('role_user')->insert(['role_id' => 3,'user_id' => 2,]);
         DB::table('role_user')->insert(['role_id' => 3,'user_id' => 3,]);
         DB::table('role_user')->insert(['role_id' => 3,'user_id' => 4,]);
         DB::table('role_user')->insert(['role_id' => 3,'user_id' => 5,]);
@@ -176,11 +176,11 @@ class RolesAlumnosDocentesSeeds extends Seeder
         DB::table('role_user')->insert(['role_id' => 3,'user_id' => 163,]);
         DB::table('role_user')->insert(['role_id' => 3,'user_id' => 164,]);
         DB::table('role_user')->insert(['role_id' => 3,'user_id' => 165,]);
-        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 166,]);
+        DB::table('role_user')->insert(['role_id' => 3,'user_id' => 166,]);*/
         //docetes
-        DB::table('role_user')->insert(['role_id' => 2,'user_id' => 167,]);
-        DB::table('role_user')->insert(['role_id' => 2,'user_id' => 168,]);
-        DB::table('role_user')->insert(['role_id' => 2,'user_id' => 169,]);
-        DB::table('role_user')->insert(['role_id' => 2,'user_id' => 170,]);
+        DB::table('role_user')->insert(['role_id' => 2,'user_id' => 2,]);
+        DB::table('role_user')->insert(['role_id' => 2,'user_id' => 3,]);
+        DB::table('role_user')->insert(['role_id' => 2,'user_id' => 4,]);
+        DB::table('role_user')->insert(['role_id' => 2,'user_id' => 5,]);
     }
 }

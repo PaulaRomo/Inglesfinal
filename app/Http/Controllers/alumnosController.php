@@ -24,11 +24,10 @@ class alumnosController extends Controller
 
       $busqueda=$request->input('search');
       if (empty($busqueda)) {
-    $busqueda='';
-
+        $busqueda='';
       }
       //$users = DB::table('datos_alumnos as da')->join('users','users.id','=','da.user_id' )->get();
-      $users=User::searchalumno($busqueda)->orderBy('name')->paginate(10);
+      $users=User::searchalumno($busqueda)->orderBy("ap", "asc")->paginate(10);
 
       //dd($users);
       return view ('alumnos.index', compact('users','busqueda'));

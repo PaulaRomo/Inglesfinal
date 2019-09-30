@@ -53,7 +53,6 @@
 
                  <input value="{{isset($busqueda)?$busqueda:'' }}" name="search" class="form-control mr-sm-2" type="search" placeholder="Nombre" aria-label="Search">
                            <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
-
                        </form>
                    </nav>
 
@@ -81,7 +80,7 @@
                     <tbody>
                       @foreach ($users as $user)
                         <tr>
-                          <td>{{ $user->name }}</td>
+                          <td>{{ $user->ap.' '.$user->am.' '.$user->name }}</td>
                           <td>{{ $user->numcontrol }}</td>
                           <td>{{ $user->sexo }}</td>
                           <td>{{ $user->carrera.' '.$user->semestre }}</td>

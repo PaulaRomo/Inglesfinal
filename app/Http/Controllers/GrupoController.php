@@ -126,7 +126,7 @@ class GrupoController extends Controller
     /* TODO: NACHO{ */
         public function balum( $numcontrol  )
         {
-            $idUser=DB::table('datos_alumnos')->where('numcontrol',$numcontrol)->join('users','users.id','=','datos_alumnos.user_id') ->get();
+            $idUser=DB::table('datos_alumnos')->where('numcontrol',$numcontrol)->join('users','users.id','=','datos_alumnos.user_id')->orderBy("ap", "asc") ->get();
 
             return json_encode($idUser);
         }
@@ -165,7 +165,7 @@ class GrupoController extends Controller
 
         //dd($grupo);
 
-        $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
+        $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->orderBy("ap", "asc")->get();
 
         //dd($alumnosxGrupo);
         $users = User::all();
@@ -559,7 +559,7 @@ class GrupoController extends Controller
 
    public function pdf(Grupo $grupo)
     {
-        $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
+        $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->orderBy("ap", "asc")->get();
         $datos=DatosAlumno::all();
         $final=[];
         foreach ($alumnosxGrupo as $key => $fila) {
@@ -592,7 +592,7 @@ class GrupoController extends Controller
 
     public function pdfin(Grupo $grupo)
         {
-            $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->get();
+            $alumnosxGrupo=User::searchalumnoxgrupo($grupo->id)->orderBy("ap", "asc")->get();
             $datos=DatosAlumno::all();
             $final=[];
             foreach ($alumnosxGrupo as $key => $fila) {

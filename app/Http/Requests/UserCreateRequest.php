@@ -24,7 +24,9 @@ class UserCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:50|min:15|Regex:/^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\-! ,\'\"\/@\.:\(\)]+$/',
+            'name' => 'required|max:50|min:4|Regex:/^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\-! ,\'\"\/@\.:\(\)]+$/',
+            'ap' => 'required|max:50|min:4|Regex:/^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\-! ,\'\"\/@\.:\(\)]+$/',
+            'am' => 'required|max:50|min:4|Regex:/^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\-! ,\'\"\/@\.:\(\)]+$/',
         ];
     }
 }
