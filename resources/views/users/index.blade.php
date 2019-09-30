@@ -130,7 +130,11 @@
                             <label for="IntExt" class="col-md-4 col-form-label text-md-right">{{ __('Tipo de Alumno: ') }}</label>
                             <div class="col-md-6">
                                 <input type="radio" id="IntExt" name="IntExt" value="Interno" onclick="habilita()" checked required autofocus> Interno
+<<<<<<< HEAD
 
+=======
+                                
+>>>>>>> 0bd28fefc6529a49324d5509adb746b3e27af61e
                                 <input type="radio" id="IntExt" name="IntExt" value="Externo" onclick="deshabilita()" required autofocus> Externo
                             </div>
                         </div>
@@ -170,7 +174,11 @@
                             <label for="sexo" class="col-md-4 col-form-label text-md-right">{{ __('Género: ') }}</label>
                             <div class="col-md-6">
                                 <input type="radio" id="sexo" name="sexo" value="M" required autofocus> Masculino
+<<<<<<< HEAD
 
+=======
+                                
+>>>>>>> 0bd28fefc6529a49324d5509adb746b3e27af61e
                                 <input type="radio" id="sexo" name="sexo" value="F" required autofocus> Femenino
                             </div>
                         </div>
@@ -283,7 +291,11 @@
                             <label for="ap" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Paterno: ') }}</label>
 
                             <div class="col-md-6">
+<<<<<<< HEAD
                                 <input id="ap" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="ap" value="{{ old('name') }}" required autofocus>
+=======
+                                <input id="ap" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+>>>>>>> 0bd28fefc6529a49324d5509adb746b3e27af61e
                             </div>
                         </div>
 
@@ -291,7 +303,11 @@
                             <label for="am" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Materno: ') }}</label>
 
                             <div class="col-md-6">
+<<<<<<< HEAD
                                 <input id="am" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="am" value="{{ old('name') }}" required autofocus>
+=======
+                                <input id="am" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+>>>>>>> 0bd28fefc6529a49324d5509adb746b3e27af61e
                             </div>
                         </div>
 
@@ -354,7 +370,11 @@
                             <label for="ap" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Paterno: ') }}</label>
 
                             <div class="col-md-6">
+<<<<<<< HEAD
                                 <input id="ap" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="ap" value="{{ old('name') }}" required autofocus>
+=======
+                                <input id="ap" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+>>>>>>> 0bd28fefc6529a49324d5509adb746b3e27af61e
                             </div>
                         </div>
 
@@ -362,7 +382,11 @@
                             <label for="am" class="col-md-4 col-form-label text-md-right">{{ __('Apellido Materno: ') }}</label>
 
                             <div class="col-md-6">
+<<<<<<< HEAD
                                 <input id="am" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="am" value="{{ old('name') }}" required autofocus>
+=======
+                                <input id="am" onkeyup="mayus(this);" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+>>>>>>> 0bd28fefc6529a49324d5509adb746b3e27af61e
                             </div>
                         </div>
 
