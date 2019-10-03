@@ -581,7 +581,7 @@ class GrupoController extends Controller
         $data=[];
         foreach ($alumnosxGrupo as $num => $alumno){
             $data[]=['name'=>$alumno->name,
-            'correo'=>$alumno->email   
+            'correo'=>$alumno->email
         ];
         }
         //dd($data);
@@ -717,16 +717,20 @@ class GrupoController extends Controller
 
      public function documentacion(FileRequest $request, Grupo $grupo)
      {
-       if($request->hasFile('file')){
-             $file=$request->file('file');
-             $name=time().$file->getClientOriginalName();
-             $file->move(public_path().'/instrumentacion/', $name);
-           }
-       $guardar=updateGrupos::find($grupo->id);
-       $guardar->instrumentacion=$name;
-       $guardar->save();
-       return redirect()->route('grupos.index', $grupo->id)
-       ->with('success', 'Grupo actualizado');
+         if($request->hasFile('file')){
+               $file=$request->file('file');
+               $name=time().$file->getClientOriginalName();
+               $file->move(public_path().'/instrumentacion/', $name);
+               $guardar=updateGrupos::find($grupo->id);
+               $guardar->instrumentacion=$name;
+               $guardar->save();
+               return redirect()->route('grupos.index', $grupo->id)
+               ->with('success', 'Grupo actualizado');
+       }else {
+         return redirect()->route('grupos.documento', $grupo->id)
+         ->with('error', 'No sea seleccionado ningun documento');
+       }
+
      }
 
      public function docu(Grupo $grupo)

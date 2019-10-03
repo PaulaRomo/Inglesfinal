@@ -68,7 +68,7 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'18']);
 
 
-        
+
         //TODO:  alumnos 2 b
         //'Usuarios_Alumnos
         DB::table('users')->insert(['password' => bcrypt('1234'),'id' => '19',   'name' => 'Arteaga Balderas Fatima Itzel ',    'email' => 'alumno_18@gmail.com']);
@@ -146,7 +146,7 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('datos_alumnos')->insert(['id' => '52',   'IntExt' => 'Interno',     'sexo' => 'F',  'activo' => '0',    'numcontrol' => 'Z18020015',   'carrera' => 'Ingeniería Industrial',                    'semestre'=>'II',   'user_id' => '53']);
         DB::table('datos_alumnos')->insert(['id' => '53',   'IntExt' => 'Externo',     'sexo' => 'F',  'activo' => '0',    'numcontrol' => 'EXTERNO13',                                                                                'user_id' => '54']);
         DB::table('datos_alumnos')->insert(['id' => '54',   'IntExt' => 'Interno',     'sexo' => 'F',  'activo' => '0',    'numcontrol' => 'Z18020113',   'carrera' => 'Ingeniería en Sistemas Computacionales',   'semestre'=>'II',   'user_id' => '55']);
-        //Crear calificacion 
+        //Crear calificacion
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'19']);
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'20']);
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'21']);
@@ -184,7 +184,7 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'53']);
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'54']);
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'55']);
-       
+
 
 
         //TODO: alumnos grupo 1 a
@@ -255,7 +255,7 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'74']);
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'75']);
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'76']);
-       
+
 
         //TODO:
 
@@ -542,10 +542,10 @@ class AlumnosExternosSeeds extends Seeder
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'165']);
         DB::table('calificacion_alumnos')->insert(['calificaciones_id'=>'166']);*/
         //DOCENTES
-        DB::table('users')->insert(['name' => 'Beatriz',    'ap'=>'Miramontes', 'am'=>'Estrada',   'email' => 'bety.estrada.m@hotmail.com',    'password' => bcrypt('1234'),'id' => '2']);
-        DB::table('users')->insert(['name' => 'Noel',       'ap'=>'Garcia',     'am'=>'Garcia',    'email' => 'noel184@hotmail.com',           'password' => bcrypt('1234'),'id' => '3']);
-        DB::table('users')->insert(['name' => 'Enrique',    'ap'=>'Miramontes', 'am'=>'Estrada',   'email' => 'enriqueenju@hotmail.com',       'password' => bcrypt('1234'),'id' => '4']);
-        DB::table('users')->insert(['name' => 'Veronica',   'ap'=>'Romero',     'am'=>'Romero',    'email' => 'romeroveronic@yahoo.com.mx',    'password' => bcrypt('1234'),'id' => '5']);
+        DB::table('users')->insert(['name' => 'BEATRIZ',    'ap'=>'MIRAMONTES', 'am'=>'ESTRADA',   'email' => 'bety.estrada.m@hotmail.com',    'password' => bcrypt('1234'),'id' => '2']);
+        DB::table('users')->insert(['name' => 'NOEL',       'ap'=>'GARCIA',     'am'=>'GARCIA',    'email' => 'noel184@hotmail.com',           'password' => bcrypt('1234'),'id' => '3']);
+        DB::table('users')->insert(['name' => 'ENRIQUE',    'ap'=>'MIRAMONTES', 'am'=>'ESTRADA',   'email' => 'enriqueenju@hotmail.com',       'password' => bcrypt('1234'),'id' => '4']);
+        DB::table('users')->insert(['name' => 'VERONICA',   'ap'=>'ROMERO',     'am'=>'ROMERO',    'email' => 'romeroveronic@yahoo.com.mx',    'password' => bcrypt('1234'),'id' => '5']);
         //Datos del Docente
         DB::table('datos_docentes')->insert(['numcontrol' => 'D12000001','user_id' => '2','id' => '1']);
         DB::table('datos_docentes')->insert(['numcontrol' => 'D12000002','user_id' => '3','id' => '2']);
